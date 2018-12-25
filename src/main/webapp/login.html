@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="static/login/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/login/css/camera.css"/>
+    <link rel="stylesheet" href="static/login/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="static/login/matrix-login.css"/>
+    <link rel="stylesheet" href="static/login/font-awesome.css"/>
+    <script type="text/javascript" src="static/login/js/jquery-1.5.1.min.js"></script>
+    <link href="static/login/keypad/css/framework/form.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+
+        .cavs {
+            z-index: 1;
+            position: fixed;
+            width: 95%;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        //window.setTimeout(showfh,3000);
+        var timer;
+
+        function showfh() {
+            fhi = 1;
+            timer = setInterval(xzfh2, 10);
+        };
+
+        var current = 0;
+
+
+        var fhi = 1;
+        var current2 = 1;
+
+        function xzfh2() {
+            if (fhi > 50) {
+                document.body.style.transform = 'rotate(0deg)';
+                clearInterval(timer);
+                return;
+            }
+            current = (current2) % 360;
+            document.body.style.transform = 'rotate(' + current + 'deg)';
+            current++;
+            if (current2 == 1) {
+                current2 = -1;
+            } else {
+                current2 = 1;
+            }
+            fhi++;
+        };
+    </script>
+</head>
+<body>
+<canvas class="cavs"></canvas>
+<div style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
+    <!-- 登录 -->
+    <div id="windows1">
+        <div id="loginbox">
+            <form action="" method="post" name="loginForm" id="loginForm">
+                <div class="control-group normal_text">
+                    <h3>
+                        <img src="static/login/logo.png" alt="Logo"/>
+                    </h3>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+							<span class="add-on bg_lg">
+							<i><img height="37" src="static/login/user.png"/></i>
+							</span><input type="text" name="loginname" id="loginname" placeholder="Please enter a user name"  value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+							<span class="add-on bg_ly">
+							<i><img height="37" src="static/login/suo.png"/></i>
+							</span><input type="password" name="password" id="password" placeholder="enter your PIN"   class="keypad" keypadMode="full" allowKeyboard="true" value=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div>
+                        <span class="pull-right"><a onclick="severCheck();" class="flip-link btn btn-info"   id="to-recover">Log in</a></span>
+                    </div>
+                </div>
+            </form>
+            <div class="controls">
+                <div class="main_input_box">
+                    <font color="white"><span id="nameerr">Copyright © 京睿天成 <id id="date"></id></span></font>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div id="templatemo_banner_slide" class="container_wapper">
+    <div class="camera_wrap camera_emboss" id="camera_slide">
+        <!-- 背景图片 -->
+        <div data-src="static/login/images/banner_slide_01.jpg"></div>
+        <div data-src="static/login/images/banner_slide_02.jpg"></div>
+        <div data-src="static/login/images/banner_slide_03.jpg"></div>
+        <div data-src="static/login/images/banner_slide_04.jpg"></div>
+        <div data-src="static/login/images/banner_slide_05.jpg"></div>
+    </div>
+
+</div>
+<!--当年年份-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var nowYear = new Date();
+        var showDate = nowYear.getFullYear();
+        $("#date").html(showDate);
+    });
+
+
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#to-recover").trigger("click");
+        }
+    });
+
+
+
+    //客户端校验
+    function check() {
+
+        if ($("#loginname").val() == "") {
+            $("#loginname").tips({
+                side: 2,
+                msg: '用户名不得为空',
+                bg: '#AE81FF',
+                time: 3
+            });
+            showfh();
+            $("#loginname").focus();
+            return false;
+        } else {
+            $("#loginname").val(jQuery.trim($('#loginname').val()));
+        }
+        if ($("#password").val() == "") {
+            $("#password").tips({
+                side: 2,
+                msg: '密码不得为空',
+                bg: '#AE81FF',
+                time: 3
+            });
+            showfh();
+            $("#password").focus();
+            return false;
+        }
+
+
+
+        $("#loginbox").tips({
+            side: 1,
+            msg: 'Is landing , Please later ...',
+            bg: '#68B500',
+            time: 10
+        });
+
+
+
+    }
+
+    //服务器校验
+    function severCheck() {
+        var userName = $("#loginname").val();
+        var password = $("#password").val();
+        $.ajax({
+            type: "POST",
+            url: '/login/login',
+            data: {userName: userName, "password": password},
+            dataType: 'json',
+            cache: false,
+            success: function (date) {
+                alert(date);
+            },
+            error:function () {
+                $("#loginname").tips({
+                    side: 1,
+                    msg: "Server exception",
+                    bg: '#FF5080',
+                    time: 15
+                });
+            }
+        });
+    }
+
+/*
+*
+*
+*                    $("#loginname").tips({
+                        side: 1,
+                        msg: "缺少参数",
+                        bg: '#FF5080',
+                        time: 15
+                    });
+*
+* */
+
+
+
+
+
+    function savePaw() {
+        if (!$("#saveid").attr("checked")) {
+            $.cookie('loginname', '', {
+                expires: -1
+            });
+            $.cookie('password', '', {
+                expires: -1
+            });
+            $("#loginname").val('');
+            $("#password").val('');
+        }
+    }
+
+    function saveCookie() {
+        if ($("#saveid").attr("checked")) {
+            $.cookie('loginname', $("#loginname").val(), {
+                expires: 7
+            });
+            $.cookie('password', $("#password").val(), {
+                expires: 7
+            });
+        }
+    }
+
+    jQuery(function () {
+        var loginname = $.cookie('loginname');
+        var password = $.cookie('password');
+        if (typeof(loginname) != "undefined"
+            && typeof(password) != "undefined") {
+            $("#loginname").val(loginname);
+            $("#password").val(password);
+            $("#saveid").attr("checked", true);
+            $("#code").focus();
+        }
+    });
+
+</script>
+<script src="static/login/js/bootstrap.min.js"></script>
+<script src="static/js/jquery-1.7.2.js"></script>
+<script src="static/login/js/jquery.easing.1.3.js"></script>
+<script src="static/login/js/jquery.mobile.customized.min.js"></script>
+<script src="static/login/js/camera.min.js"></script>
+<script src="static/login/js/templatemo_script.js"></script>
+<script src="static/login/js/ban.js"></script>
+<script type="text/javascript" src="static/js/jQuery.md5.js"></script>
+<script type="text/javascript" src="static/js/jquery.tips.js"></script>
+<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
+
+
+</body>
+
+</html>
