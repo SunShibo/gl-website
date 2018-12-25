@@ -464,7 +464,7 @@
     <profile>
       <id>aliyun_sit</id>
       <properties>
-        <jdbc.url.ip>wisewin-tech.com:3306/hotel_management</jdbc.url.ip>
+        <jdbc.url.ip>wisewin-tech.com:3306/EE_server</jdbc.url.ip>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>Sunshibo1</jdbc.password>
 
@@ -478,7 +478,7 @@
     <profile>
       <id>test</id>
       <properties>
-        <jdbc.url.ip>wisewin-tech.com:3306/hotel_test</jdbc.url.ip>
+        <jdbc.url.ip>wisewin-tech.com:3306/</jdbc.url.ip>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>Sunshibo1</jdbc.password>
 
