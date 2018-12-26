@@ -21,29 +21,34 @@ public class HomepageService {
     private HomepageFourDAO hpfourDao;
     @Resource
     private HomepageFiveDAO hpfiveDao;
+
     //查询所有信息one
-    public List<HomepageFirstBO> getAllHomepageFirstMesg(){
-       List<HomepageFirstBO>list= hpfDAO.getAllHomepageFirstMesg();
-       return  list;
+    public HomepageFirstBO getAllHomepageFirstMesg() {
+        HomepageFirstBO  list = hpfDAO.getAllHomepageFirstMesg();
+        return list;
     }
+
     //查询所有信息two
-    public List<HomepageTwoBO> getAllHomepageTwoMesg(){
-        List<HomepageTwoBO>list2= hptwoDao.getAllHomepageTwoMesgtwo();
-        return  list2;
+    public HomepageTwoBO getAllHomepageTwoMesg() {
+        HomepageTwoBO list2 = hptwoDao.getAllHomepageTwoMesgtwo();
+        return list2;
     }
+
     //查询所有信息three
-    public List<HomepageThreeBO> getAllHomepageThreeMesg(){
-        List<HomepageThreeBO>list3= hpthreeDao.getAllHomepageThreeMesgthree();
-        return  list3;
+    public List<HomepageThreeBO> getAllHomepageThreeMesg() {
+        List<HomepageThreeBO> list3 = hpthreeDao.getAllHomepageThreeMesgthree();
+        return list3;
     }
+
     //查询所有信息four
-    public List<HomepageFourBO> getAllHomepageFourMesg(){
-        List<HomepageFourBO>list4= hpfourDao.getAllHomepageFourMesgfour();
-        return  list4;
+    public HomepageFourBO getAllHomepageFourMesg() {
+
+        return  hpfourDao.getAllHomepageFourMesgfour();
     }
+
     //查询所有信息five
-    public List<HomepageFiveBO> getAllHomepageFiveMesg(){
-        List<HomepageFiveBO>list5= hpfiveDao.getAllHomepageFiveMesgfive();
-        return  list5;
+    public List<HomepageFiveBO> getAllHomepageFiveMesg() {
+        List<HomepageFiveBO> list5 = hpfiveDao.getAllHomepageFiveMesgfive();
+        return list5;
     }
 }

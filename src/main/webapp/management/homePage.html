@@ -31,6 +31,8 @@
     }
 
     .moduleHead{
+
+      float: left;
       margin-top: -30%;
       margin-left:20%;
 
@@ -38,8 +40,8 @@
 
     .right{
       margin-top: -30%;
-      margin-left:20%;
-
+      margin-right:-20%;
+      text-align: center;
     }
   </style>
 </head>
@@ -68,8 +70,10 @@
 
 
   <div  id="moduleHead"  class="moduleHead">
-      <div id="moduleHeadLeft">1234</div>
-      <div id="moduleHeadRight">5678</div>
+
+      <div id="moduleHeadLeft"  style="display:inline-block;background:#f00;">1234</div>
+
+      <div id="moduleHeadRight" style="display:inline-block;background:#0f0;margin-left:900%;" >5678</div>
   </div>
   <div  id="moduleLine"  class="moduleHead" hidden="hidden" >2</div>
   <div  id="moduleMainBody"  class="moduleHead" hidden="hidden" >3</div>

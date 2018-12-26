@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.HomepageFirstDAO">
 
     <select id="getAllHomepageFirstMesg" resultType="com.gl.website.entity.bo.HomepageFirstBO">
-        select *  from gl_homepage_first
+        select *  from gl_homepage_first  WHERE  id=1
     </select>
 
 </mapper>

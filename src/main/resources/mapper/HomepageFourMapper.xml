@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.HomepageFourDAO">
 
     <select id="getAllHomepageFourMesgfour" resultType="com.gl.website.entity.bo.HomepageFourBO">
-        select *  from gl_homepage_four
+        select *  from gl_homepage_four  WHERE   id=1
     </select>
 
 </mapper>
