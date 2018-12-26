@@ -3,14 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 查询所有信息 -->
-<mapper namespace="com.gl.website.dao.InternationTwoDAO">
+<mapper namespace="com.gl.website.dao.AboutTwoDAO">
 
-    <select id="getAllInternationTwoMesg" resultType="com.gl.website.entity.bo.InternationTwoBO">
-        select *  from gl_internation_two
+    <select id="getAboutTwoMesg" resultType="com.gl.website.entity.bo.AboutTwoBO">
+        select *  from gl_about_two WHERE id=1
     </select>
     <!--修改信息-->
-    <update id="updateInternationTwo" parameterType="com.gl.website.entity.bo.InternationTwoBO">
-        UPDATE gl_internation_two
+    <update id="updateAboutTwo" parameterType="com.gl.website.entity.bo.AboutTwoBO">
+        UPDATE gl_about_two
         <set>
             <if test="createTime!=null and createTime!=''">
                 `create_time`=#{createTime} ,
@@ -52,12 +52,12 @@
         WHERE id=#{id}
     </update>
     <!--删除信息-->
-    <delete id="deleteInternationTwo" parameterType="com.gl.website.entity.bo.InternationTwoBO" >
-        DELETE FROM gl_internation_two WHERE id=#{id}
+    <delete id="deleteAboutTwo" parameterType="com.gl.website.entity.bo.AboutTwoBO" >
+        DELETE FROM gl_about_two WHERE id=#{id}
     </delete>
     <!--增加信息-->
-    <insert id="addInternationTwo" parameterType="com.gl.website.entity.bo.InternationTwoBO">
-        INSERT INTO gl_internation_two(
+    <insert id="addAboutTwo" parameterType="com.gl.website.entity.bo.AboutTwoBO">
+        INSERT INTO gl_about_two(
         image,url,create_time,create_user,update_time,update_user,title,content,subtitle,picture_sort,introduce,source
         )
         VALUES(
