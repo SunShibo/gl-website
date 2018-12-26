@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.CommunityTwoDAO">
 
     <select id="getAllCommunityTwoMesg" resultType="com.gl.website.entity.bo.CommunityTwoBO">
-        select *  from gl_community_two WHERE id=1
+        select *  from gl_community_two
     </select>
     <!--修改信息-->
     <update id="updateCommunityTwo" parameterType="com.gl.website.entity.bo.CommunityTwoBO">
