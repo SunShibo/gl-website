@@ -1,0 +1,321 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';   /*字体名称*/
+    src: url('../font/Poppins/Poppins-Bold.ttf');       /*字体源文件*/
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';   /*字体名称*/
+    src: url('../font/Poppins/Poppins-Medium.ttf');       /*字体源文件*/
+}
+
+@font-face {
+    font-family: 'DroidSerif-Italic';   /*字体名称*/
+    src: url('../font/Droid_Serif/DroidSerif-Italic.ttf');       /*字体源文件*/
+}
+
+@font-face {
+    font-family: 'DroidSerif-Regular';   /*字体名称*/
+    src: url('../font/Droid_Serif/DroidSerif-Regular.ttf');       /*字体源文件*/
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';   /*字体名称*/
+    src: url('../font/Poppins/Poppins-SemiBold.ttf');       /*字体源文件*/
+}
+
+#main {
+    position: relative;
+}
+
+#head {
+    padding: 10px 15px;
+    position: relative;
+    z-index: 999;
+}
+
+#head .b-logo {
+    width: 122px;
+    height: 57px;
+    position: absolute;
+    left: 50px;
+}
+
+#head .nav .nav-item .nav-link {
+    font-family: Poppins-Medium;
+    border: solid 2px transparent;
+    color: #ffffff;
+}
+
+#head .nav .nav-item .nav-link:hover {
+    border: solid 2px #ffffff;
+}
+
+#head .nav .nav-item .nav-link:active {
+    border: solid 2px #ffffff;
+}
+
+#head .b-logo #logo {
+    width: 100%;
+    height: 100%;
+}
+
+#banner {
+    height: 768px;
+    position: relative;
+}
+
+#banner img {
+    position: absolute;
+    top: 0;
+}
+
+#banner .banner-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#banner .banner-title h1 {
+    font-family: Poppins-Bold;
+    color: #ffffff;
+    font-size: 90px;
+    user-select: none;
+}
+
+#banner .banner-title h2 {
+    font-family: Poppins-Bold;
+    color: #ffffff;
+    font-size: 60px;
+    text-align: left;
+    user-select: none;
+}
+
+#banner .banner-title .title {
+    margin-bottom: 40px;
+}
+
+#banner .banner-title .line {
+    background: #EE4035;
+    height: 6px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#banner .banner-title h4 {
+    margin-top: 40px;
+    font-family: Poppins-Medium;
+    font-size: 21px;
+    color: #FFFFFF;
+    user-select: none;
+}
+
+#banner .banner-title a {
+    margin-top: 25px;
+    border: 1px solid #FFFFFF;
+    display: inline-block;
+    text-decoration: none;
+    font-family: Poppins-Bold;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 6px 21px;
+    background-color: transparent;
+}
+
+#main #introduce {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 100px 0 70px;
+}
+
+#introduce .center-t {
+    width: 750px;
+}
+
+#introduce .font-Poppins-Bold h1 {
+    color: #D89040;
+    font-size: 60px;
+}
+
+.font-Poppins-Bold {
+    font-family: Poppins-Bold;
+}
+
+.font-DroidSerif-Italic {
+    font-family: DroidSerif-Italic;
+    font-size: 20px;
+}
+
+#introduce .font-DroidSerif-Italic span {
+    color: #7B7B7B;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+#introduce .center-t .line {
+    background-color: #EE4035;
+    width: 50%;
+    height: 6px;
+    margin: 20px 0;
+}
+
+#main #publicity {
+    background: url("../image/Banner9.png");
+    padding: 60px 0 30px;
+}
+
+#main #publicity .info-center {
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+#main #publicity .info-center .info-item {
+    width: 280px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#main #publicity .info-center .info-item .font-info {
+    font-size: 30px;
+    color: #EFEFEF;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.font-DroidSerif-Regular {
+    font-family: DroidSerif-Regular;
+}
+
+#main #publicity .info-center .info-item .font-content {
+    font-size: 15px;
+    color: #EFEFEF;
+    text-align: center;
+    line-height: 35px;
+    text-overflow: ellipsis;
+}
+
+#details {
+
+}
+
+#details .d-title {
+    padding: 40px 0 15px;
+    font-size: 30px;
+    color: #303030;
+    text-align: center;
+}
+
+#details .line {
+    background: #EE4035;
+    height: 6px;
+    width: 25%;
+    margin: 0 auto;
+}
+
+#details .d-content {
+    width: 40%;
+    margin: 0 auto 100px;
+    font-size: 15px;
+    color: #7B7B7B;
+    letter-spacing: 0.61px;
+    text-align: center;
+    line-height: 50px;
+    padding: 30px 55px;
+}
+
+.slick img {
+    width: 500px;
+    height: 600px;
+}
+
+#picture {
+    position: relative;
+}
+
+#picture .p-bg {
+    width: 50%;
+    height: 600px;
+    margin-bottom: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFA53A;
+}
+
+#foot {
+    background: #303030;
+    width: 100%;
+    height: 155px;
+    margin-top: 100px;
+}
+
+#foot .f-center {
+    width: 70%;
+    margin: 0 auto;
+    line-height: 100px;
+    height: 100%;
+}
+
+#foot .f-center .f-logo {
+    width: 85px;
+    height: 40px;
+}
+
+#foot .f-center .f-content {
+    font-family: 'Poppins-SemiBold';
+    font-size: 14px;
+    color: #ffffff;
+}
+
+#main .page4 {
+    position: relative;
+    height: 300px;
+}
+
+#main .page4-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.page4-center h2 {
+    font-size: 60px;
+    color: #303030;
+    letter-spacing: 4.22px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.page4-center h4 {
+    font-size: 20px;
+    color: #303030;
+    text-align: center;
+}
+
+.page4-center div {
+    text-align: center;
+}
+
+#main .page-s {
+    position: relative;
+    height: 400px;
+}
+
+#main .s-center{
+
+}
