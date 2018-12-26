@@ -4,19 +4,19 @@
 <mapper namespace="com.gl.website.dao.LoginDAO">
 
 
-    <sql id="limit">
+   <!-- <sql id="limit">
         limit #{pageOffset},#{pageSize}
     </sql>
 
-    <!-- 添加用户 -->
+    &lt;!&ndash; 添加用户 &ndash;&gt;
     <insert id="register" parameterType="com.gl.website.entity.bo.AdminBO" useGeneratedKeys="true"  keyProperty="id">
         INSERT INTO gl_admin SET phone_number = #{phoneNumber}, password = #{password}, create_time = NOW(),`name`=#{name},uuid=#{uuId},
         status=#{status} ,gender=#{gender}
     </insert>
-
+-->
     <!--查询用户-->
-    <select id="login"   resultType="com.gl.website.entity.bo.AdminBO"  >
-       SELECT  *  gl_admin  WHERE  `name`=#{userName}
+    <select id="login"     resultType="com.gl.website.entity.bo.AdminBO"    >
+       SELECT  *  FROM  gl_admin   WHERE  name=#{userName}
     </select>
 
 

@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+
+  <script src="../static/menu/jquery.min.js"></script>
+  <link rel="stylesheet" href="../static/menu/menu.css" type="text/css" />
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .headv {
+      line-height:1em;color:#4e4e4e;
+      min-width:920px;
+      position: fixed;
+      top: 0;
+      left: 100px;
+      right: 0;
+      height: 140px;
+      z-index: 10;
+    }
+
+    .headv>div {
+      float: left;
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    .moduleHead{
+      margin-top: -30%;
+      margin-left:20%;
+
+    }
+
+    .right{
+      margin-top: -30%;
+      margin-left:20%;
+
+    }
+  </style>
+</head>
+<body>
+
+<nav class="menu-activea">
+  <h1>Menu</h1>
+  <ul>
+    <li><a href="homePage.html" style="color:#9DC6D1;text-decoration:none;" >HomePage</a></li>
+    <li>Susy</li>
+    <li>Jack</li>
+    <li>Nancy</li>
+    <li>Kurt</li>
+    <li>Clay</li>
+    <li>Lisa</li>
+  </ul>
+</nav>
+<div class="x12 headv">
+  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model1" >Module Head</a></div>
+  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model2"  >Module Line</a></div>
+  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model3"  >Module Main Body</a></div>
+  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model4"  >Module Retreat</a></div>
+</div>
+<main>
+
+
+
+  <div  id="moduleHead"  class="moduleHead">
+      <div id="moduleHeadLeft">1234</div>
+      <div id="moduleHeadRight">5678</div>
+  </div>
+  <div  id="moduleLine"  class="moduleHead" hidden="hidden" >2</div>
+  <div  id="moduleMainBody"  class="moduleHead" hidden="hidden" >3</div>
+  <div  id="moduleRetreat"  class="moduleHead" hidden="hidden"  >4</div>
+</main>
+
+
+
+<script src="../static/menu/manu.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $("#model1").click(function () {
+
+          $("#moduleHead").show();
+          $("#moduleLine").hide();
+          $("#moduleMainBody").hide();
+          $("#moduleRetreat").hide();
+     });
+
+
+      $("#model2").click(function () {
+          $("#moduleLine").show();
+          $("#moduleHead").hide();
+          $("#moduleMainBody").hide();
+          $("#moduleRetreat").hide();
+      });
+
+
+      $("#model3").click(function () {
+
+          $("#moduleMainBody").show();
+          $("#moduleHead").hide();
+          $("#moduleLine").hide();
+          $("#moduleRetreat").hide();
+      });
+
+
+
+      $("#model4").click(function () {
+          $("#moduleRetreat").show();
+          $("#moduleHead").hide();
+          $("#moduleLine").hide();
+          $("#moduleMainBody").hide();
+      });
+  });
+
+</script>
+</body>
+</html>

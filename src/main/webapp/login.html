@@ -57,6 +57,7 @@
     </script>
 </head>
 <body>
+<a  href="management/homePage1.html">瞅啥啊 没见过这么丑的超链接啊?</a>
 <canvas class="cavs"></canvas>
 <div style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
     <!-- 登录 -->
@@ -88,7 +89,7 @@
                 </div>
                 <div class="form-actions">
                     <div>
-                        <span class="pull-right"><a onclick="severCheck();" class="flip-link btn btn-info"   id="to-recover">Log in</a></span>
+                        <span class="pull-right"><a onclick="check();" class="flip-link btn btn-info"   id="to-recover">Log in</a></span>
                     </div>
                 </div>
             </form>
@@ -132,8 +133,6 @@
 
     //客户端校验
     function check() {
-        alert();
-            alert($("#loginname").val() == ""+$("#loginname").val());
         if ($("#loginname").val() == "") {
             $("#loginname").tips({
                 side: 2,
@@ -168,12 +167,13 @@
             time: 10
         });
 
-
+        severCheck();
 
     }
 
     //服务器校验
     function severCheck() {
+
         var userName = $("#loginname").val();
         var password = $("#password").val();
         $.ajax({
@@ -183,7 +183,33 @@
             dataType: 'json',
             cache: false,
             success: function (date) {
-                alert(date);
+                if(date.success==true){
+                    $.cookie("userName",date.data.name);
+                    window.location="http://www.baidu.com";
+                }else if(date.success==false){
+                    var err=date.errCode;
+                    if(err==0000004){
+                        $("#loginname").tips({
+                            side: 2,
+                            msg: 'The user does not exist',
+                            bg: '#AE81FF',
+                            time: 3
+                        });
+                        $("#loginname").focus();
+                        return false;
+                    }else if(err==0000001){
+                        $("#password").tips({
+                            side: 2,
+                            msg: 'wrong password',
+                            bg: '#AE81FF',
+                            time: 3
+                        });
+                        $("#password").focus();
+                        return false;
+                    }
+
+                }
+
             },
             error:function () {
                 $("#loginname").tips({
@@ -196,17 +222,17 @@
         });
     }
 
-/*
-*
-*
-*                    $("#loginname").tips({
-                        side: 1,
-                        msg: "缺少参数",
-                        bg: '#FF5080',
-                        time: 15
-                    });
-*
-* */
+    /*
+    *
+    *
+    *                    $("#loginname").tips({
+                            side: 1,
+                            msg: "缺少参数",
+                            bg: '#FF5080',
+                            time: 15
+                        });
+    *
+    * */
 
 
 
