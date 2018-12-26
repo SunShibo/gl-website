@@ -15,7 +15,7 @@ public class HomepageThreeBO extends BaseModel {
     private String  title   ;//标题
     private String  content ;//内容
     private String  subtitle ;//副标题
-    private Integer picture_sort  ;//图片序列号
+    private Integer pictureSort  ;//图片序列号
     private String  introduce   ;//介绍
     private String  source    ;//来源
 
@@ -99,12 +99,12 @@ public class HomepageThreeBO extends BaseModel {
         this.subtitle = subtitle;
     }
 
-    public Integer getPicture_sort() {
-        return picture_sort;
+    public Integer getPictureSort() {
+        return pictureSort;
     }
 
-    public void setPicture_sort(Integer picture_sort) {
-        this.picture_sort = picture_sort;
+    public void setPictureSort(Integer pictureSort) {
+        this.pictureSort = pictureSort;
     }
 
     public String getIntroduce() {

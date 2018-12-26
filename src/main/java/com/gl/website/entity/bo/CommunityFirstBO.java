@@ -4,7 +4,7 @@ import com.gl.website.common.base.BaseModel;
 
 import java.util.Date;
 
-public class HomepageFiveBO extends BaseModel {
+public class CommunityFirstBO extends BaseModel {
     private Integer id;
     private String image;  //图片
     private String url;//图片地址

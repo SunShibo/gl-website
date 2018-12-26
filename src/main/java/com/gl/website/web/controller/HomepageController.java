@@ -25,18 +25,18 @@ public class HomepageController extends BaseCotroller {
     private HomepageService homepageService;
 
     @RequestMapping("/query")//查询
-    public void  query(HttpServletResponse response,HttpServletRequest request) {
-        HashMap<String,Object>map=new HashMap<String, Object>();
-        List<HomepageFirstBO>list1= homepageService.getAllHomepageFirstMesg();
-        List<HomepageTwoBO>list2= homepageService.getAllHomepageTwoMesg();
-        List<HomepageThreeBO>list3= homepageService.getAllHomepageThreeMesg();
-        List<HomepageFourBO>list4= homepageService.getAllHomepageFourMesg();
-        List<HomepageFiveBO>list5= homepageService.getAllHomepageFiveMesg();
-        map.put("one",list1);
-        map.put("two",list2);
-        map.put("three",list3);
-        map.put("four",list4);
-        map.put("five",list5);
+    public void query(HttpServletResponse response, HttpServletRequest request) {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        List<HomepageFirstBO> list1 = homepageService.getAllHomepageFirstMesg();
+        List<HomepageTwoBO> list2 = homepageService.getAllHomepageTwoMesg();
+        List<HomepageThreeBO> list3 = homepageService.getAllHomepageThreeMesg();
+        List<HomepageFourBO> list4 = homepageService.getAllHomepageFourMesg();
+        List<HomepageFiveBO> list5 = homepageService.getAllHomepageFiveMesg();
+        map.put("one", list1);
+        map.put("two", list2);
+        map.put("three", list3);
+        map.put("four", list4);
+        map.put("five", list5);
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
         safeTextPrint(response, json);
     }
