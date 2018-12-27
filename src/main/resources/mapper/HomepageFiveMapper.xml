@@ -8,5 +8,61 @@
     <select id="getAllHomepageFiveMesgfive" resultType="com.gl.website.entity.bo.HomepageFiveBO">
         select *  from gl_homepage_five
     </select>
-
+    <!--修改信息-->
+    <update id="updateHomepageFive" parameterType="com.gl.website.entity.bo.HomepageFiveBO">
+        UPDATE gl_homepage_five
+        <set>
+            <if test="createTime!=null and createTime!=''">
+                `create_time`=#{createTime} ,
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                update_time=#{updateTime},
+            </if>
+            <if test="image!=null">
+                image=#{image},
+            </if>
+            <if test="url!=null">
+                `url`=#{url} ,
+            </if>
+            <if test="createUser!=null">
+                `create_user`=#{createUser},
+            </if>
+            <if test="updateUser!=null">
+                `update_user`=#{updateUser},
+            </if>
+            <if test="title!=null">
+                `title`=#{title},
+            </if>
+            <if test="content!=null">
+                `content`=#{content} ,
+            </if>
+            <if test="subtitle!=null">
+                `subtitle`=#{subtitle} ,
+            </if>
+            <if test="pictureSort!=null">
+                `picture_sort`=#{pictureSort} ,
+            </if>
+            <if test="introduce!=null">
+                `introduce`=#{introduce} ,
+            </if>
+            <if test="source!=null">
+                `source`=#{source}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <!--删除信息-->
+    <delete id="deleteHomepageFive" parameterType="com.gl.website.entity.bo.HomepageFiveBO" >
+        DELETE FROM gl_homepage_five WHERE id=#{id}
+    </delete>
+    <!--增加信息-->
+    <insert id="addHomepageFive" parameterType="com.gl.website.entity.bo.HomepageFiveBO">
+        INSERT INTO gl_homepage_five(
+        image,url,create_time,create_user,update_time,update_user,title,content,subtitle,picture_sort,introduce,source
+        )
+        VALUES(
+        #{image},#{url},#{createTime},#{createUser},#{updateTime},#{updateUser},#{title},
+        #{content},#{subtitle},#{pictureSort},#{introduce},#{source}
+        )
+    </insert>
 </mapper>

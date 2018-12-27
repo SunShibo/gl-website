@@ -51,4 +51,76 @@ public class HomepageService {
         List<HomepageFiveBO> list5 = hpfiveDao.getAllHomepageFiveMesgfive();
         return list5;
     }
+
+
+
+
+    //修改信息one
+    public Integer updateHomepageFirst(HomepageFirstBO hfbo){
+        return hpfDAO.updateHomepageFirst(hfbo);
+    }
+    //删除信息one
+    public Integer deleteHomepageFirst(HomepageFirstBO hfbo){
+        return hpfDAO.deleteHomepageFirst(hfbo);
+    }
+    //增加信息one
+    public Integer addHomepageFirst(HomepageFirstBO hfbo){
+        return hpfDAO.addHomepageFirst(hfbo);
+    }
+
+
+    //修改信息two
+    public Integer updateHomepageTwo(HomepageTwoBO htwobo){
+        return hptwoDao.updateHomepageTwo(htwobo);
+    }
+    //删除信息two
+    public Integer deleteHomepageTwo(HomepageTwoBO htwobo){
+        return hptwoDao.deleteHomepageTwo(htwobo);
+    }
+    //增加信息two
+    public Integer addHomepageTwo(HomepageTwoBO htwobo){
+        return hptwoDao.addHomepageTwo(htwobo);
+    }
+
+    //修改信息three
+    public Integer updateHomepageThree(HomepageThreeBO hthreebo){
+        return hpthreeDao.updateHomepageThree(hthreebo);
+    }
+    //删除信息three
+    public Integer deleteHomepageThree(HomepageThreeBO hthreebo){
+        return hpthreeDao.deleteHomepageThree(hthreebo);
+    }
+    //增加信息three
+    public Integer addHomepageThree(HomepageThreeBO hthreebo){
+        return hpthreeDao.addHomepageThree(hthreebo);
+    }
+
+
+    //修改信息four
+    public Integer updateHomepageFour(HomepageFourBO hfourbo){
+        return hpfourDao.updateHomepageFour(hfourbo);
+    }
+    //删除信息four
+    public Integer deleteHomepageFour(HomepageFourBO hfourbo){
+        return hpfourDao.deleteHomepageFour(hfourbo);
+    }
+    //增加信息four
+    public Integer addHomepageFour(HomepageFourBO hfourbo){
+        return hpfourDao.addHomepageFour(hfourbo);
+    }
+
+
+    //修改信息five
+    public Integer updateHomepageFive(HomepageFiveBO hfivebo){
+        return hpfiveDao.updateHomepageFive(hfivebo);
+    }
+    //删除信息five
+    public Integer deleteHomepageFive(HomepageFiveBO hfivebo){
+        return hpfiveDao.deleteHomepageFive(hfivebo);
+    }
+    //增加信息five
+    public Integer addHomepageFive(HomepageFiveBO hfivebo){
+        return hpfiveDao.addHomepageFive(hfivebo);
+    }
+
 }
