@@ -6,6 +6,11 @@
 
   <script src="../static/menu/jquery.min.js"></script>
   <link rel="stylesheet" href="../static/menu/menu.css" type="text/css" />
+  <script charset="utf-8" src="/static/kindeditor/kindeditor-all-min.js"></script>
+  <script charset="utf-8" src="/static/kindeditor/zh_CN.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <style type="text/css">
     * {
@@ -33,19 +38,31 @@
     .moduleHead{
 
       float: left;
-      margin-top: -30%;
-      margin-left:20%;
+      margin-top:0%;
+      margin-left:10%;
 
     }
 
     .right{
-      margin-top: -30%;
+      margin-top: 0%;
       margin-right:-20%;
       text-align: center;
     }
+
+    #fileimg{
+      font-size: 0px;
+      height: 70px;
+      width: 220px;
+      background:rgba(255,255,255,0);
+      border-radius: 35px;
+      border: 1px solid black;
+      z-index: 12333333;
+      background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545854399678&di=8ba061b9962a9da6bf94c5ab8d582ef1&imgtype=0&src=http%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX%2F228377817%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX.jpg");
+      background-size: 220px 70px;
+    }
   </style>
 </head>
-<body>
+<body style="background: black">
 
 <nav class="menu-activea">
   <h1>Menu</h1>
@@ -59,25 +76,88 @@
     <li>Lisa</li>
   </ul>
 </nav>
-<div class="x12 headv">
-  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model1" >Module Head</a></div>
-  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model2"  >Module Line</a></div>
-  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model3"  >Module Main Body</a></div>
-  <div><a href="#" style="color:#4e4e4e;text-decoration:none;" id="model4"  >Module Retreat</a></div>
-</div>
 <main>
+  <div>
+    <ul id="myTab" class="nav nav-tabs" style="padding-left: 10%;">
+      <li class="dropdown active">
+        <a href="#" id="myTabDrop1" class="dropdown-toggle"
+           data-toggle="dropdown">模块一
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <li><a href="#home" tabindex="-1" data-toggle="tab">修改图片</a></li>
+          <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
+          <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" id="myTabDrop2" class="dropdown-toggle"
+           data-toggle="dropdown">模块二
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <li><a href="#home" tabindex="-1" data-toggle="tab">修改图片</a></li>
+          <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
+          <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" id="myTabDrop3" class="dropdown-toggle"
+           data-toggle="dropdown">模块三
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <li><a href="#test" tabindex="-1" data-toggle="tab">修改图片</a></li>
+          <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
+          <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
+        </ul>
+      </li>
+
+    </ul>
 
 
 
-  <div  id="moduleHead"  class="moduleHead">
 
-      <div id="moduleHeadLeft"  style="display:inline-block;background:#f00;">1234</div>
 
-      <div id="moduleHeadRight" style="display:inline-block;background:#0f0;margin-left:900%;" >5678</div>
+
+
+
+
+
+
+
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="home">
+        <div  id="moduleHead"  class="moduleHead" style="width: 100%!important;">
+          <form action="/backgroundHome/query"   method="post" enctype="multipart/form-data">
+            <div class="row" id="moduleHeadLeft"  style="width: 100%!important;">
+              <div class="col-md-8 column right"><img  height="200px" width="300px" id="moduleHeadLeftImag"   /></div>
+              <div class="col-md-4 column"><div style="height: 50px;width: 100%"></div> <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;" >please choose Alternate picture:  </span> <input  id="fileimg" type="file"   name="file"  placeholder="please choose The picture to be replaced" title="please choose The picture to be replaced"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="onetitle">
+        <h1 style="text-align: center">修改标题</h1>
+        <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test1">test</textarea>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="onttext">
+      <h1 style="text-align: center">修改文本</h1>
+          <div style="padding-left: 26%;">
+            <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test1">test</textarea>
+          </div>
+      </div>
+
+      <div class="tab-pane fade" id="test">
+
+      </div>
+    </div>
   </div>
-  <div  id="moduleLine"  class="moduleHead" hidden="hidden" >2</div>
-  <div  id="moduleMainBody"  class="moduleHead" hidden="hidden" >3</div>
-  <div  id="moduleRetreat"  class="moduleHead" hidden="hidden"  >4</div>
+
+
+
 </main>
 
 
@@ -85,8 +165,36 @@
 <script src="../static/menu/manu.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
-      $("#model1").click(function () {
 
+      $.ajax({
+          type: "POST",
+          url: '/backgroundHome/query',
+          dataType: 'json',
+          cache: false,
+          success: function (date) {
+              if(date.success==true){
+                  var homeModel1 = date.data.homeModel1;
+                  $("#moduleHeadLeftImag").attr("src","../"+homeModel1.image);
+
+              }else if(date.success==false){
+                  var err=date.errCode;
+                  if(err==0000001) {
+                    alert("Please login first");
+                  }
+              }
+
+          },
+          error:function () {
+             alert("network anomaly");
+          }
+      });
+
+
+
+
+      $("#model1").click(function () {
+          var val = $("#test1").val();
+          alert(val);
           $("#moduleHead").show();
           $("#moduleLine").hide();
           $("#moduleMainBody").hide();
@@ -119,6 +227,37 @@
           $("#moduleMainBody").hide();
       });
   });
+
+
+  //简单模式初始化
+  var editor;
+  KindEditor.ready(function(K) {
+      editor = K.create('textarea[name="messageContent"]', {
+//            resizeType : 1,
+//            allowPreviewEmoticons : false,
+          allowFileManager : true,
+          items : [
+              'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+              'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+              'insertunorderedlist', '|','lineheight', 'emoticons',  'media', 'link','code','source',
+              'fullscreen'],
+          uploadJson : '/static/js/kindeditor/kd_upload_image.jsp',
+//      allowFileManager : true,
+//      fileManagerJson : '/static/js/kindeditor/kd_upload_file.jsp'
+          afterCreate : function() {
+              this.sync();
+          },
+          afterBlur:function(){
+              this.sync();
+          }
+
+      });
+
+
+  });
+
+
+
 
 </script>
 </body>
