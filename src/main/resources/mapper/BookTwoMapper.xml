@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 查询所有信息 -->
+<mapper namespace="com.gl.website.dao.BookTwoDAO">
+
+    <select id="getAllBookTwoMesg" resultType="com.gl.website.entity.bo.BookTwoBO">
+        select *  from gl_book_two
+    </select>
+    <!--修改信息-->
+    <update id="updateBookTwo" parameterType="com.gl.website.entity.bo.BookTwoBO">
+        UPDATE gl_book_two
+        <set>
+            <if test="createTime!=null and createTime!=''">
+                `create_time`=#{createTime} ,
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                update_time=#{updateTime},
+            </if>
+            <if test="image!=null">
+                image=#{image},
+            </if>
+            <if test="url!=null">
+                `url`=#{url} ,
+            </if>
+            <if test="createUser!=null">
+                `create_user`=#{createUser},
+            </if>
+            <if test="updateUser!=null">
+                `update_user`=#{updateUser},
+            </if>
+            <if test="title!=null">
+                `title`=#{title},
+            </if>
+            <if test="content!=null">
+                `content`=#{content} ,
+            </if>
+            <if test="subtitle!=null">
+                `subtitle`=#{subtitle} ,
+            </if>
+            <if test="pictureSort!=null">
+                `picture_sort`=#{pictureSort} ,
+            </if>
+            <if test="introduce!=null">
+                `introduce`=#{introduce} ,
+            </if>
+            <if test="source!=null">
+                 `source`=#{source}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <!--删除信息-->
+    <delete id="deleteBookTwo" parameterType="com.gl.website.entity.bo.BookTwoBO" >
+        DELETE FROM gl_book_two WHERE id=#{id}
+    </delete>
+    <!--增加信息-->
+    <insert id="addBookTwo" parameterType="com.gl.website.entity.bo.BookTwoBO">
+        INSERT INTO gl_book_two(
+        image,url,create_time,create_user,update_time,update_user,title,content,subtitle,picture_sort,introduce,source
+        )
+        VALUES(
+        #{image},#{url},#{createTime},#{createUser},#{updateTime},#{updateUser},#{title},
+        #{content},#{subtitle},#{pictureSort},#{introduce},#{source}
+        )
+    </insert>
+</mapper>
