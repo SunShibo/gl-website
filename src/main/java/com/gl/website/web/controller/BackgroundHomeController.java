@@ -106,6 +106,7 @@ public class BackgroundHomeController   extends BaseCotroller {
             firstBO.setSubtitle(msg);
         if(falg==3)
             firstBO.setIntroduce(msg);
+
         homepageService.updateHomepageFirst(firstBO);
 
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
@@ -114,5 +115,35 @@ public class BackgroundHomeController   extends BaseCotroller {
     }
 
 
+    //首页模块2内容修改
+    @RequestMapping("/model2Update")
+    public void model2Update(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg) {
+
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
+        boolean verification = ParamVerifyUtil.verification(msg,falg);
+        if(!verification){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        HomepageTwoBO  firstBO=new HomepageTwoBO();
+        firstBO.setId(1);
+        if(falg==1)
+            firstBO.setTitle(msg);
+        if(falg==2)
+            firstBO.setIntroduce(msg);
+
+        homepageService.updateHomepageTwo(firstBO);
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
 
 }
