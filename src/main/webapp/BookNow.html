@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>BookNow</title>
 
     <!-- <script src="static/menu/jquery.min.js"></script>-->
     <link rel="stylesheet" href="static/menu/menu.css" type="text/css"/>
@@ -86,10 +86,8 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#home" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#onehome" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
                     <li><a href="#onetitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
-                    <li><a href="#onesubtitle" tabindex="-1" data-toggle="tab">Modify Subtitle</a></li>
-                    <li><a href="#onttext" tabindex="-1" data-toggle="tab">Modify Content</a></li>
                 </ul>
             </li>
 
@@ -99,154 +97,113 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#Mode2Title" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
-                    <li><a href="#Mode2Content" tabindex="-1" data-toggle="tab">Modify Content</a></li>
+                    <li><a href="#twotitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                    <li><a href="#twointroduce" tabindex="-1" data-toggle="tab">Modify Content</a></li>
+                    <li><a href="#twopicture" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
                 </ul>
             </li>
 
 
-            <li class="dropdown">
-                <a href="#" id="myTabDrop3" class="dropdown-toggle"
-                   data-toggle="dropdown">Model Three
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#model3Image" tabindex="-1" data-toggle="tab">Modify multiple images</a></li>
-                    <li><a href="#model3Title" tabindex="-1" data-toggle="tab">Modify Multiple Titles</a></li>
-                    <li><a href="#model3Text" tabindex="-1" data-toggle="tab">Modify Multiple Text</a></li>
-                </ul>
-            </li>
+
 
         </ul>
 
 
         <div id="myTabContent" class="tab-content">
 
-            <div class="tab-pane fade in active" id="home">
+            <div class="tab-pane fade in active" id="onehome">
                 <div id="moduleHead" class="moduleHead" style="width: 100%!important;">
-                    <form action="/backgroundHome/query" method="post" enctype="multipart/form-data">
+                    <form action="/backbook/query" method="post" enctype="multipart/form-data">
                         <!--TODO  模块一图片上传 -->
                         <div class="row" id="moduleHeadLeft" style="width: 100%!important;">
                             <div class="col-md-8 column right" style="margin-top: 30px">
-                                <img height="200px"  width="300px"   id="moduleHeadLeftImag"/>
+                                <img height="200px"  width="300px"   id="oneshuchupicture"/>
                             </div>
                             <div class="col-md-4 column">
                                 <div style="height: 50px;width: 100%"></div>
                                 <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
-                                <input id="fileimg" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
+                                <input id="getpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
                             </div>
                         </div>
                         <br/><br/><br/><br/>
                         <div style="height: 40px ;width: 500px;margin: 0 30%;">
-                            <a href="javascript:void(0)" id="model1updateImage">Modification</a>
+                            <a href="javascript:void(0)" id="onepictureup">Modification</a>
                         </div>
                     </form>
                 </div>
             </div>
             <!--  模块一 代码显示-->
             <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
-                <h1 style="text-align: center;text-decoration:none;" id="model1titleone">Modification Main Title</h1>
+                <h1 style="text-align: center;text-decoration:none;" id="oneshuchutitle">Modification Main Title</h1>
                 <br/><br/><br/><br/>
                 <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
-                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;" id="model1tit1"
+                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;" id="gettitle"
                               placeholder="Please enter the content"></textarea>
-                    <a href="javascript:void(0)" id="model1tit1update">Modification</a>
-                </div>
-
-            </div>
-
-
-            <div class="tab-pane fade" id="onesubtitle"><!--TODO  模块一副标题 -->
-                <h1 style="text-align: center" id="model1showSubtitle">Modify Subtitle</h1>
-                <br/><br/><br/><br/>
-                <div id="moduleHeadRightone" style="z-index: 25252525;padding-left: 26%;">
-                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
-                              id="getSubtitle"></textarea>
-                    <a href="javascript:void(0)" id="updateSubtitle">Modification</a>
+                    <a href="javascript:void(0)" id="onetitleup">Modification</a>
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="onttext">  <!--TODO 模块一 正文-->
-                <div style="height: 55px ;width: 590px;margin: 0 28%;">
-                    <h3 style="text-align: center" id="model1ShowMainBody">Modify Main Body </h3>
-                </div>
-                <div style="padding-left: 26%;">
-                    <br/><br/><br/><br/>
-                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
-                              id="getModel1MainBody"></textarea>
-                    <a href="javascript:void(0)" id="updateModel1MainBody">Modification</a>
-                </div>
 
-            </div>
+
+
+
 
 
             <!--  模块二代码显示-->  <!--TODO 模块二 正文-->
-            <div class="tab-pane fade" id="Mode2Title"></a>
+            <div class="tab-pane fade" id="twotitle"></a>
                 <div style="height: 150px ;width: 590px;margin: 0 28%;">
-                    <h4 style="text-align: center" id="showModel2Title">Modify The Title</h4>
+                    <h4 style="text-align: center" id="twoshuchutitle">李泽新</h4>
                 </div>
                 <div style="padding-left: 26%;">
                     <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
-                              id="getModel2Titletest"></textarea>
-                    <a href="javascript:void(0)" id="updateModel2Title">Modification</a>
+                              id="twomodelgettitle"></textarea>
+                    <a href="javascript:void(0)" id="twotitleup">Modification</a>
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="Mode2Content">
-                <div style="height: 140px ;width: 590px;margin: 0 28%;">
-                    <h4 style="text-align: center" id="showModel2Content">Modify Content</h4>
-                </div>
-                <div style="padding-left: 26%;">
-                    <br/><br/><br/><br/>
+            <div class="tab-pane fade" id="twointroduce">  <!--TODO  模块二内容 -->
+                <h4 style="text-align: center;text-decoration:none;" id="twoshuchuintroduce">Modification Main Title</h4>
+                <br/><br/><br/><br/>
+                <div  style="z-index: 25252525;padding-left: 26%;">
                     <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
-                              id="getModel2Content"></textarea>
-                    <a href="javascript:void(0)" id="updateModel2Content">Modification</a>
+                              id="twomodelgetintroduce"></textarea>
+                    <a href="javascript:void(0)" id="twointroduceup">Modification</a>
                 </div>
             </div>
 
 
-            <!--TODO 模块三图片-->
-            <!--  模块三代码显示-->
-            <div class="tab-pane fade" id="model3Image">
-                <form action="/backgroundHome/query" method="post" enctype="multipart/form-data"
-                      style="display: flex; justify-content: space-around; align-content: center"> <!--TODO  模块三图片修改 -->
+            <!--模块二图片  -->
+            <div class="tab-pane fade" id="twopicture">
 
-                    <div style="margin: 25px 0;">
-                        <img height="180px" width="200px" id="model3Image1" src="/image/homeeight.png"/>
-                        <div style="text-align: center">
-                            <input type="file" class="fileimg" name="file"
-                                   placeholder="please choose The picture to be replaced"
-                                   title="please choose The picture to be replaced">
-                            <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+
+
+                        <div class="row" id="" style="width: 100%!important;">
+                            <div class="col-md-8 column right" style="margin-top: 30px">
+                                <img height="200px"  width="300px"   id="twoshuchupicture"/>
+                            </div>
+                            <div class="col-md-4 column">
+                                <div style="height: 50px;width: 100%"></div>
+                                <span id="" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
+                                <input id="twomodelgetpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
+                            </div>
                         </div>
-                    </div>
-
-
-                    <div style="margin: 25px 0;">
-                        <img height="180px" width="200px" id="model3Image2" src="/image/homeeight.png"/>
-                        <div style="text-align: center">
-                            <input type="file" class="fileimg" name="file"
-                                   placeholder="please choose The picture to be replaced"
-                                   title="please choose The picture to be replaced">
-                            <a href="javascript:void(0)">&nbsp;Modification</a>
+                        <br/><br/><br/><br/>
+                        <div style="height: 40px ;width: 500px;margin: 0 30%;">
+                            <a href="javascript:void(0)" id="twopictureup">Modification</a>
                         </div>
-                    </div>
 
 
-                    <div style="margin: 25px 0;">
-                        <img height="180px" width="200px" id="model3Image3" src="/image/homeeight.png"/>
-                        <div style="text-align: center">
-                            <input type="file" class="fileimg" name="file"
-                                   placeholder="please choose The picture to be replaced"
-                                   title="please choose The picture to be replaced">
-                            <a href="javascript:void(0)">&nbsp;Modification</a>
-                        </div>
-                    </div>
-                </form>
             </div>
 
 
-            <div class="tab-pane fade" id="model3Title">
+
+
+
+
+            </div>
+
+
+          <!--  <div class="tab-pane fade" id="model3Title">
                 <div style="height: 140px ;width: 590px;margin: 0 28%;">
                     <h4 style="text-align: center" id="showModel3Title1">Modify Content</h4>
                 </div>
@@ -259,7 +216,7 @@
                         </tr>
                     </table>
 
-                    <!--<div style="text-align: center">
+                    &lt;!&ndash;<div style="text-align: center">
                         <div style="height: 140px ;width: 590px;margin: 0 28%;">
                             <h4 style="text-align: center" id="showModel3Title1">Modify Content</h4>
                         </div>
@@ -280,11 +237,11 @@
                         <textarea name="messageContent" style="width: 80%;" id="c"></textarea>
                         <a href="javascript:void(0)" id="e">Modification</a>
                     </div>
-                </div>-->
+                </div>&ndash;&gt;
             </div>
 
 
-        </div>
+        </div>-->
     </div>
 </main>
 
@@ -295,23 +252,18 @@
 
         $.ajax({
             type: "POST",
-            url: '/backgroundHome/query',
+            url: '/backbook/query',
             dataType: 'json',
             cache: false,
             success: function (date) {
                 if (date.success == true) {
-                    var homeModel1 = date.data.homeModel1;
-                    $("#moduleHeadLeftImag").attr("src", homeModel1.image);
-                    $("#model1titleone").html(homeModel1.title);
-                    $("#model1showSubtitle").html(homeModel1.subtitle);
-                    $("#model1ShowMainBody").html(homeModel1.introduce);
-                    var Model2 = date.data.homeModel2;
-                    $("#showModel2Title").html(Model2.introduce);
-                    $("#showModel2Content").html(Model2.title);
-                    var Model3 = date.data.homeModel3;
-                    $("#model3Image1").attr("src", Model3[0].image);
-                    $("#model3Image2").attr("src", Model3[1].image);
-                    $("#model3Image3").attr("src", Model3[2].image);
+                    var one = date.data.one;
+                    $("#oneshuchupicture").attr("src", one.image);
+                    $("#oneshuchutitle").html(one.title);
+                    var two = date.data.two;
+                    $("#twoshuchutitle").html(two[0].title);
+                    $("#twoshuchuintroduce").html(two[0].introduce);
+                    $("#twoshuchupicture").attr("src", two[0].image);
 
 
                     /*
@@ -378,72 +330,49 @@
 
     $(document).ready(function () {
         //模块一图片修改
-        $("#model1updateImage").click(function () {
-            var img = $("#fileimg").val();
+        $("#onepictureup").click(function () {
+            var img = $("#getpicturename").val();
             if (img == '' || img == null) {
                 alert("Please select file");
             }
-            $("#model1updateImage").submit();
+            $("#onepictureup").submit();
         });
 
 
         //模块一主标题修改
-        $("#model1tit1update").click(function () {
+        $("#onetitleup").click(function () {
 
-            var msg = $("#model1tit1").val();
+            var msg = $("#gettitle").val();
             if (msg == '' || msg == null) {
                 alert("Please enter the content");
                 return;
             }
-            update("/backgroundHome/mode1Update", msg, 1);
+            update("/backbook/updateonemodelandsoon", msg, 1);
             return;
         });
 
-        //模块一副题修改
-        $("#updateSubtitle").click(function () {
-
-            var msg = $("#getSubtitle").val();
-            if (msg == '' || msg == null) {
-                alert("Please enter the content");
-                return;
-            }
-            update("/backgroundHome/mode1Update", msg, 2);
-            return;
-        });
-
-        //模块一内容
-        $("#updateModel1MainBody").click(function () {
-
-            var msg = $("#getModel1MainBody").val();
-            if (msg == '' || msg == null) {
-                alert("Please enter the content");
-                return;
-            }
-            update("/backgroundHome/mode1Update", msg, 3);
-            return;
-        });
 
 
         //模块二标题
-        $("#updateModel2Title").click(function () {
-            var msg = $("#getModel2Titletest").val();
+        $("#twotitleup").click(function () {
+            var msg = $("#twomodelgettitle").val();
             if (msg == '' || msg == null) {
                 alert("Please enter the content");
                 return;
             }
-            update("/backgroundHome/model2Update", msg, 1);
+            update("/backbook/updatetwomodelandsoon", msg, 1);
             return;
         });
 
         //模块二内容
-        $("#updateModel2Content").click(function () {
-            var msg = $("#getModel2Content").val();
+        $("#twointroduceup").click(function () {
+            var msg = $("#twomodelgetintroduce").val();
             alert(msg);
             if (msg == '' || msg == null) {
                 alert("Please enter the content");
                 return;
             }
-            update("/backgroundHome/model2Update", msg, 2);
+            update("/backbook/updatetwomodelandsoon", msg, 2);
             return;
         });
 
