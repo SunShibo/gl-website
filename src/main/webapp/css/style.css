@@ -154,7 +154,7 @@ html, body {
     font-size: 20px;
 }
 
-#introduce .font-DroidSerif-Italic span {
+#introduce #introduceText {
     color: #7B7B7B;
     display: inline-block;
     padding: 5px 0;
@@ -168,7 +168,6 @@ html, body {
 }
 
 #main #publicity {
-    background: url("../image/Banner9.png");
     padding: 60px 0 30px;
 }
 
@@ -205,10 +204,6 @@ html, body {
     text-align: center;
     line-height: 35px;
     text-overflow: ellipsis;
-}
-
-#details {
-
 }
 
 #details .d-title {
@@ -316,6 +311,52 @@ html, body {
     height: 400px;
 }
 
-#main .s-center{
+#main #ce-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
+#main #ce-body .ce-center {
+    width: 50%;
+}
+
+.ce-center {
+    padding: 50px 0;
+}
+
+.ce-center .img-item {
+    top: 0;
+}
+
+.ce-center .img-item:nth-child(1) {
+    left: 0;
+    float: left;
+    width: 45%;
+}
+
+.ce-center .img-item:nth-child(2) {
+    right: 0;
+    float: right;
+    width: 45%;
+}
+
+.ce-center .ce-content .line{
+    width: 50%;
+    height: 6px;
+    background: #FFA53A;
+    margin: 10px 0;
+}
+
+.ce-center .ce-content .title{
+    font-size: 30px;
+    color: #303030;
+}
+
+.ce-center .ce-content .content{
+    font-size: 22px;
+    color: #7B7B7B;
+    letter-spacing: 0.61px;
+    line-height: 36px;
 }

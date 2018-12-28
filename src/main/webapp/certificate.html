@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CERTIFICATE</title>
+    <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="main">
+    <div id="banner">
+        <div id="head">
+            <div class="b-logo">
+                <img id="logo" src="image/logo-dark.png" alt="">
+            </div>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LTINERAR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">BOOK NOW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACT US</a>
+                </li>
+            </ul>
+        </div>
+        <img src="image/newb66.png" alt="" width="100%" height="100%">
+        <div class="banner-title">
+            <div><h2>Community Service
+                Certificate</h2></div>
+        </div>
+    </div>
+    <div id="ce-body">
+        <div class="ce-center">
+            <div class="img-item">
+                <img src="image/2.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="img-item">
+                <img src="image/oo.png" alt="" width="100%" height="100%">
+            </div>
+            <div style="clear: both"></div>
+            <div class="ce-content">
+                <div class="title font-Poppins-Bold">1111</div>
+                <div class="line"></div>
+                <div class="content font-DroidSerif-Italic">2222</div>
+            </div>
+        </div>
+    </div>
+    <div id="foot">
+        <div class="f-center">
+            <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
+            <div class="f-content">© 2018 Rediscover Culture</div>
+        </div>
+    </div>
+</div>
+<script src="js/loadjs.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(function () {
+        getResult();
+    })
+
+    function getResult() {
+        $.ajax({
+            url: '/community/query',
+            type: 'POST',
+            dataType: 'json',
+            success: function (rs) {
+                console.log(rs);
+                setDom(rs.data);
+            }
+        })
+    }
+
+    function setDom(data){
+
+    }
+</script>
+</body>
+</html>

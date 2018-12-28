@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>INTERNATIONAL</title>
+    <title>SILKROAD</title>
     <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
@@ -30,13 +30,24 @@
                 </li>
             </ul>
         </div>
-        <img id="bannerImg" alt="" width="100%" height="100%">
+        <img src="image/chinaPictures/Banner8.png" alt="" width="100%" height="100%">
         <div class="banner-title">
-            <div><h2 id="title"></h2></div>
+            <div><h2>Engage with culture through the famous silk road</h2></div>
         </div>
     </div>
     <div class="grid" id="grid">
-
+        <img src="image/chinaPictures/p4.png">
+        <img src="image/chinaPictures/p3.png">
+        <img src="image/chinaPictures/p2.png">
+        <img src="image/chinaPictures/p1.png">
+        <img src="image/chinaPictures/p5.png">
+        <img src="image/chinaPictures/p6.png">
+        <img src="image/chinaPictures/p7.png">
+        <img src="image/chinaPictures/p8.png">
+        <img src="image/chinaPictures/p11.png">
+        <img src="image/chinaPictures/p10.png">
+        <img src="image/chinaPictures/p9.png">
+        <img src="image/chinaPictures/p1.png">
     </div>
     <div id="foot">
         <div class="f-center">
@@ -49,25 +60,6 @@
 <script src="js/gridify-min.js" type="text/javascript" charset="utf-8"></script>
 <script>
     $(function () {
-
-        $.ajax({
-            url: '/internation/query',
-            type: 'POST',
-            dataType: 'json',
-            success: function (rs) {
-                setDom(rs.data);
-            }
-        })
-    })
-
-    function setDom(data) {
-        console.log(data);
-        $('#title').text(data.one.title);
-        $('#bannerImg').attr('src', data.one.image);
-        for (var i = 0, len = data.two.length; i < len; i++) {
-            var img = '<img src="' + data.two[i].image + '">'
-            $('#grid').append(img);
-        }
         var options = {
             srcNode: 'img',             // grid items (class, node)
             margin: '0px',             // margin in pixel, default: 0px
@@ -81,8 +73,7 @@
         var l1 = 0, l2 = 0, l3 = 0, l4 = 0;
         var item = $('#grid img');
         setTimeout(function () {
-            var length = 0, length1 = $(item[0]).data('left'), length2 = $(item[1]).data('left'),
-                length3 = $(item[2]).data('left'), length4 = $(item[3]).data('left');
+            var length = 0, length1 = $(item[0]).data('left'), length2 = $(item[1]).data('left'), length3 = $(item[2]).data('left'), length4 = $(item[3]).data('left');
             for (var i = 0, len = item.length; i < len; i++) {
                 if ($(item[i]).data('left') == length1) {
                     l1 += $(item[i]).height();
@@ -99,7 +90,7 @@
             length = length > l4 ? length : l4;
             $('#foot').css('marginTop', (length) + "px")
         }, 200);
-    }
+    })
 </script>
 </body>
 </html>
