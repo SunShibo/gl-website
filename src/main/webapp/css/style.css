@@ -66,13 +66,9 @@ html, body {
 }
 
 #banner {
-    height: 768px;
     position: relative;
-}
-
-#banner img {
-    position: absolute;
-    top: 0;
+    height: 768px;
+    background-size: auto 768px;
 }
 
 #banner .banner-title {
@@ -86,7 +82,7 @@ html, body {
 #banner .banner-title h1 {
     font-family: Poppins-Bold;
     color: #ffffff;
-    font-size: 90px;
+    font-size: 70px;
     user-select: none;
 }
 
@@ -306,11 +302,6 @@ html, body {
     text-align: center;
 }
 
-#main .page-s {
-    position: relative;
-    height: 400px;
-}
-
 #main #ce-body {
     width: 100%;
     display: flex;
@@ -358,5 +349,47 @@ html, body {
     font-size: 22px;
     color: #7B7B7B;
     letter-spacing: 0.61px;
+    line-height: 36px;
+}
+
+#main .page-s{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.page-s .s-center{
+    background: url("/image/0002.png");
+    width: 65%;
+    height: 250px;
+    line-height: 250px;
+    text-align: center;
+}
+
+.page-s .s-center img{
+    width: 50%;
+    height: 50%;
+}
+
+.cu-content{
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.cu-content .cu-info{
+
+}
+
+.cu-content .cu-info .cu-item{
+    margin: 20px 0;
+}
+
+.cu-content .cu-info .cu-item .cu-rows{
+    font-size: 24px;
+    color: #7B7B7B;
+    letter-spacing: 0.5px;
+    text-align: left;
     line-height: 36px;
 }

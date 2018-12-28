@@ -30,25 +30,24 @@
                 </li>
             </ul>
         </div>
-        <img src="image/newb66.png" alt="" width="100%" height="100%">
+        <img id="bannerImage" alt="" width="100%" height="100%">
         <div class="banner-title">
-            <div><h2>Community Service
-                Certificate</h2></div>
+            <div><h2 id="bannerTitle"></h2></div>
         </div>
     </div>
     <div id="ce-body">
         <div class="ce-center">
             <div class="img-item">
-                <img src="image/2.png" alt="" width="100%" height="100%">
+                <img id="ceImage1" alt="" width="100%" height="100%">
             </div>
             <div class="img-item">
-                <img src="image/oo.png" alt="" width="100%" height="100%">
+                <img id="ceImage2" alt="" width="100%" height="100%">
             </div>
             <div style="clear: both"></div>
             <div class="ce-content">
-                <div class="title font-Poppins-Bold">1111</div>
+                <div class="title font-Poppins-Bold" id="ceTitle"></div>
                 <div class="line"></div>
-                <div class="content font-DroidSerif-Italic">2222</div>
+                <div class="content font-DroidSerif-Italic" id="ceContent"></div>
             </div>
         </div>
     </div>
@@ -78,7 +77,12 @@
     }
 
     function setDom(data){
-
+        $('#bannerImage').prop('src', data.one.image);
+        $('#bannerTitle').text(data.one.title);
+        $('#ceImage1').prop('src', data.two[0].image);
+        $('#ceImage2').prop('src', data.two[1].image);
+        $('#ceTitle').text(data.two[0].title);
+        $('#ceContent').text(data.two[0].introduce);
     }
 </script>
 </body>

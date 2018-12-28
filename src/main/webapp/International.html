@@ -63,7 +63,7 @@
     function setDom(data) {
         console.log(data);
         $('#title').text(data.one.title);
-        $('#bannerImg').attr('src', data.one.image);
+        $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat center center");
         for (var i = 0, len = data.two.length; i < len; i++) {
             var img = '<img src="' + data.two[i].image + '">'
             $('#grid').append(img);

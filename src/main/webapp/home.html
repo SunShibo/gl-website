@@ -30,7 +30,6 @@
                 </li>
             </ul>
         </div>
-        <img id="bannerImg" alt="" width="100%" height="100%">
         <div class="banner-title" style="display: none">
             <div><h1 id="title"></h1></div>
             <div class="title"><h1 id="subtitle"></h1></div>
@@ -83,32 +82,32 @@
     });
 
     function setDom(data) {
-        $('#bannerImg').prop('src', data.homeModel1.image);
+        $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat center center");
         $('#title').text(data.homeModel1.title);
         $('#subtitle').text(data.homeModel1.subtitle);
         $('#introduceContent').text(data.homeModel1.introduce);
         $('#introduceTitle').text(data.homeModel2.title);
         $('#introduceText').html(data.homeModel2.introduce);
         for (var i = 0, len = data.homeModel3.length; i < len; i++) {
-            if(i==3){
-                $('#publicity').css("backgroundImage","url("+data.homeModel3[i].image+")");
+            if (i == 3) {
+                $('#publicity').css("backgroundImage", "url(" + data.homeModel3[i].image + ")");
                 continue;
             }
             var arr = [
                 '<div class="info-item">',
-                '<div><img src="'+data.homeModel3[i].image+'" alt="" width="100%" height="100%"></div>',
-                '<div class="font-Poppins-Bold font-info">'+data.homeModel3[i].title+'</div>',
-                '<div class="font-DroidSerif-Regular font-content">'+data.homeModel3[i].introduce+'</div>',
+                '<div><img src="' + data.homeModel3[i].image + '" alt="" width="100%" height="100%"></div>',
+                '<div class="font-Poppins-Bold font-info">' + data.homeModel3[i].title + '</div>',
+                '<div class="font-DroidSerif-Regular font-content">' + data.homeModel3[i].introduce + '</div>',
                 '</div>'
             ].join(' ');
             $('#pubInfo').append(arr);
         }
         $('#detailsTitle').text(data.homeModel4.title);
         $('#detailsContent').text(data.homeModel4.introduce);
-        for(var i = 0,len = data.homeModel5.length; i< len; i++){
+        for (var i = 0, len = data.homeModel5.length; i < len; i++) {
             var arr = [
                 '<div class="swiper-slide">',
-                '<a href="javascript:;"><img src="'+data.homeModel5[i].image+'" alt="" width="100%"height="100%"></a>',
+                '<a href="javascript:;"><img src="' + data.homeModel5[i].image + '" alt="" width="100%"height="100%"></a>',
                 '</div>'
             ].join(' ')
             $('#swiper').append(arr);
