@@ -83,10 +83,10 @@
 
     function setDom(data) {
         $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat center center");
-        $('#title').text(data.homeModel1.title);
-        $('#subtitle').text(data.homeModel1.subtitle);
-        $('#introduceContent').text(data.homeModel1.introduce);
-        $('#introduceTitle').text(data.homeModel2.title);
+        $('#title').html(data.homeModel1.title);
+        $('#subtitle').html(data.homeModel1.subtitle);
+        $('#introduceContent').html(data.homeModel1.introduce);
+        $('#introduceTitle').html(data.homeModel2.title);
         $('#introduceText').html(data.homeModel2.introduce);
         for (var i = 0, len = data.homeModel3.length; i < len; i++) {
             if (i == 3) {
@@ -102,8 +102,8 @@
             ].join(' ');
             $('#pubInfo').append(arr);
         }
-        $('#detailsTitle').text(data.homeModel4.title);
-        $('#detailsContent').text(data.homeModel4.introduce);
+        $('#detailsTitle').html(data.homeModel4.title);
+        $('#detailsContent').html(data.homeModel4.introduce);
         for (var i = 0, len = data.homeModel5.length; i < len; i++) {
             var arr = [
                 '<div class="swiper-slide">',

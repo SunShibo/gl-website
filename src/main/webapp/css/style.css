@@ -156,7 +156,7 @@ html, body {
     padding: 5px 0;
 }
 
-#introduce .center-t .line {
+#introduce .center-t .line, .cu-title .line {
     background-color: #EE4035;
     width: 50%;
     height: 6px;
@@ -373,13 +373,29 @@ html, body {
 }
 
 .cu-content{
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     padding: 10px 0;
+    position: relative;
 }
 
-.cu-content .cu-info{
+.cu-content .cu-title{
+    width: 25%;
+    position: absolute;
+    right: 10%;
+    top: 0;
+}
 
+.cu-content .cu-title .title{
+    font-size: 60px;
+    color: #303030;
+    letter-spacing: 4.22px;
+    line-height: 100px;
+}
+
+.cu-center .cu-img{
+    width: 80%;
+    margin: 0 auto;
 }
 
 .cu-content .cu-info .cu-item{
@@ -392,4 +408,12 @@ html, body {
     letter-spacing: 0.5px;
     text-align: left;
     line-height: 36px;
+}
+
+#main .success{
+    background: url("/image/banner33354.png") no-repeat center center;
+}
+
+#main .contact{
+    background: url("/image/banner323.png") no-repeat center center;
 }

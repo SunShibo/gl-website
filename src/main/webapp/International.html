@@ -30,7 +30,6 @@
                 </li>
             </ul>
         </div>
-        <img id="bannerImg" alt="" width="100%" height="100%">
         <div class="banner-title">
             <div><h2 id="title"></h2></div>
         </div>
@@ -63,7 +62,7 @@
     function setDom(data) {
         console.log(data);
         $('#title').text(data.one.title);
-        $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat center center");
+        $('#banner').css('background', "url(" + data.one.image + ") no-repeat center center");
         for (var i = 0, len = data.two.length; i < len; i++) {
             var img = '<img src="' + data.two[i].image + '">'
             $('#grid').append(img);
