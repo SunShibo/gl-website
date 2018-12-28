@@ -51,28 +51,17 @@ public class HomepageController extends BaseCotroller {
 
     @RequestMapping("/updateone")//修改one
     public void updateone(HttpServletResponse response,HomepageFirstBO hfbo) {
-
-        Integer count=homepageService.updateHomepageFirst(hfbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (hfbo==null||hfbo.getId() == null || hfbo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
-    }
-    @RequestMapping("/deleteone")//删除one
-    public void deleteone(HttpServletResponse response,HomepageFirstBO hfbo) {
-        if (hfbo.getId() == null || hfbo.getId() == 0 ) {
-            return;
-        }
-        HomepageFirstBO hfbow=homepageService.getAllHomepageFirstMesg();
-        if (hfbow == null){
-            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000004"));
+        if( hfbo.getContent()==null && hfbo.getCreateTime()==null && hfbo.getCreateUser()==null && hfbo.getImage()==null &&
+                hfbo.getIntroduce()==null &&hfbo.getPictureSort()==null &&hfbo.getSource()==null &&hfbo.getSubtitle()==null &&
+                hfbo.getTitle()==null &&hfbo.getUpdateTime()==null &&hfbo.getUpdateUser()==null &&hfbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
             safeTextPrint(response, json);
             return;
         }else {
-            Integer count = homepageService.deleteHomepageFirst(hfbo);
+            Integer count = homepageService.updateHomepageFirst(hfbo);
             if (count == 0) {
                 String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 safeTextPrint(response, json);
@@ -81,6 +70,21 @@ public class HomepageController extends BaseCotroller {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
             safeTextPrint(response, json);
         }
+    }
+    @RequestMapping("/deleteone")//删除one
+    public void deleteone(HttpServletResponse response,HomepageFirstBO hfbo) {
+        if (hfbo==null||hfbo.getId() == null || hfbo.getId() == 0 ) {
+            return;
+        }
+            Integer count = homepageService.deleteHomepageFirst(hfbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+
     }
     @RequestMapping("/addone")//增加one
     public void addone(HttpServletResponse response,HomepageFirstBO hfbo) {
