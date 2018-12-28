@@ -67,13 +67,13 @@
 <nav class="menu-activea">
   <h1>Menu</h1>
   <ul>
-    <li><a href="homeceshi.html" style="color:#9DC6D1;text-decoration:none;" >HomePage</a></li>
-    <li><a href="aboutus.html" style="color:#9DC6D1;text-decoration:none;" >AboutUs</a></li>
-    <li>BookNow</li>
-    <li>18-Day-Itinerary</li>
-    <li>EngageWithCulture</li>
-    <li>Community</li>
-    <li>Establish</li>
+    <li><a href="homePageli.html" style="color:#9DC6D1;text-decoration:none;" >HomePage</a></li>
+    <li>Susy</li>
+    <li>Jack</li>
+    <li>Nancy</li>
+    <li>Kurt</li>
+    <li>Clay</li>
+    <li>Lisa</li>
   </ul>
 </nav>
 <main>
@@ -88,6 +88,7 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
           <li><a href="#home" tabindex="-1" data-toggle="tab">修改图片</a></li>
           <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
+          <li><a href="#onesubtitle" tabindex="-1" data-toggle="tab">修改副标题</a></li>
           <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
         </ul>
       </li>
@@ -97,10 +98,9 @@
            data-toggle="dropdown">模块二
           <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
-          <li><a href="#home2" tabindex="-1" data-toggle="tab">修改图片</a></li>
-          <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
-          <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <li><a href="#twotitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
+          <li><a href="#twotext" tabindex="-1" data-toggle="tab">修改文本</a></li>
         </ul>
       </li>
 
@@ -109,9 +109,9 @@
            data-toggle="dropdown">模块三
           <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop3">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
           <li><a href="#test" tabindex="-1" data-toggle="tab">修改图片</a></li>
-          <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
+          <li><a href="#threetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
           <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
         </ul>
       </li>
@@ -132,45 +132,76 @@
     <div id="myTabContent" class="tab-content">
 
       <div class="tab-pane fade in active" id="home">
-        <h1 style="text-align: center">修改图片</h1>
         <div  id="moduleHead"  class="moduleHead" style="width: 100%!important;">
           <form action="/backgroundHome/query"   method="post" enctype="multipart/form-data">
             <div class="row" id="moduleHeadLeft"  style="width: 100%!important;">
-              <div class="col-md-8 column right"><img  height="200px" width="300px" id="moduleHeadLeftImag123"   /></div>
+              <div class="col-md-8 column right"><img  height="200px" width="300px" id="moduleHeadLeftImag"   /></div>
               <div class="col-md-4 column"><div style="height: 50px;width: 100%"></div> <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;" >please choose Alternate picture:  </span> <input  id="fileimg" type="file"   name="file"  placeholder="please choose The picture to be replaced" title="please choose The picture to be replaced"></div>
             </div>
           </form>
         </div>
       </div>
-
+      <!--  模块一 代码显示-->
       <div class="tab-pane fade" id="onetitle">
         <h1 style="text-align: center">修改标题</h1>
         <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
+              <h1 id="titleone"></h1>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="llll">test</textarea>
+        </div>
+      </div>
+      var one=$("#1111).val();
 
-          <h1 id="homeonemtitle"></h1>
+      <div class="tab-pane fade" id="onesubtitle">
+        <h1 style="text-align: center">修改副标题</h1>
+        <div id="moduleHeadRightone" style="z-index: 25252525;padding-left: 26%;">
+          <h1 id="subtitleone"></h1>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test44">test</textarea>
         </div>
       </div>
 
       <div class="tab-pane fade" id="onttext">
       <h1 style="text-align: center">修改文本</h1>
           <div style="padding-left: 26%;">
+            <h2 id="introduceone"></h2>
             <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test1">test</textarea>
           </div>
       </div>
-
-
-
-
-
-
-
-
-      <div class="tab-pane fade" id="home2">
+      <!--  模块二代码显示-->
+      <div class="tab-pane fade" id="twotitle">
         <h1 style="text-align: center">修改标题</h1>
-        <div id="one" style="z-index: 25252525;padding-left: 26%;">
-          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="你好">你好</textarea>
+           <div style="padding-left: 26%;">
+          <h1 id="titletwo"></h1>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="twotitlegai">test</textarea>
+           </div>
+        </div>
+
+      <div class="tab-pane fade" id="twotext">
+        <h1 style="text-align: center">修改文本</h1>
+        <div style="padding-left: 26%;">
+          <h2 id="introducetwo"></h2>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="twointroducegai">test</textarea>p
         </div>
       </div>
+      <!--  模块三代码显示-->
+      <div class="tab-pane fade" id="threetitle">
+        <h1 style="text-align: center">修改标题</h1>
+        <div style="text-align: center">
+          <h1 id="titlethreeone"> </h1>
+          <h1 id="titlethreetwo"> </h1>
+          <h1 id="titlethreethree"> </h1>
+          <h1 id="titlethreefour"> </h1>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="twotitlegalli" >test</textarea>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+      </div>
+
+
 
 
 
@@ -198,15 +229,23 @@
           dataType: 'json',
           cache: false,
           success: function (date) {
-              alert(date);
-
               if(date.success==true){
-
                   var homeModel1 = date.data.homeModel1;
-                  alert(homeModel1.title);
-                  $("#moduleHeadLeftImag123").attr("src","../"+homeModel1.image);
-                  $("#homeonemtitle").html(homeModel1.title);
-
+                  $("#moduleHeadLeftImag").attr("src","../"+homeModel1.image);
+                  $("#titleone").html(homeModel1.title);
+                  $("#subtitleone").html(homeModel1.subtitle);
+                  $("#introduceone").html(homeModel1.introduce);
+                  var homeModel2 = date.data.homeModel2;
+                  $("#titletwo").html(homeModel2.title);
+                  $("#introducetwo").html(homeModel2.introduce);
+                 var homeModel3 = date.data.homeModel3;
+                  for(var i=0;i<homeModel3.length;i++){
+                    /*  $("#model3Div").html("<h1>"+homeModel3[i].title+"</h1> <br>");*/
+                      $("#titlethreeone").html(homeModel3[0].title);
+                      $("#titlethreetwo").html(homeModel3[1].title);
+                      $("#titlethreethree").html(homeModel3[2].title);
+                      $("#titlethreefour").html(homeModel3[3].title);
+                  }
               }else if(date.success==false){
                   var err=date.errCode;
                   if(err==0000001) {
@@ -223,7 +262,41 @@
 
 
 
+      $("#model1").click(function () {
+          var val = $("#test1").val();
+          alert(val);
+          $("#moduleHead").show();
+          $("#moduleLine").hide();
+          $("#moduleMainBody").hide();
+          $("#moduleRetreat").hide();
+     });
 
+
+      $("#model2").click(function () {
+          $("#moduleLine").show();
+          $("#moduleHead").hide();
+          $("#moduleMainBody").hide();
+          $("#moduleRetreat").hide();
+      });
+
+
+      $("#model3").click(function () {
+
+          $("#moduleMainBody").show();
+          $("#moduleHead").hide();
+          $("#moduleLine").hide();
+          $("#moduleRetreat").hide();
+      });
+
+
+
+      $("#model4").click(function () {
+          $("#moduleRetreat").show();
+          $("#moduleHead").hide();
+          $("#moduleLine").hide();
+          $("#moduleMainBody").hide();
+      });
+  });
 
 
   //简单模式初始化
