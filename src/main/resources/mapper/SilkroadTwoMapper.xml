@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.SilkroadTwoDAO">
     <!-- 查询所有信息 -->
     <select id="getAllSilkroadTwoMesg" resultType="com.gl.website.entity.bo.SilkroadTwoBO">
-        select *  from gl_silkroad_two
+        select *  from gl_silkroad_two ORDER BY id ASC
     </select>
     <!--修改信息-->
     <update id="updateSilkroadTwo" parameterType="com.gl.website.entity.bo.SilkroadFirstBO">

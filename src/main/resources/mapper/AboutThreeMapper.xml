@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.AboutThreeDAO">
 
     <select id="getAllAboutThreeMesg" resultType="com.gl.website.entity.bo.AboutThreeBO">
-        select *  from gl_about_three
+        select *  from gl_about_three ORDER BY id ASC
     </select>
     <!--修改信息-->
     <update id="updateAboutThree" parameterType="com.gl.website.entity.bo.AboutThreeBO">

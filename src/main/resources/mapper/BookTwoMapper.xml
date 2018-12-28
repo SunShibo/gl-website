@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.BookTwoDAO">
 
     <select id="getAllBookTwoMesg" resultType="com.gl.website.entity.bo.BookTwoBO">
-        select *  from gl_book_two
+        select *  from gl_book_two ORDER BY id ASC
     </select>
     <!--修改信息-->
     <update id="updateBookTwo" parameterType="com.gl.website.entity.bo.BookTwoBO">

@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.DayTwoDAO">
 
     <select id="getAllDayTwoMesg" resultType="com.gl.website.entity.bo.DayTwoBO">
-        select *  from gl_day_two WHERE id=1
+        select *  from gl_day_two ORDER BY id ASC
     </select>
     <!--修改信息-->
     <update id="updateDayTwo" parameterType="com.gl.website.entity.bo.DayTwoBO">

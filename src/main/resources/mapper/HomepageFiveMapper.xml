@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.HomepageFiveDAO">
 
     <select id="getAllHomepageFiveMesgfive" resultType="com.gl.website.entity.bo.HomepageFiveBO">
-        select *  from gl_homepage_five
+        select *  from gl_homepage_five ORDER BY id ASC
     </select>
     <!--修改信息-->
     <update id="updateHomepageFive" parameterType="com.gl.website.entity.bo.HomepageFiveBO">

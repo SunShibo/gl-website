@@ -6,7 +6,7 @@
 <mapper namespace="com.gl.website.dao.InternationTwoDAO">
 
     <select id="getAllInternationTwoMesg" resultType="com.gl.website.entity.bo.InternationTwoBO">
-        select *  from gl_internation_two
+        select *  from gl_internation_two ORDER BY id ASC
     </select>
     <!--修改信息-->
     <update id="updateInternationTwo" parameterType="com.gl.website.entity.bo.InternationTwoBO">
