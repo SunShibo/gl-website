@@ -42,17 +42,31 @@ public class SilkroadController extends BaseCotroller {
     }
     @RequestMapping("/updateone")//修改one
     public void updateone(HttpServletResponse response,SilkroadFirstBO srfbo) {
-        Integer count=silkroadService.updateSilkroadFirst(srfbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (srfbo==null||srfbo.getId() == null || srfbo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( srfbo.getContent()==null && srfbo.getCreateTime()==null && srfbo.getCreateUser()==null && srfbo.getImage()==null &&
+                srfbo.getIntroduce()==null &&srfbo.getPictureSort()==null &&srfbo.getSource()==null &&srfbo.getSubtitle()==null &&
+                srfbo.getTitle()==null &&srfbo.getUpdateTime()==null &&srfbo.getUpdateUser()==null &&srfbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = silkroadService.updateSilkroadFirst(srfbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deleteone")//删除one
     public void deleteone(HttpServletResponse response,SilkroadFirstBO srfbo) {
+        if (srfbo==null||srfbo.getId() == null || srfbo.getId() == 0 ) {
+            return;
+        }
         Integer count=silkroadService.deleteSilkroadFirst(srfbo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -64,30 +78,55 @@ public class SilkroadController extends BaseCotroller {
     }
     @RequestMapping("/addone")//增加one
     public void addtwo(HttpServletResponse response,SilkroadFirstBO srfbo) {
-        Integer count=silkroadService.addSilkroadFirst(srfbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(srfbo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( srfbo.getContent()==null && srfbo.getCreateTime()==null && srfbo.getCreateUser()==null && srfbo.getImage()==null &&
+                srfbo.getIntroduce()==null &&srfbo.getPictureSort()==null &&srfbo.getSource()==null &&srfbo.getSubtitle()==null &&
+                srfbo.getTitle()==null &&srfbo.getUpdateTime()==null &&srfbo.getUpdateUser()==null &&srfbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = silkroadService.addSilkroadFirst(srfbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
     @RequestMapping("/updatetwo")//修改two
     public void updatetwo(HttpServletResponse response,SilkroadTwoBO srtwobo) {
-        Integer count=silkroadService.updateSilkroadTwo(srtwobo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (srtwobo==null||srtwobo.getId() == null || srtwobo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( srtwobo.getContent()==null && srtwobo.getCreateTime()==null && srtwobo.getCreateUser()==null && srtwobo.getImage()==null &&
+                srtwobo.getIntroduce()==null &&srtwobo.getPictureSort()==null &&srtwobo.getSource()==null &&srtwobo.getSubtitle()==null &&
+                srtwobo.getTitle()==null &&srtwobo.getUpdateTime()==null &&srtwobo.getUpdateUser()==null &&srtwobo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = silkroadService.updateSilkroadTwo(srtwobo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deletetwo")//删除two
     public void deletetwo(HttpServletResponse response,SilkroadTwoBO srtwobo) {
+        if (srtwobo==null||srtwobo.getId() == null || srtwobo.getId() == 0 ) {
+            return;
+        }
         Integer count=silkroadService.deleteSilkroadTwo(srtwobo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -99,13 +138,24 @@ public class SilkroadController extends BaseCotroller {
     }
     @RequestMapping("/addtwo")//增加two
     public void addone(HttpServletResponse response,SilkroadTwoBO srtwobo) {
-        Integer count=silkroadService.addSilkroadTwo(srtwobo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(srtwobo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( srtwobo.getContent()==null && srtwobo.getCreateTime()==null && srtwobo.getCreateUser()==null && srtwobo.getImage()==null &&
+                srtwobo.getIntroduce()==null &&srtwobo.getPictureSort()==null &&srtwobo.getSource()==null &&srtwobo.getSubtitle()==null &&
+                srtwobo.getTitle()==null &&srtwobo.getUpdateTime()==null &&srtwobo.getUpdateUser()==null &&srtwobo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = silkroadService.addSilkroadTwo(srtwobo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 }

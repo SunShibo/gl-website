@@ -112,17 +112,31 @@ public class HomepageController extends BaseCotroller {
 
     @RequestMapping("/updatetwo")//修改two
     public void updatetwo(HttpServletResponse response,HomepageTwoBO htwobo) {
-        Integer count=homepageService.updateHomepageTwo(htwobo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (htwobo==null||htwobo.getId() == null || htwobo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( htwobo.getContent()==null && htwobo.getCreateTime()==null && htwobo.getCreateUser()==null && htwobo.getImage()==null &&
+                htwobo.getIntroduce()==null &&htwobo.getPictureSort()==null &&htwobo.getSource()==null &&htwobo.getSubtitle()==null &&
+                htwobo.getTitle()==null &&htwobo.getUpdateTime()==null &&htwobo.getUpdateUser()==null &&htwobo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.updateHomepageTwo(htwobo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deletetwo")//删除two
     public void deletetwo(HttpServletResponse response,HomepageTwoBO htwobo) {
+        if (htwobo==null||htwobo.getId() == null || htwobo.getId() == 0 ) {
+            return;
+        }
         Integer count=homepageService.deleteHomepageTwo(htwobo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -134,31 +148,56 @@ public class HomepageController extends BaseCotroller {
     }
     @RequestMapping("/addtwo")//增加two
     public void addtwo(HttpServletResponse response,HomepageTwoBO htwobo) {
-        Integer count=homepageService.addHomepageTwo(htwobo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(htwobo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( htwobo.getContent()==null && htwobo.getCreateTime()==null && htwobo.getCreateUser()==null && htwobo.getImage()==null &&
+                htwobo.getIntroduce()==null &&htwobo.getPictureSort()==null &&htwobo.getSource()==null &&htwobo.getSubtitle()==null &&
+                htwobo.getTitle()==null &&htwobo.getUpdateTime()==null &&htwobo.getUpdateUser()==null &&htwobo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.addHomepageTwo(htwobo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
 
     @RequestMapping("/updatethree")//修改three
     public void updatethree(HttpServletResponse response,HomepageThreeBO hthreebo) {
-        Integer count=homepageService.updateHomepageThree(hthreebo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (hthreebo==null||hthreebo.getId() == null || hthreebo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hthreebo.getContent()==null && hthreebo.getCreateTime()==null && hthreebo.getCreateUser()==null && hthreebo.getImage()==null &&
+                hthreebo.getIntroduce()==null &&hthreebo.getPictureSort()==null &&hthreebo.getSource()==null &&hthreebo.getSubtitle()==null &&
+                hthreebo.getTitle()==null &&hthreebo.getUpdateTime()==null &&hthreebo.getUpdateUser()==null &&hthreebo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.updateHomepageThree(hthreebo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deletethree")//删除three
     public void deletethree(HttpServletResponse response,HomepageThreeBO hthreebo) {
+        if (hthreebo==null||hthreebo.getId() == null || hthreebo.getId() == 0 ) {
+            return;
+        }
         Integer count=homepageService.deleteHomepageThree(hthreebo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -170,14 +209,25 @@ public class HomepageController extends BaseCotroller {
     }
     @RequestMapping("/addthree")//增加three
     public void addthree(HttpServletResponse response,HomepageThreeBO hthreebo) {
-        Integer count=homepageService.addHomepageThree(hthreebo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(hthreebo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hthreebo.getContent()==null && hthreebo.getCreateTime()==null && hthreebo.getCreateUser()==null && hthreebo.getImage()==null &&
+                hthreebo.getIntroduce()==null &&hthreebo.getPictureSort()==null &&hthreebo.getSource()==null &&hthreebo.getSubtitle()==null &&
+                hthreebo.getTitle()==null &&hthreebo.getUpdateTime()==null &&hthreebo.getUpdateUser()==null &&hthreebo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.addHomepageThree(hthreebo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
@@ -185,17 +235,31 @@ public class HomepageController extends BaseCotroller {
 
     @RequestMapping("/updatefour")//修改four
     public void updatefour(HttpServletResponse response,HomepageFourBO hfourbo) {
-        Integer count=homepageService.updateHomepageFour(hfourbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (hfourbo==null||hfourbo.getId() == null || hfourbo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hfourbo.getContent()==null && hfourbo.getCreateTime()==null && hfourbo.getCreateUser()==null && hfourbo.getImage()==null &&
+                hfourbo.getIntroduce()==null &&hfourbo.getPictureSort()==null &&hfourbo.getSource()==null &&hfourbo.getSubtitle()==null &&
+                hfourbo.getTitle()==null &&hfourbo.getUpdateTime()==null &&hfourbo.getUpdateUser()==null &&hfourbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.updateHomepageFour(hfourbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deletefour")//删除four
     public void deletefour(HttpServletResponse response,HomepageFourBO hfourbo) {
+        if (hfourbo==null||hfourbo.getId() == null || hfourbo.getId() == 0 ) {
+            return;
+        }
         Integer count=homepageService.deleteHomepageFour(hfourbo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -207,30 +271,55 @@ public class HomepageController extends BaseCotroller {
     }
     @RequestMapping("/addfour")//增加four
     public void addfour(HttpServletResponse response,HomepageFourBO hfourbo) {
-        Integer count=homepageService.addHomepageFour(hfourbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(hfourbo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hfourbo.getContent()==null && hfourbo.getCreateTime()==null && hfourbo.getCreateUser()==null && hfourbo.getImage()==null &&
+                hfourbo.getIntroduce()==null &&hfourbo.getPictureSort()==null &&hfourbo.getSource()==null &&hfourbo.getSubtitle()==null &&
+                hfourbo.getTitle()==null &&hfourbo.getUpdateTime()==null &&hfourbo.getUpdateUser()==null &&hfourbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.addHomepageFour(hfourbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
     @RequestMapping("/updatefive")//修改five
     public void updatefive(HttpServletResponse response,HomepageFiveBO hfivebo) {
-        Integer count=homepageService.updateHomepageFive(hfivebo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (hfivebo==null||hfivebo.getId() == null || hfivebo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hfivebo.getContent()==null && hfivebo.getCreateTime()==null && hfivebo.getCreateUser()==null && hfivebo.getImage()==null &&
+                hfivebo.getIntroduce()==null &&hfivebo.getPictureSort()==null &&hfivebo.getSource()==null &&hfivebo.getSubtitle()==null &&
+                hfivebo.getTitle()==null &&hfivebo.getUpdateTime()==null &&hfivebo.getUpdateUser()==null &&hfivebo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.updateHomepageFive(hfivebo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deletefive")//删除five
     public void deletefive(HttpServletResponse response,HomepageFiveBO hfivebo) {
+        if (hfivebo==null||hfivebo.getId() == null || hfivebo.getId() == 0 ) {
+            return;
+        }
         Integer count=homepageService.deleteHomepageFive(hfivebo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -242,14 +331,25 @@ public class HomepageController extends BaseCotroller {
     }
     @RequestMapping("/addfive")//增加five
     public void addfive(HttpServletResponse response,HomepageFiveBO hfivebo) {
-        Integer count=homepageService.addHomepageFive(hfivebo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(hfivebo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hfivebo.getContent()==null && hfivebo.getCreateTime()==null && hfivebo.getCreateUser()==null && hfivebo.getImage()==null &&
+                hfivebo.getIntroduce()==null &&hfivebo.getPictureSort()==null &&hfivebo.getSource()==null &&hfivebo.getSubtitle()==null &&
+                hfivebo.getTitle()==null &&hfivebo.getUpdateTime()==null &&hfivebo.getUpdateUser()==null &&hfivebo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.addHomepageFive(hfivebo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
