@@ -4,6 +4,7 @@ import com.gl.website.entity.bo.*;
 import com.gl.website.service.HomepageService;
 import com.gl.website.entity.dto.ResultDTOBuilder;
 import com.gl.website.util.JsonUtils;
+import com.gl.website.util.ParamVerifyUtil;
 import com.gl.website.web.controller.base.BaseCotroller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,11 @@ public class HomepageController extends BaseCotroller {
         List<HomepageThreeBO> homeModel3 = homepageService.getAllHomepageThreeMesg();
         HomepageFourBO  homeModel4 = homepageService.getAllHomepageFourMesg();
         List<HomepageFiveBO> homeModel5 = homepageService.getAllHomepageFiveMesg();
+        if( homeModel1==null || homeModel2==null||homeModel3==null ||homeModel3.size()<1 || homeModel4==null||homeModel5==null ||homeModel5.size()<1 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         map.put("homeModel1", homeModel1);
         map.put("homeModel2", homeModel2);
         map.put("homeModel3", homeModel3);
@@ -45,6 +51,7 @@ public class HomepageController extends BaseCotroller {
 
     @RequestMapping("/updateone")//修改one
     public void updateone(HttpServletResponse response,HomepageFirstBO hfbo) {
+
         Integer count=homepageService.updateHomepageFirst(hfbo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -56,25 +63,46 @@ public class HomepageController extends BaseCotroller {
     }
     @RequestMapping("/deleteone")//删除one
     public void deleteone(HttpServletResponse response,HomepageFirstBO hfbo) {
-        Integer count=homepageService.deleteHomepageFirst(hfbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (hfbo.getId() == null || hfbo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        HomepageFirstBO hfbow=homepageService.getAllHomepageFirstMesg();
+        if (hfbow == null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000004"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.deleteHomepageFirst(hfbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/addone")//增加one
     public void addone(HttpServletResponse response,HomepageFirstBO hfbo) {
-        Integer count=homepageService.addHomepageFirst(hfbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(hfbo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( hfbo.getContent()==null && hfbo.getCreateTime()==null && hfbo.getCreateUser()==null && hfbo.getImage()==null &&
+              hfbo.getIntroduce()==null &&hfbo.getPictureSort()==null &&hfbo.getSource()==null &&hfbo.getSubtitle()==null &&
+                hfbo.getTitle()==null &&hfbo.getUpdateTime()==null &&hfbo.getUpdateUser()==null &&hfbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = homepageService.addHomepageFirst(hfbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
