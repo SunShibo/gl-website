@@ -45,17 +45,31 @@ public class InternationController extends BaseCotroller {
     }
     @RequestMapping("/updateone")//修改one
     public void updateone(HttpServletResponse response,InternationFirstBO infbo) {
-        Integer count=internationService.updateInternationFirst(infbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (infbo==null||infbo.getId() == null || infbo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( infbo.getContent()==null && infbo.getCreateTime()==null && infbo.getCreateUser()==null && infbo.getImage()==null &&
+                infbo.getIntroduce()==null &&infbo.getPictureSort()==null &&infbo.getSource()==null &&infbo.getSubtitle()==null &&
+                infbo.getTitle()==null &&infbo.getUpdateTime()==null &&infbo.getUpdateUser()==null &&infbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = internationService.updateInternationFirst(infbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deleteone")//删除one
     public void deleteone(HttpServletResponse response,InternationFirstBO infbo) {
+        if (infbo==null||infbo.getId() == null || infbo.getId() == 0 ) {
+            return;
+        }
         Integer count=internationService.deleteInternationFirst(infbo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -67,30 +81,55 @@ public class InternationController extends BaseCotroller {
     }
     @RequestMapping("/addone")//增加one
     public void addtwo(HttpServletResponse response,InternationFirstBO infbo) {
-        Integer count=internationService.addInternationFirst(infbo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(infbo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( infbo.getContent()==null && infbo.getCreateTime()==null && infbo.getCreateUser()==null && infbo.getImage()==null &&
+                infbo.getIntroduce()==null &&infbo.getPictureSort()==null &&infbo.getSource()==null &&infbo.getSubtitle()==null &&
+                infbo.getTitle()==null &&infbo.getUpdateTime()==null &&infbo.getUpdateUser()==null &&infbo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = internationService.addInternationFirst(infbo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 
 
     @RequestMapping("/updatetwo")//修改two
     public void updatetwo(HttpServletResponse response,InternationTwoBO intwobo) {
-        Integer count=internationService.updateInternationTwo(intwobo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if (intwobo==null||intwobo.getId() == null || intwobo.getId() == 0 ) {
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( intwobo.getContent()==null && intwobo.getCreateTime()==null && intwobo.getCreateUser()==null && intwobo.getImage()==null &&
+                intwobo.getIntroduce()==null &&intwobo.getPictureSort()==null &&intwobo.getSource()==null &&intwobo.getSubtitle()==null &&
+                intwobo.getTitle()==null &&intwobo.getUpdateTime()==null &&intwobo.getUpdateUser()==null &&intwobo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = internationService.updateInternationTwo(intwobo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
     @RequestMapping("/deletetwo")//删除two
     public void deletetwo(HttpServletResponse response,InternationTwoBO intwobo) {
+        if (intwobo==null||intwobo.getId() == null || intwobo.getId() == 0 ) {
+            return;
+        }
         Integer count=internationService.deleteInternationTwo(intwobo);
         if( count==0 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -102,13 +141,24 @@ public class InternationController extends BaseCotroller {
     }
     @RequestMapping("/addtwo")//增加two
     public void addone(HttpServletResponse response,InternationTwoBO intwobo) {
-        Integer count=internationService.addInternationTwo(intwobo);
-        if( count==0 ){
-            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-            safeTextPrint(response,json);
+        if(intwobo==null){
             return;
         }
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
-        safeTextPrint(response, json);
+        if( intwobo.getContent()==null && intwobo.getCreateTime()==null && intwobo.getCreateUser()==null && intwobo.getImage()==null &&
+                intwobo.getIntroduce()==null &&intwobo.getPictureSort()==null &&intwobo.getSource()==null &&intwobo.getSubtitle()==null &&
+                intwobo.getTitle()==null &&intwobo.getUpdateTime()==null &&intwobo.getUpdateUser()==null &&intwobo.getUrl()==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }else {
+            Integer count = internationService.addInternationTwo(intwobo);
+            if (count == 0) {
+                String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                safeTextPrint(response, json);
+                return;
+            }
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(count));
+            safeTextPrint(response, json);
+        }
     }
 }
