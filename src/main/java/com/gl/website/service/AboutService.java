@@ -68,4 +68,32 @@ public class AboutService {
         return atwoDao.addAboutTwo(atwobo);
     }
 
+    //修改信息three
+    public Integer updateAboutThree(AboutThreeBO athreebo){
+        return athreeDAO.updateAboutThree(athreebo);
+    }
+    //删除信息three
+    public Integer deleteAboutThree(AboutThreeBO athreebo){
+        return athreeDAO.deleteAboutThree(athreebo);
+    }
+    //增加信息three
+    public Integer addAboutThree(AboutThreeBO athreebo){
+        return athreeDAO.addAboutThree(athreebo);
+    }
+
+
+    //修改信息four
+    public Integer updateAboutFour(AboutFourBO afourbo){
+        return afourDao.updateAboutFour(afourbo);
+    }
+    //删除信息four
+    public Integer deleteAboutFour(AboutFourBO afourbo){
+        return afourDao.deleteAboutFour(afourbo);
+    }
+    //增加信息four
+    public Integer addAboutFour(AboutFourBO afourbo){
+        return afourDao.addAboutFour(afourbo);
+    }
+
+
 }

@@ -185,7 +185,7 @@
             success: function (date) {
                 if(date.success==true){
                     $.cookie("userName",date.data.name);
-                    window.location="http://www.baidu.com";
+                    window.location="/management/homePageli.html";
                 }else if(date.success==false){
                     var err=date.errCode;
                     if(err==0000004){
