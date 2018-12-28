@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <title>Home</title>
 
-  <script src="../static/menu/jquery.min.js"></script>
-  <link rel="stylesheet" href="../static/menu/menu.css" type="text/css" />
-  <script charset="utf-8" src="/static/kindeditor/kindeditor-all-min.js"></script>
-  <script charset="utf-8" src="/static/kindeditor/zh_CN.js"></script>
+ <!-- <script src="static/menu/jquery.min.js"></script>-->
+  <link rel="stylesheet" href="static/menu/menu.css" type="text/css" />
+  <script charset="utf-8" src="static/kindeditor/kindeditor-all-min.js"></script>
+  <script charset="utf-8" src="static/kindeditor/zh_CN.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -52,13 +52,13 @@
     #fileimg{
       font-size: 0px;
       height: 70px;
-      width: 120px;
+      width: 100px;
       background:rgba(255,255,255,0);
-      border-radius: 35px;
+      border-radius: 100px;
       border: 1px solid black;/*https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545854399678&di=8ba061b9962a9da6bf94c5ab8d582ef1&imgtype=0&src=http%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX%2F228377817%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX.jpg*/
       z-index: 12333333;
       background-image: url("/image/upImag.jpg");
-      background-size: 220px 70px;
+      background-size: 150px 120px;
     }
   </style>
 </head>
@@ -112,7 +112,7 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
           <li><a href="#test" tabindex="-1" data-toggle="tab">修改图片</a></li>
           <li><a href="#threetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
-          <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
+          <li><a href="#onttext1" tabindex="-1" data-toggle="tab">修改文本</a></li>
         </ul>
       </li>
 
@@ -133,39 +133,52 @@
 
       <div class="tab-pane fade in active" id="home">
         <div  id="moduleHead"  class="moduleHead" style="width: 100%!important;">
-          <form action="/backgroundHome/query"   method="post" enctype="multipart/form-data">
+          <form action="/backgroundHome/query"   method="post" enctype="multipart/form-data"> <!--TODO  模块一图片上传 -->
             <div class="row" id="moduleHeadLeft"  style="width: 100%!important;">
               <div class="col-md-8 column right"><img  height="200px" width="300px" id="moduleHeadLeftImag"   /></div>
-              <div class="col-md-4 column"><div style="height: 50px;width: 100%"></div> <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;" >please choose Alternate picture:  </span> <input  id="fileimg" type="file"   name="file"  placeholder="please choose The picture to be replaced" title="please choose The picture to be replaced"></div>
-            </div>
+                <div class="col-md-4 column"><div style="height: 50px;width: 100%"></div> <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;" >please choose Alternate picture:  </span>
+                    <input  id="fileimg" type="file"   name="file"  placeholder="please choose The picture to be replaced" title="please choose The picture to be replaced">
+                </div>
+
+              </div>
+            <br/><br/><br/><br/>
+            <a href="javascript:void(0)"  id="model1updateImage"  >Modification</a>
           </form>
         </div>
       </div>
       <!--  模块一 代码显示-->
-      <div class="tab-pane fade" id="onetitle">
-        <h1 style="text-align: center">修改标题</h1>
+      <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
+        <h1 style="text-align: center;text-decoration:none;" id="model1titleone">Modification Main Title</h1>
+        <br/><br/><br/><br/>
         <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
-              <h1 id="titleone"></h1>
-          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="llll">test</textarea>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="model1tit1" placeholder="Please enter the content"></textarea>
+          <a href="javascript:void(0)"  id="model1tit1update" >Modification</a>
         </div>
+
       </div>
 
 
-      <div class="tab-pane fade" id="onesubtitle">
-        <h1 style="text-align: center">修改副标题</h1>
+      <div class="tab-pane fade" id="onesubtitle"><!--TODO  模块一副标题 -->
+        <h1 style="text-align: center"  id="model1showSubtitle" >Modify Subtitle</h1>
+        <br/><br/><br/><br/>
         <div id="moduleHeadRightone" style="z-index: 25252525;padding-left: 26%;">
-          <h1 id="subtitleone"></h1>
-          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test44">test</textarea>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="getSubtitle"></textarea>
+          <a href="javascript:void(0)"  id="updateSubtitle" >Modification</a>
         </div>
       </div>
 
-      <div class="tab-pane fade" id="onttext">
-      <h1 style="text-align: center">修改文本</h1>
-          <div style="padding-left: 26%;">
-            <h2 id="introduceone"></h2>
-            <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test1">test</textarea>
+      <div class="tab-pane fade" id="onttext">  <!--TODO 模块一 正文-->
+      <h3 style="text-align: center"  id="model1ShowMainBody">Modify Main Body </h3>
+          <div style="padding-left: 26%;" >
+            <br/><br/><br/><br/>
+            <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="getModel1MainBody"></textarea>
+            <a href="javascript:void(0)"  id="updateModel1MainBody" >Modification</a>
           </div>
+
       </div>
+
+
+
       <!--  模块二代码显示-->
       <div class="tab-pane fade" id="twotitle">
         <h1 style="text-align: center">修改标题</h1>
@@ -190,25 +203,12 @@
           <h1 id="titlethreetwo"> </h1>
           <h1 id="titlethreethree"> </h1>
           <h1 id="titlethreefour"> </h1>
-          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="twotitlegalli" >test</textarea>
+          <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="twotitlegalli" ></textarea>
         </div>
       </div>
-
-
-
-
     </div>
 
       </div>
-
-
-
-
-
-
-
-
-
       </div>
     </div>
   </div>
@@ -219,7 +219,7 @@
 
 
 
-<script src="../static/menu/manu.js"></script>
+<script src="static/menu/manu.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
 
@@ -232,7 +232,11 @@
               if(date.success==true){
                   var homeModel1 = date.data.homeModel1;
                   $("#moduleHeadLeftImag").attr("src",homeModel1.image);
-                  $("#titleone").html(homeModel1.title);
+                  $("#model1titleone").html(homeModel1.title);
+                  $("#model1showSubtitle").html(homeModel1.subtitle);
+                  $("#model1ShowMainBody").html(homeModel1.introduce);
+
+             /*     $("#titleone").html(homeModel1.title);
                   $("#subtitleone").html(homeModel1.subtitle);
                   $("#introduceone").html(homeModel1.introduce);
                   var homeModel2 = date.data.homeModel2;
@@ -245,7 +249,7 @@
                       $("#titlethreetwo").html(homeModel3[1].title);
                       $("#titlethreethree").html(homeModel3[2].title);
                       $("#titlethreefour").html(homeModel3[3].title);
-                  }
+                  }*/
               }else if(date.success==false){
                   var err=date.errCode;
                   if(err==0000001) {
@@ -262,41 +266,6 @@
 
 
 
-      $("#model1").click(function () {
-          var val = $("#test1").val();
-          alert(val);
-          $("#moduleHead").show();
-          $("#moduleLine").hide();
-          $("#moduleMainBody").hide();
-          $("#moduleRetreat").hide();
-     });
-
-
-      $("#model2").click(function () {
-          $("#moduleLine").show();
-          $("#moduleHead").hide();
-          $("#moduleMainBody").hide();
-          $("#moduleRetreat").hide();
-      });
-
-
-      $("#model3").click(function () {
-
-          $("#moduleMainBody").show();
-          $("#moduleHead").hide();
-          $("#moduleLine").hide();
-          $("#moduleRetreat").hide();
-      });
-
-
-
-      $("#model4").click(function () {
-          $("#moduleRetreat").show();
-          $("#moduleHead").hide();
-          $("#moduleLine").hide();
-          $("#moduleMainBody").hide();
-      });
-  });
 
 
   //简单模式初始化
@@ -325,8 +294,83 @@
 
 
   });
+  });
 
 
+  $(document).ready(function () {
+      //模块一图片修改
+      $("#model1updateImage").click(function () {
+          var img=$("#fileimg").val();
+          if(img==''|| img==null){
+              alert("Please select file");
+          }
+          $("#model1updateImage").submit();
+      });
+
+
+      //模块一主标题修改
+      $("#model1tit1update").click(function () {
+
+          var msg=$("#model1tit1").val();
+          if(msg==''|| msg==null){
+              alert("Please enter the content");
+              return;
+          }
+          update("/backgroundHome/mode1Update",msg,1);
+          return;
+      });
+
+      //模块一副题修改
+      $("#updateSubtitle").click(function () {
+
+          var msg=$("#getSubtitle").val();
+          if(msg==''|| msg==null){
+              alert("Please enter the content");
+              return;
+          }
+          update("/backgroundHome/mode1Update",msg,2);
+          return;
+      });
+
+      //模块一内容
+      $("#updateModel1MainBody").click(function () {
+
+          var msg=$("#getModel1MainBody").val();
+          if(msg==''|| msg==null){
+              alert("Please enter the content");
+              return;
+          }
+          update("/backgroundHome/mode1Update",msg,3);
+          return;
+      });
+
+  });
+
+
+
+ function update(url,msg,falg) {
+     $.ajax({
+         type: "POST",
+         url: url,
+         dataType: 'json',
+         data: {"msg": msg, falg: falg},
+         cache: false,
+         success: function (date) {
+             if(date.success==true){
+                 history.go(0);
+             }else if(date.success==false){
+                 var err=date.errCode;
+                 if(err==0000001) {
+                     alert("Please login first");
+                 }
+             }
+         },
+         error:function () {
+             alert("network anomaly");
+         }
+     });
+
+ }
 
 
 </script>

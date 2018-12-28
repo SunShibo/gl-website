@@ -81,11 +81,11 @@
     <ul id="myTab" class="nav nav-tabs" style="padding-left: 10%;">
       <li class="dropdown active">
         <a href="#" id="myTabDrop1" class="dropdown-toggle"
-           data-toggle="dropdown">模块一
+           data-toggle="dropdown">Model One
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-          <li><a href="#home" tabindex="-1" data-toggle="tab">修改图片</a></li>
+          <li><a href="#home" tabindex="-1" data-toggle="tab">修改</a></li>
           <li><a href="#onetitle" tabindex="-1" data-toggle="tab">修改标题</a></li>
           <li><a href="#onttext" tabindex="-1" data-toggle="tab">修改文本</a></li>
         </ul>
@@ -140,6 +140,7 @@
       <div class="tab-pane fade" id="onetitle">
         <h1 style="text-align: center">修改标题</h1>
         <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
+          <h1  id="model1Title"> </h1>
           <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"  id="test44">test</textarea>
         </div>
       </div>
@@ -174,8 +175,8 @@
           success: function (date) {
               if(date.success==true){
                   var homeModel1 = date.data.homeModel1;
-                  $("#moduleHeadLeftImag").attr("src","../"+homeModel1.image);
-
+                  $("#moduleHeadLeftImag").attr("src","homeModel1.image");
+                  $("#model1Title").html(homeModel1.)
               }else if(date.success==false){
                   var err=date.errCode;
                   if(err==0000001) {

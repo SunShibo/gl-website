@@ -36,7 +36,7 @@ public class LoginController extends BaseCotroller {
     @RequestMapping( value = "/login" )
     public void signIn(HttpServletResponse response , String userName, String password){
 		 //  参数验证
-		if(!ParamVerifyUtil.queryTest(userName,password)){
+		if(!ParamVerifyUtil.verification(userName,password)){
 			String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "参数异常！")) ;
 			super.safeJsonPrint(response, result);
 			return ;

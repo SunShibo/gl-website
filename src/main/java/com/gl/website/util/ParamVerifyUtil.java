@@ -3,7 +3,7 @@ package com.gl.website.util;
 public class ParamVerifyUtil {
 
 
-    public static  boolean  queryTest (Object... obj){
+    public static  boolean  verification (Object... obj){
         if(obj==null)
             return false;
         for(int i=0;i<obj.length;i++) {

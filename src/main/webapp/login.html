@@ -179,13 +179,13 @@
         $.ajax({
             type: "POST",
             url: '/login/login',
-            data: {userName: userName, "password": password},
+            data: {"userName": userName, "password": password},
             dataType: 'json',
             cache: false,
             success: function (date) {
                 if(date.success==true){
                     $.cookie("userName",date.data.name);
-                    window.location="/management/homePageli.html";
+                    window.location="/homePageli.html";
                 }else if(date.success==false){
                     var err=date.errCode;
                     if(err==0000004){
