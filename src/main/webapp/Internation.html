@@ -1,0 +1,447 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>BookNow</title>
+
+    <!-- <script src="static/menu/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="static/menu/menu.css" type="text/css"/>
+    <script charset="utf-8" src="static/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8" src="static/kindeditor/zh_CN.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headv {
+            line-height: 1em;
+            color: #4e4e4e;
+            min-width: 920px;
+            position: fixed;
+            top: 0;
+            left: 100px;
+            right: 0;
+            height: 140px;
+            z-index: 10;
+        }
+
+        .headv > div {
+            float: left;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .moduleHead {
+            float: left;
+            margin-top: 0%;
+            margin-left: 10%;
+
+        }
+
+        .right {
+            margin-top: 0%;
+            margin-right: -20%;
+            text-align: center;
+        }
+
+        .fileimg {
+            margin: 5px auto;
+            font-size: 0px;
+            width: 100px;
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid black; /*https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545854399678&di=8ba061b9962a9da6bf94c5ab8d582ef1&imgtype=0&src=http%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX%2F228377817%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX.jpg*/
+            z-index: 12333333;
+            background: url("/image/upImag.jpg") no-repeat right center;
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body style="background: black">
+
+<nav class="menu-activea">
+    <h1>Menu</h1>
+    <ul>
+        <li><a href="homePageli.html" style="color:#9DC6D1;text-decoration:none;">HomePage</a></li>
+        <li>Susy</li>
+        <li>Jack</li>
+        <li>Nancy</li>
+        <li>Kurt</li>
+        <li><a href="Internation.html" style="color:#9DC6D1;text-decoration:none;">Internation</a></li>
+        <li><a href="BookNow.html" style="color:#9DC6D1;text-decoration:none;">BookNow</a></li>
+    </ul>
+</nav>
+<main>
+    <div>
+        <ul id="myTab" class="nav nav-tabs" style="padding-left: 10%;">
+
+            <li class="dropdown active">
+                <a href="#" id="myTabDrop1" class="dropdown-toggle"
+                   data-toggle="dropdown">Molde One
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                    <li><a href="#onehome" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#onetitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" id="myTabDrop2" class="dropdown-toggle"
+                   data-toggle="dropdown">Molde Two
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                    <li><a href="#twopicture" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                </ul>
+            </li>
+
+
+
+
+        </ul>
+
+
+        <div id="myTabContent" class="tab-content">
+
+            <div class="tab-pane fade in active" id="onehome">
+                <div id="moduleHead" class="moduleHead" style="width: 100%!important;">
+                    <form action="/backbook/query" method="post" enctype="multipart/form-data">
+                        <!--TODO  模块一图片上传 -->
+                        <div class="row" id="moduleHeadLeft" style="width: 100%!important;">
+                            <div class="col-md-8 column right" style="margin-top: 30px">
+                                <img height="200px"  width="300px"   id="oneshuchupicture"/>
+                            </div>
+                            <div class="col-md-4 column">
+                                <div style="height: 50px;width: 100%"></div>
+                                <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
+                                <input id="getpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
+                            </div>
+                        </div>
+                        <br/><br/><br/><br/>
+                        <div style="height: 40px ;width: 500px;margin: 0 30%;">
+                            <a href="javascript:void(0)" id="onepictureup">Modification</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--  模块一 代码显示-->
+            <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
+                <h1 style="text-align: center;text-decoration:none;" id="oneshuchutitle">Modification Main Title</h1>
+                <br/><br/><br/><br/>
+                <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
+                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;" id="gettitle"
+                              placeholder="Please enter the content"></textarea>
+                    <a href="javascript:void(0)" id="onetitleup">Modification</a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!--  模块二代码显示-->
+
+
+            <!--模块二图片  -->
+            <div class="tab-pane fade"  id="twopicture"  style="border: 2px solid black; align-content: center">
+
+
+
+                    <table border="0" cellpadding="3" cellspacing="0" style="width: 60%;margin:auto">
+                        <tr>
+                            <td>
+                                <!--  图片一 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture1" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片二 -->
+
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture2" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片三 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture3" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片四 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture4" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--  图片五 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture5" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片六 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture6" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片七 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture7" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片八 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture8" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--  图片九 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture9" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片十 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture10" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--  图片十一 -->
+                                <div style="width:205px; height:280px; border: 2px solid black;">
+                                    <img height="180px" width="200px" id="twoshuchupicture11" src="/image/homeeight.png"/>
+                                    <div style="text-align: center">
+                                        <input type="file" class="fileimg" name="file"
+                                               placeholder="please choose The picture to be replaced"
+                                               title="please choose The picture to be replaced">
+                                        <a href="javascript:void(0)" style="">&nbsp;Modification</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+
+            </div>
+
+
+
+            </div>
+
+
+
+    </div>
+</main>
+
+
+<script src="static/menu/manu.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "POST",
+            url: '/backinternation/query',
+            dataType: 'json',
+            cache: false,
+            success: function (date) {
+                if (date.success == true) {
+                    var one = date.data.one;
+                    $("#oneshuchupicture").attr("src", one.image);
+                    $("#oneshuchutitle").html(one.title);
+                    var two = date.data.two;
+                    $("#twoshuchupicture1").attr("src", two[0].image);
+                    $("#twoshuchupicture2").attr("src", two[1].image);
+                    $("#twoshuchupicture3").attr("src", two[2].image);
+                    $("#twoshuchupicture4").attr("src", two[3].image);
+                    $("#twoshuchupicture5").attr("src", two[4].image);
+                    $("#twoshuchupicture6").attr("src", two[5].image);
+                    $("#twoshuchupicture7").attr("src", two[6].image);
+                    $("#twoshuchupicture8").attr("src", two[7].image);
+                    $("#twoshuchupicture9").attr("src", two[8].image);
+                    $("#twoshuchupicture10").attr("src", two[9].image);
+                    $("#twoshuchupicture11").attr("src", two[10].image);
+                    $("#twoshuchupicture12").attr("src", two[11].image);
+
+                } else if (date.success == false) {
+                    var err = date.errCode;
+                    if (err == 0000001) {
+                        alert("Please login first");
+                    }
+                }
+
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+
+
+        //简单模式初始化
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('textarea[name="messageContent"]', {
+//            resizeType : 1,
+//            allowPreviewEmoticons : false,
+                allowFileManager: true,
+                items: [
+                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'lineheight', 'emoticons', 'media', 'link', 'code', 'source',
+                    'fullscreen'],
+                uploadJson: '/static/js/kindeditor/kd_upload_image.jsp',
+//      allowFileManager : true,
+//      fileManagerJson : '/static/js/kindeditor/kd_upload_file.jsp'
+                afterCreate: function () {
+                    this.sync();
+                },
+                afterBlur: function () {
+                    this.sync();
+                }
+
+            });
+
+
+        });
+    });
+
+
+    $(document).ready(function () {
+        //模块一图片修改
+        $("#onepictureup").click(function () {
+            var img = $("#getpicturename").val();
+            if (img == '' || img == null) {
+                alert("Please select file");
+            }
+            $("#onepictureup").submit();
+        });
+
+
+        //模块一主标题修改
+        $("#onetitleup").click(function () {
+
+            var msg = $("#gettitle").val();
+            if (msg == '' || msg == null) {
+                alert("Please enter the content");
+                return;
+            }
+            update("/backinternation/updateonemodelandsoon", msg, 1);
+            return;
+        });
+
+
+
+
+    });
+
+
+    function update(url, msg, falg) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'json',
+            data: {"msg": msg, falg: falg},
+            cache: false,
+            success: function (date) {
+                if (date.success == true) {
+                    history.go(0);
+                } else if (date.success == false) {
+                    var err = date.errCode;
+                    if (err == 0000001) {
+                        alert("Please login first");
+                    }
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+
+    }
+
+
+</script>
+</body>
+</html>
