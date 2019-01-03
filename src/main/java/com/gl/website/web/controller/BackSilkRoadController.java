@@ -2,8 +2,8 @@ package com.gl.website.web.controller;
 
 import com.gl.website.entity.bo.*;
 import com.gl.website.entity.dto.ResultDTOBuilder;
-import com.gl.website.service.BookService;
 import com.gl.website.service.InternationService;
+import com.gl.website.service.SilkroadService;
 import com.gl.website.util.JsonUtils;
 import com.gl.website.util.ParamVerifyUtil;
 import com.gl.website.util.UploadingUtil;
@@ -19,12 +19,12 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@RequestMapping("/backinternation")
-public class BackInternationController extends BaseCotroller {
+@RequestMapping("/backsilkroad")
+public class BackSilkRoadController extends BaseCotroller {
 
 
     @Resource
-    private InternationService internationService;
+    private SilkroadService silkroadService;
     @Resource
     private UploadingUtil uploadingUtil;
 
@@ -39,8 +39,8 @@ public class BackInternationController extends BaseCotroller {
 
 
         HashMap<String, Object> map = new HashMap<String, Object>();
-        InternationFirstBO list1 = internationService.getInternationFirstMesg();
-        List<InternationTwoBO> list2 = internationService.getAllInternationTwoMesg();
+        SilkroadFirstBO list1 = silkroadService.getSilkroadFirstMesg();
+        List<SilkroadTwoBO> list2 = silkroadService.getAllSilkroadTwoMesg();
         if( list1==null || list2==null||list2.size()<1 ){
             String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
             safeTextPrint(response,json);
@@ -70,10 +70,10 @@ public class BackInternationController extends BaseCotroller {
             return;
         }
 
-        InternationFirstBO  firstBO=new InternationFirstBO();
+        SilkroadFirstBO  firstBO=new SilkroadFirstBO();
         firstBO.setId(1);
         firstBO.setImage(s);
-        internationService.updateInternationFirst(firstBO);
+        silkroadService.updateSilkroadFirst(firstBO);
 
 
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
@@ -99,7 +99,7 @@ public class BackInternationController extends BaseCotroller {
             return;
         }
 
-        InternationFirstBO  firstBO=new InternationFirstBO();
+        SilkroadFirstBO  firstBO=new SilkroadFirstBO();
         firstBO.setId(1);
         if(falg==1)
             firstBO.setTitle(msg);
@@ -108,7 +108,7 @@ public class BackInternationController extends BaseCotroller {
         if(falg==3)
             firstBO.setIntroduce(msg);
 
-        internationService.updateInternationFirst(firstBO);
+        silkroadService.updateSilkroadFirst(firstBO);
 
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
@@ -133,14 +133,14 @@ public class BackInternationController extends BaseCotroller {
             return;
         }
 
-            InternationTwoBO  twoBO=new InternationTwoBO();
+            SilkroadTwoBO  twoBO=new SilkroadTwoBO();
         twoBO.setId(1);
         if(falg==1)
             twoBO.setTitle(msg);
         if(falg==2)
             twoBO.setIntroduce(msg);
 
-        internationService.updateInternationTwo(twoBO);
+        silkroadService.updateSilkroadTwo(twoBO);
 
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);

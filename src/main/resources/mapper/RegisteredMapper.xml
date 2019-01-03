@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.gl.website.dao.RegisteredDAO">
+    <!-- 查询所有信息 -->
+    <select id="getAllRegisteredMesg" resultType="com.gl.website.entity.bo.RegisteredBO">
+        select *  from gl_registered ORDER BY id ASC
+    </select>
+    <!--修改信息-->
+    <update id="updateRegistered" parameterType="com.gl.website.entity.bo.RegisteredBO">
+        UPDATE gl_registered
+        <set>
+            <if test="applicantBirthday!=null ">
+                `applicant_birthday`=#{applicantBirthday} ,
+            </if>
+            <if test="paymentTime!=null and paymentTime!=''">
+                payment_time=#{paymentTime},
+            </if>
+            <if test="applicantName!=null">
+                applicant_name=#{applicantName},
+            </if>
+            <if test="guardianName!=null">
+                `guardian_name`=#{guardianName} ,
+            </if>
+            <if test="gender!=null">
+                `gender`=#{gender},
+            </if>
+            <if test="phone!=null">
+                `phone`=#{phone},
+            </if>
+            <if test="email!=null">
+                `email`=#{email},
+            </if>
+            <if test="address!=null">
+                `address`=#{address} ,
+            </if>
+            <if test="emergencyContact!=null">
+                `emergency_contact`=#{emergencyContact} ,
+            </if>
+            <if test="emergencyContactNumber!=null">
+                `emergencyContact_number`=#{emergencyContactNumber} ,
+            </if>
+            <if test="foodAllergy!=null">
+                `food_allergy`=#{foodAllergy} ,
+            </if>
+            <if test="concerns!=null">
+                `concerns`=#{concerns}
+            </if>
+            <if test="chineseVisa!=null">
+                `chinese_visa`=#{chineseVisa}
+            </if>
+            <if test="paymentAmount!=null">
+                `payment_amount`=#{paymentAmount}
+            </if>
+            <if test="balanceof!=null">
+                `balanceof`=#{balanceof}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <!--删除信息-->
+    <delete id="deleteRegistered" parameterType="com.gl.website.entity.bo.RegisteredBO" >
+        DELETE FROM gl_registered WHERE id=#{id}
+    </delete>
+    <!--增加信息-->
+    <insert id="addRegistered" parameterType="com.gl.website.entity.bo.RegisteredBO">
+        INSERT INTO gl_registered(
+       applicant_name,guardian_name,applicant_birthday,gender,phone,email,address,emergency_contact,emergencyContact_number,food_allergy,
+       concerns,chinese_visa,payment_amount,payment_time,balanceof
+        )
+        VALUES(
+        #{applicantName},#{guardianName},#{applicantBirthday},#{gender},#{phone},#{email},#{address},
+        #{emergencyContact},#{emergencyContactNumber},#{foodAllergy},#{concerns},#{chineseVisa},#{paymentAmount},#{paymentTime},#{balanceof}
+        )
+    </insert>
+</mapper>
