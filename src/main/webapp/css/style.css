@@ -29,6 +29,11 @@ html, body {
     src: url('../font/Poppins/Poppins-SemiBold.ttf');       /*字体源文件*/
 }
 
+@font-face {
+    font-family: 'PingFangSC-Semibold';   /*字体名称*/
+    src: url('../font/Poppins/Poppins-SemiBoldItalic.ttf');       /*字体源文件*/
+}
+
 #main {
     position: relative;
 }
@@ -68,10 +73,10 @@ html, body {
 #banner {
     position: relative;
     height: 768px;
-    background-size: auto 768px;
 }
 
 #banner .banner-title {
+    font-family: Poppins-Bold;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -80,7 +85,6 @@ html, body {
 }
 
 #banner .banner-title h1 {
-    font-family: Poppins-Bold;
     color: #ffffff;
     font-size: 70px;
     user-select: none;
@@ -156,11 +160,19 @@ html, body {
     padding: 5px 0;
 }
 
-#introduce .center-t .line, .cu-title .line {
+#introduce .center-t .line, .cu-title .line, #main .about-i-center .introduce-left .line {
     background-color: #EE4035;
     width: 50%;
     height: 6px;
     margin: 20px 0;
+}
+
+#main .about-i-center .introduce-left .line {
+    width: 90%;
+}
+
+.cu-title .line {
+    width: 80%;
 }
 
 #main #publicity {
@@ -234,6 +246,7 @@ html, body {
 
 #picture {
     position: relative;
+    padding: 20px 0;
 }
 
 #picture .p-bg {
@@ -273,15 +286,14 @@ html, body {
 }
 
 #main .page4 {
-    position: relative;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 #main .page4-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 40px 0;
 }
 
 .page4-center h2 {
@@ -333,33 +345,38 @@ html, body {
     width: 45%;
 }
 
-.ce-center .ce-content .line{
+.ce-center .ce-content .line, #main .about-info .about-center .line {
     width: 50%;
     height: 6px;
     background: #FFA53A;
     margin: 10px 0;
 }
 
-.ce-center .ce-content .title{
+#main .about-info .about-center .line {
+    margin: 20px 0;
+    height: 3px;
+}
+
+.ce-center .ce-content .title {
     font-size: 30px;
     color: #303030;
 }
 
-.ce-center .ce-content .content{
+.ce-center .ce-content .content {
     font-size: 22px;
     color: #7B7B7B;
     letter-spacing: 0.61px;
     line-height: 36px;
 }
 
-#main .page-s{
+#main .page-s {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 400px;
 }
 
-.page-s .s-center{
+.page-s .s-center {
     background: url("/image/0002.png");
     width: 65%;
     height: 250px;
@@ -367,53 +384,188 @@ html, body {
     text-align: center;
 }
 
-.page-s .s-center img{
+.page-s .s-center img {
     width: 50%;
     height: 50%;
 }
 
-.cu-content{
-    width: 60%;
+.cu-content {
+    width: 50%;
     margin: 0 auto;
     padding: 10px 0;
     position: relative;
 }
 
-.cu-content .cu-title{
-    width: 25%;
+.cu-content .cu-title {
+    width: 50%;
     position: absolute;
-    right: 10%;
+    right: 0;
     top: 0;
 }
 
-.cu-content .cu-title .title{
+.cu-content .cu-title .title {
     font-size: 60px;
     color: #303030;
     letter-spacing: 4.22px;
     line-height: 100px;
 }
 
-.cu-center .cu-img{
-    width: 80%;
-    margin: 0 auto;
+.cu-center .cu-img {
+    width: 55%;
+    margin: 40px auto 20px;
 }
 
-.cu-content .cu-info .cu-item{
-    margin: 20px 0;
+.cu-content .cu-info .cu-item {
+    margin: 30px 0;
 }
 
-.cu-content .cu-info .cu-item .cu-rows{
+.cu-content .cu-info .cu-item .cu-rows {
     font-size: 24px;
+    padding: 5px 0;
     color: #7B7B7B;
     letter-spacing: 0.5px;
     text-align: left;
     line-height: 36px;
 }
 
-#main .success{
+#main .success {
+    height: 450px;
+    background-size: auto 450px;
     background: url("/image/banner33354.png") no-repeat center center;
 }
 
-#main .contact{
+#main .contact {
+    height: 550px;
+    background-size: auto 550px;
     background: url("/image/banner323.png") no-repeat center center;
+}
+
+#main .about-info {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#main .about-info .about-center {
+    width: 40%;
+    margin: 50px 0;
+}
+
+#main .about-info .about-center .title {
+    font-size: 20px;
+    color: #303030;
+}
+
+#main .about-info .about-center .content {
+    font-size: 20px;
+    color: #B0B0B0;
+    letter-spacing: 0.62px;
+    text-align: left;
+    line-height: 48px;
+}
+
+#main .about-person {
+    background: url("/image/banner33.png") no-repeat center center;
+    background-size: 100%;
+}
+
+#main .about-introduce {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#main .about-i-center {
+    width: 70%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+#main .about-i-center .introduce-left {
+    width: 45%;
+}
+
+#main .about-i-center .introduce-reight {
+    width: 45%;
+}
+
+#main .about-i-center .introduce-left .title {
+    font-size: 64px;
+    color: #303030;
+    letter-spacing: 3px;
+    line-height: 100px;
+}
+
+#main .about-i-center .introduce-left .content {
+    font-size: 18px;
+    color: #7B7B7B;
+    letter-spacing: 0.5px;
+    text-align: left;
+    line-height: 36px;
+}
+
+#main .about-i-center .introduce-reight {
+    font-size: 18px;
+    color: #303030;
+    letter-spacing: 0;
+    text-align: left;
+    line-height: 36px;
+}
+
+.boss_name {
+    font-family: PingFangSC-Semibold;
+    font-size: 42px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#main .fourPage {
+    background: url("/image/banner33354.png") no-repeat center center;
+    background-size: 100%;
+}
+
+.list-content {
+    font-family: DroidSerif-Regular;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+#main .itinerary-body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.itinerary-body .itinerary-center {
+    width: 50%;
+}
+
+.grid .i-rows {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 5px 0;
+    background: #fafafa;
+}
+
+#main .grid{
+
+}
+
+.grid .i-rows .i-cols{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid .i-rows .i-cols .content{
+    width: 60%;
+    letter-spacing: 0.6px;
 }

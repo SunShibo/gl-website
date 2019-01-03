@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ABOUT US</title>
+    <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
+    <link rel='stylesheet' href='css/slick.css'>
+    <link rel='stylesheet' href='css/slick-theme.css'>
+    <link rel='stylesheet' href='css/coreTeam.css'>
+</head>
+<body>
+<div id="main">
+    <div id="banner" style="height: 450px;">
+        <div id="head">
+            <div class="b-logo">
+                <img id="logo" src="image/logo-dark.png" alt="">
+            </div>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="home.html">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="itinerary.html">ITINERARY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gopay.html">BOOK NOW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutUs.html">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contactUs.html">CONTACT US</a>
+                </li>
+            </ul>
+        </div>
+        <div class="banner-title">
+            <div><h1 id="bannerTitle"></h1></div>
+        </div>
+    </div>
+    <div class="about-info">
+        <div class="about-center">
+            <div class="title font-Poppins-Bold" id="infoContent"></div>
+            <div class="line"></div>
+            <div class="content font-DroidSerif-Italic" id="infoIntroduce"></div>
+        </div>
+    </div>
+    <div class="about-person">
+        <div class="team-box" style="padding: 80px 0 40px">
+            <div class="member-list" style="width: 70%; margin: 0 auto;"></div>
+
+            <div class="member-detail" style="width: 70%; margin: 0 auto;"></div>
+        </div>
+    </div>
+    <div class="about-introduce">
+        <div class="about-i-center">
+            <div class="introduce-left">
+                <div class="title font-Poppins-Bold" id="introduceLeftTitle"></div>
+                <div class="line"></div>
+                <div class="content font-DroidSerif-Italic" id="introduceLeftContent"></div>
+            </div>
+            <div class="introduce-reight font-DroidSerif-Regular" id="introduceReightContent"></div>
+        </div>
+    </div>
+    <div id="foot" style="margin: 0;">
+        <div class="f-center">
+            <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
+            <div class="f-content">© 2018 Rediscover Culture</div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="js/loadjs.js" type="text/javascript" charset="utf-8"></script>
+<script src='js/slick.min.js' type='text/javascript' charset='utf-8'></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: '/about/query',
+            type: 'POST',
+            dataType: 'json',
+            success: function (rs) {
+                console.log(rs.data);
+                setDom(rs.data);
+            }
+        })
+    });
+
+    function setDom(data) {
+        $('#banner').css({'background': "url(" + data.one.image + ") no-repeat center center"});
+        $('#bannerTitle').html(data.one.title);
+        $('#infoContent').html(data.two.title);
+        $('#infoIntroduce').html(data.two.introduce);
+        $('#introduceLeftTitle').html(data.four.title);
+        $('#introduceLeftContent').html(data.four.subtitle);
+        $('#introduceReightContent').html(data.four.introduce);
+        var arrImage = [], arrContent = [];
+        for (var i = 0, len = data.three.length; i < len; i++) {
+            arrImage.push([
+                '<div class="list-item">',
+                '<div class="list-item-inner">',
+                '<p><img style="width: 100%;height: 100%;" src="' + data.three[i].image + '"></p>',
+                '</div>',
+                '</div>'
+            ].join(' '));
+
+            arrContent.push([
+                '<div class="detail-item">',
+                '<p align="center" class="boss_name">' + data.three[i].title + '</p>',
+                '<p style="width: 100%; margin: 0 auto;" class="list-content">' + data.three[i].introduce + '</p>',
+                '</div>'
+            ]. join(''));
+        }
+
+        $('.member-list').append(arrImage.join(' '));
+        $('.member-detail').append(arrContent.join(' '));
+
+
+        $('.member-detail').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.member-list'
+        });
+        $('.member-list').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.member-detail',
+            dots: false,
+            arrows: true,
+            centerMode: true,
+            focusOnSelect: true,
+            centerPadding: '0px'
+        });
+
+
+    }
+</script>
+</body>
+</html>

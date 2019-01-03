@@ -44,7 +44,7 @@ public class UploadingUtil {
                      File newFile = new File(newFileName);
                      try {
                          paper.transferTo(newFile);
-                         return "/image/"+uuid+substring;
+                         return "/local/"+uuid+substring;
 
                      } catch (IOException e) {
                          e.printStackTrace();
