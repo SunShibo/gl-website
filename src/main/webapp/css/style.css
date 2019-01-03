@@ -569,3 +569,11 @@ html, body {
     width: 60%;
     letter-spacing: 0.6px;
 }
+
+.info-boder{
+    border: transparent 1px solid;
+}
+
+.info-boder:hover{
+    border: #FFFFFF 1px solid;
+}

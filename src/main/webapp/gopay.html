@@ -133,7 +133,25 @@
     });
 
     $('#submit').on('click', function () {
-        console.log()
+        $.ajax({
+            url: '/registered/addone',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                applicantName: $('#applicantName').val(),
+                guardianName: $('#guardianName').val(),
+                applicantBirthday: $('#birthday').val(),
+                gender: $('#gendar').val(),
+                phone: $('#phone').val(),
+                email: $('#email').val(),
+                address: $('#address').val(),
+                emergencyContact: $('#person').val(),
+                emergencyContactNumber: $('#personNumber').val(),
+                foodAllergy: $('#food').val(),
+                concerns: $('#concerns').val(),
+                chineseVisa: $('#china').val()
+            }
+        })
     });
 
     function setDom(data) {

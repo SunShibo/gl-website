@@ -94,7 +94,7 @@
                 continue;
             }
             var arr = [
-                '<div class="info-item">',
+                '<div class="info-item info-boder">',
                 '<div><img src="' + data.homeModel3[i].image + '" alt="" width="100%" height="100%"></div>',
                 '<div class="font-Poppins-Bold font-info">' + data.homeModel3[i].title + '</div>',
                 '<div class="font-DroidSerif-Regular font-content">' + data.homeModel3[i].introduce + '</div>',
@@ -102,6 +102,16 @@
             ].join(' ');
             $('#pubInfo').append(arr);
         }
+        $('.info-item').eq(0).on('click', function () {
+            location.href = './silkroad.html';
+        });
+        $('.info-item').eq(1).on('click', function () {
+            location.href = './certificate.html';
+        });
+        $('.info-item').eq(2).on('click', function () {
+            location.href = './International.html';
+        });
+
         $('#detailsTitle').html(data.homeModel4.title);
         $('#detailsContent').html(data.homeModel4.introduce);
         for (var i = 0, len = data.homeModel5.length; i < len; i++) {
