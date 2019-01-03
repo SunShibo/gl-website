@@ -146,4 +146,35 @@ public class BackgroundHomeController   extends BaseCotroller {
         return;
     }
 
+    //模块三图片修改
+    @RequestMapping("/model3ImageUpdate")
+    public void model3ImageUpdate(HttpServletResponse  response,HttpServletRequest request,MultipartFile file,Integer falg) {
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        String s = uploadingUtil.uploaDing(file);
+        if(s==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000018"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+
+        HomepageThreeBO  firstBO=new HomepageThreeBO();
+        firstBO.setId(falg);
+        firstBO.setImage(s);
+        homepageService.updateHomepageThree(firstBO);
+
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+
+
+    }
+
 }
