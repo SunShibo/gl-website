@@ -60,21 +60,56 @@
         </div>
     </div>
     <div class="page4" style="">
-        <form style="width: 500px;margin: auto">
-            <input name="a"  placeholder="Applicant's First and Last Name" class="forminput">
-            <input name="b" placeholder="Guardian’s First and Last Name" class="forminput">
-            <input name="c" placeholder="Applicant’s birthday" class="forminput">
-            <input name="d" placeholder="Gendar" class="forminput">
-            <input name="e" placeholder="Phone" class="forminput">
-            <input name="e" placeholder="Email" class="forminput">
-            <input name="e" placeholder="Address" class="forminput">
-            <input name="e" placeholder="Emergency Contact Person" class="forminput">
-            <input name="e" placeholder="Emergency Contact Person’s number" class="forminput">
-            <input name="e" placeholder="Do you allergic to any food?" class="forminput">
-            <input name="e" placeholder="Do you have any medical issues or concerns ?" class="forminput">
-            <input name="e" placeholder="Do you have a visa to China?" class="forminput">
-            <button type="submit" style="width: 120px;height: 40px;background: #FFA53A;border:none;display:block;margin: auto;margin-top: 20px;color: #fff;" id="">PAY NOW</button>
+        <form style="width: 500px;margin: auto" id="bookNow">
+            <input name="applicantName" id="applicantName"  placeholder="Applicant's First and Last Name" class="forminput">
+            <input name="guardianName" id="guardianName" placeholder="Guardian’s First and Last Name" class="forminput">
+            <input name="birthday" id="birthday" placeholder="Applicant’s birthday" class="forminput">
+            <input name="gendar" id="gendar" placeholder="Gendar" class="forminput">
+            <input name="phone" id="phone" placeholder="Phone" class="forminput">
+            <input name="email" id="email" placeholder="Email" class="forminput">
+            <input name="address" id="address" placeholder="Address" class="forminput">
+            <input name="person" id="person" placeholder="Emergency Contact Person" class="forminput">
+            <input name="personNumber" id="personNumber" placeholder="Emergency Contact Person’s number" class="forminput">
+            <input name="food" id="food" placeholder="Do you allergic to any food?" class="forminput">
+            <input name="concerns" id="concerns" placeholder="Do you have any medical issues or concerns ?" class="forminput">
+            <input name="china" id="china" placeholder="Do you have a visa to China?" class="forminput">
+            <button type="button" style="width: 120px;height: 40px;background: #FFA53A;border:none;display:block;margin: auto;margin-top: 20px;color: #fff;" id="" data-toggle="modal" data-target="#exampleModal">PAY NOW</button>
         </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PAYMENT</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="382XYCDEKTE2G">
+                        <div style="text-align: center">
+                            <input type="hidden" name="on0" value="Summer Quest">Summer Quest
+                        </div>
+                        <div style="text-align: center;">
+                            <select name="os0">
+                                <option value="Deposit">Deposit $1,000.00 USD</option>
+                                <option value="Early Bird Balance">Early Bird Balance $3,750.00 USD</option>
+                                <option value="Regular Price Balance">Regular Price Balance $4,950.00 USD</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="currency_code" value="USD">
+                        <div style="text-align: right;padding:20px 6px 12px;">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="foot">
@@ -97,8 +132,8 @@
         })
     });
 
-    $("form").submit(function(e){
-        console.log(e);
+    $('#submit').on('click', function () {
+        console.log()
     });
 
     function setDom(data) {
