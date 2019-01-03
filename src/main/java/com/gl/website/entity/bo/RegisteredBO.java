@@ -9,7 +9,7 @@ public class RegisteredBO extends BaseModel {
     private int id;
     private String applicantName;//申请人姓名
     private String guardianName;//监护人的姓名
-    private Date applicantBirthday;//申请人生日
+    private String applicantBirthday;//申请人生日
     private String gender   ;//性别
     private String phone   ;//电话
     private String email   ;//
@@ -47,11 +47,11 @@ public class RegisteredBO extends BaseModel {
         this.guardianName = guardianName;
     }
 
-    public Date getApplicantBirthday() {
+    public String getApplicantBirthday() {
         return applicantBirthday;
     }
 
-    public void setApplicantBirthday(Date applicantBirthday) {
+    public void setApplicantBirthday(String applicantBirthday) {
         this.applicantBirthday = applicantBirthday;
     }
 

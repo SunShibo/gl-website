@@ -12,7 +12,7 @@
     <update id="updateRegistered" parameterType="com.gl.website.entity.bo.RegisteredBO">
         UPDATE gl_registered
         <set>
-            <if test="applicantBirthday!=null and applicantBirthday!=''">
+            <if test="applicantBirthday!=null ">
                 `applicant_birthday`=#{applicantBirthday} ,
             </if>
             <if test="paymentTime!=null and paymentTime!=''">
