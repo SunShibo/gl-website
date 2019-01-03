@@ -63,37 +63,34 @@
         $('#banner').css('background', "url(" + data.one.image + ") no-repeat center center");
         var arr = []
         for (var i = 0, len = data.two.length; i < len; i++) {
-            if(i%2==0){
-                arr=[
+            if (i % 2 == 0) {
+                arr = [
                     '<div class="i-rows">',
                     '<div class="i-cols">',
-                    '<img src="image/newb66.png" alt="" width="100%" height="100%">',
+                    '<img src="' + data.two[i].image + '" alt="" width="100%" height="100%">',
                     '</div>',
                     '<div class="i-cols">',
-                    '<div class="content font-DroidSerif-Italic">Please fill out the following form to register. Your registration is not complete and will not be',
-                    'processed until you have completed all of the necessary steps and submitted your $1,000 deposit.This fee is payable by credit card during the registration process. Your deposit will be applied',
-                    'toward the cost of the trip and is fully refundable before January 31, 2019.',
+                    '<div class="content font-DroidSerif-Regular">' + data.two[i].title,
                     '</div>',
                     '</div>',
                     '</div>'
                 ].join(' ');
-            }else {
-                arr=[
+            } else {
+                arr = [
                     '<div class="i-rows">',
                     '<div class="i-cols">',
-                    '<div class="content font-DroidSerif-Italic">Please fill out the following form to register. Your registration is not complete and will not be',
-                    'processed until you have completed all of the necessary steps and submitted your $1,000 deposit.This fee is payable by credit card during the registration process. Your deposit will be applied',
-                    'toward the cost of the trip and is fully refundable before January 31, 2019.',
+                    '<div class="content font-DroidSerif-Regular">' + data.two[i].title,
                     '</div>',
                     '</div>',
                     '<div class="i-cols">',
-                    '<img src="image/newb66.png" alt="" width="100%" height="100%">',
+                    '<img src="' + data.two[i].image + '" alt="" width="100%" height="100%">',
                     '</div>',
                     '</div>'
                 ].join(' ');
             }
             $('.grid').append(arr);
         }
+
         // var options = {
         //     srcNode: 'img',             // grid items (class, node)
         //     margin: '0px',             // margin in pixel, default: 0px
