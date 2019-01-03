@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CONTACT US</title>
+    <title>ITINERARY</title>
     <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 <div id="main">
-    <div class="contact" id="banner">
+    <div id="banner" style="height: 300px;">
         <div id="head">
             <div class="b-logo">
                 <img id="logo" src="image/logo-dark.png" alt="">
@@ -31,37 +31,15 @@
             </ul>
         </div>
         <div class="banner-title">
-            <div><h1>CONTACT US</h1></div>
+            <div><h2 id="title"></h2></div>
         </div>
     </div>
-    <div class="cu-body">
-        <div class="cu-center">
-            <div class="cu-img">
-                <img class="img-fluid" src="image/newb66.png" alt="" width="100%" height="100%">
-            </div>
-            <div class="cu-content">
-                <div class="cu-info">
-                    <div class="cu-item">
-                        <div class="cu-rows font-DroidSerif-Italic">Email:</div>
-                        <div class="cu-rows font-DroidSerif-Italic">info@gleaders.org</div>
-                    </div>
-                    <div class="cu-item">
-                        <div class="cu-rows font-DroidSerif-Italic">Office Number:</div>
-                        <div class="cu-rows font-DroidSerif-Italic">667-200-5572</div>
-                    </div>
-                    <div class="cu-item">
-                        <div class="cu-rows font-DroidSerif-Italic">Contact Info Address:</div>
-                        <div class="cu-rows font-DroidSerif-Italic">8818 Centre Park Drive, Suite 117, Columbia, MD 21045</div>
-                    </div>
-                </div>
-                <div class="cu-title">
-                    <div class="title font-Poppins-Bold">Welcome to Visit</div>
-                    <div class="line"></div>
-                </div>
-            </div>
+    <div class="itinerary-body">
+        <div class="itinerary-center" style="padding: 60px 0;">
+            <img src="image/Itinerary page-53.png" alt="" width="100%" height="100%">
         </div>
     </div>
-    <div id="foot">
+    <div id="foot" style="margin: 0;">
         <div class="f-center">
             <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
             <div class="f-content">© 2018 Rediscover Culture</div>
@@ -69,5 +47,23 @@
     </div>
 </div>
 <script src="js/loadjs.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: '/day/query',
+            type: 'POST',
+            dataType: 'json',
+            success: function (rs) {
+                console.log(rs.data);
+                setDom(rs.data);
+            }
+        })
+    });
+    
+    function setDom(data) {
+        $('#banner').css('background', "url(" + data.one.image + ") no-repeat center center");
+        $('#title').html(data.one.title);
+    }
+</script>
 </body>
 </html>

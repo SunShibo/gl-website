@@ -14,19 +14,19 @@
             </div>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">HOME</a>
+                    <a class="nav-link active" href="home.html">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">LTINERAR</a>
+                    <a class="nav-link" href="itinerary.html">ITINERARY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">BOOK NOW</a>
+                    <a class="nav-link" href="gopay.html">BOOK NOW</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US</a>
+                    <a class="nav-link" href="aboutUs.html">ABOUT US</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT US</a>
+                    <a class="nav-link" href="contactUs.html">CONTACT US</a>
                 </li>
             </ul>
         </div>
@@ -34,10 +34,8 @@
             <div><h2 id="title"></h2></div>
         </div>
     </div>
-    <div class="grid" id="grid">
-
-    </div>
-    <div id="foot">
+    <div class="grid"></div>
+    <div id="foot" style="margin: 0;">
         <div class="f-center">
             <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
             <div class="f-content">© 2018 Rediscover Culture</div>
@@ -61,43 +59,74 @@
 
     function setDom(data) {
         console.log(data);
-        $('#title').text(data.one.title);
+        $('#title').html(data.one.title);
         $('#banner').css('background', "url(" + data.one.image + ") no-repeat center center");
+        var arr = []
         for (var i = 0, len = data.two.length; i < len; i++) {
-            var img = '<img src="' + data.two[i].image + '">'
-            $('#grid').append(img);
-        }
-        var options = {
-            srcNode: 'img',             // grid items (class, node)
-            margin: '0px',             // margin in pixel, default: 0px
-            width: '220px',             // grid item width in pixel, default: 220px
-            max_width: '400px',              // dynamic gird item width if specified, (pixel)
-            resizable: true,            // re-layout if window resize
-            transition: 'all 0.5s ease' // support transition for CSS3, default: all 0.5s ease
-        };
-        $('.grid').gridify(options);
-        //计算高度
-        var l1 = 0, l2 = 0, l3 = 0, l4 = 0;
-        var item = $('#grid img');
-        setTimeout(function () {
-            var length = 0, length1 = $(item[0]).data('left'), length2 = $(item[1]).data('left'),
-                length3 = $(item[2]).data('left'), length4 = $(item[3]).data('left');
-            for (var i = 0, len = item.length; i < len; i++) {
-                if ($(item[i]).data('left') == length1) {
-                    l1 += $(item[i]).height();
-                } else if ($(item[i]).data('left') == length2) {
-                    l2 += $(item[i]).height();
-                } else if ($(item[i]).data('left') == length3) {
-                    l3 += $(item[i]).height();
-                } else if ($(item[i]).data('left') == length4) {
-                    l4 += $(item[i]).height();
-                }
+            if(i%2==0){
+                arr=[
+                    '<div class="i-rows">',
+                    '<div class="i-cols">',
+                    '<img src="image/newb66.png" alt="" width="100%" height="100%">',
+                    '</div>',
+                    '<div class="i-cols">',
+                    '<div class="content font-DroidSerif-Italic">Please fill out the following form to register. Your registration is not complete and will not be',
+                    'processed until you have completed all of the necessary steps and submitted your $1,000 deposit.This fee is payable by credit card during the registration process. Your deposit will be applied',
+                    'toward the cost of the trip and is fully refundable before January 31, 2019.',
+                    '</div>',
+                    '</div>',
+                    '</div>'
+                ].join(' ');
+            }else {
+                arr=[
+                    '<div class="i-rows">',
+                    '<div class="i-cols">',
+                    '<div class="content font-DroidSerif-Italic">Please fill out the following form to register. Your registration is not complete and will not be',
+                    'processed until you have completed all of the necessary steps and submitted your $1,000 deposit.This fee is payable by credit card during the registration process. Your deposit will be applied',
+                    'toward the cost of the trip and is fully refundable before January 31, 2019.',
+                    '</div>',
+                    '</div>',
+                    '<div class="i-cols">',
+                    '<img src="image/newb66.png" alt="" width="100%" height="100%">',
+                    '</div>',
+                    '</div>'
+                ].join(' ');
             }
-            length = l1 > l2 ? l1 : l2;
-            length = length > l3 ? length : l3;
-            length = length > l4 ? length : l4;
-            $('#foot').css('marginTop', (length) + "px")
-        }, 200);
+            $('.grid').append(arr);
+        }
+
+
+        // var options = {
+        //     srcNode: 'img',             // grid items (class, node)
+        //     margin: '0px',             // margin in pixel, default: 0px
+        //     width: '220px',             // grid item width in pixel, default: 220px
+        //     max_width: '400px',              // dynamic gird item width if specified, (pixel)
+        //     resizable: true,            // re-layout if window resize
+        //     transition: 'all 0.5s ease' // support transition for CSS3, default: all 0.5s ease
+        // };
+        // $('.grid').gridify(options);
+        // //计算高度
+        // var l1 = 0, l2 = 0, l3 = 0, l4 = 0;
+        // var item = $('#grid img');
+        // setTimeout(function () {
+        //     var length = 0, length1 = $(item[0]).data('left'), length2 = $(item[1]).data('left'),
+        //         length3 = $(item[2]).data('left'), length4 = $(item[3]).data('left');
+        //     for (var i = 0, len = item.length; i < len; i++) {
+        //         if ($(item[i]).data('left') == length1) {
+        //             l1 += $(item[i]).height();
+        //         } else if ($(item[i]).data('left') == length2) {
+        //             l2 += $(item[i]).height();
+        //         } else if ($(item[i]).data('left') == length3) {
+        //             l3 += $(item[i]).height();
+        //         } else if ($(item[i]).data('left') == length4) {
+        //             l4 += $(item[i]).height();
+        //         }
+        //     }
+        //     length = l1 > l2 ? l1 : l2;
+        //     length = length > l3 ? length : l3;
+        //     length = length > l4 ? length : l4;
+        //     $('#foot').css('marginTop', (length) + "px")
+        // }, 200);
     }
 </script>
 </body>

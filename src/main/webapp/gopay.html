@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>gopay</title>
+    <title>BOOKNOW</title>
     <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
     <style>
         .forminput{
@@ -21,59 +21,62 @@
 </head>
 <body>
 <div id="main">
-    <div id="banner" style="height: 300px">
+    <div id="banner" class="gopay" style="height: 300px">
         <div id="head">
             <div class="b-logo">
                 <img id="logo" src="image/logo-dark.png" alt="">
             </div>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">HOME</a>
+                    <a class="nav-link active" href="home.html">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">LTINERAR</a>
+                    <a class="nav-link" href="itinerary.html">ITINERARY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">BOOK NOW</a>
+                    <a class="nav-link" href="gopay.html">BOOK NOW</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US</a>
+                    <a class="nav-link" href="aboutUs.html">ABOUT US</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT US</a>
+                    <a class="nav-link" href="contactUs.html">CONTACT US</a>
                 </li>
             </ul>
         </div>
-        <img src="image/banner33354.png" alt="" width="100%" height="100%">
         <div class="banner-title">
-            <div><h1>404</h1></div>
+            <div><h1 id="bannerTitle"></h1></div>
         </div>
     </div>
-    <div class="page4" style="margin-top: 50px;">
+    <div class="page4">
         <div class="page4-center">
-            <div class="font-Poppins-Bold" style="text-align: left">There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!
-                There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!
-                There seems to be a page missing!There
-                ng!There seems to be a page missing!
-                There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!
+            <div class="font-Poppins-Bold" style="text-align: left">Please fill out the following form to register. Your registration is not complete and will not be processed until you have completed all of the necessary steps and submitted your $1,000 deposit. This fee is payable by credit card during the registration process. Your deposit will be applied toward the cost of the trip and is fully refundable before January 31, 2019.
             </div>
             <div style="width: 50%;height: 6px;background: #FFA53A;margin: 10px 0;"></div>
             <div class="font-Poppins-Bold" style="text-align: left;color: #c6c8ca;">
-                There seems to be a page missing!There seems to be a page missing!There seems to be a page missing!There seems to be a pag&nbsp;<span style="color: #080808;">443-654-5063</span>
+                If you need help booking a program or have any specific questions as part of the
+                registration process, call us anytime at &nbsp;<span style="color: #080808;">443-654-5063.</span>
             </div>
         </div>
     </div>
     <div class="page4" style="">
         <form style="width: 500px;margin: auto">
             <input name="a"  placeholder="Applicant's First and Last Name" class="forminput">
-            <input name="b" placeholder="Applicant's First and Last Name" class="forminput">
-            <input name="c" placeholder="Applicant's First and Last Name" class="forminput">
-            <input name="d" placeholder="Applicant's First and Last Name" class="forminput">
-            <input name="e" placeholder="Applicant's First and Last Name" class="forminput">
-            <button type="submit" style="width: 120px;height: 40px;background: #FFA53A;border:none;display:block;margin: auto;margin-top: 20px;color: #fff;">PAY NOW</button>
+            <input name="b" placeholder="Guardian’s First and Last Name" class="forminput">
+            <input name="c" placeholder="Applicant’s birthday" class="forminput">
+            <input name="d" placeholder="Gendar" class="forminput">
+            <input name="e" placeholder="Phone" class="forminput">
+            <input name="e" placeholder="Email" class="forminput">
+            <input name="e" placeholder="Address" class="forminput">
+            <input name="e" placeholder="Emergency Contact Person" class="forminput">
+            <input name="e" placeholder="Emergency Contact Person’s number" class="forminput">
+            <input name="e" placeholder="Do you allergic to any food?" class="forminput">
+            <input name="e" placeholder="Do you have any medical issues or concerns ?" class="forminput">
+            <input name="e" placeholder="Do you have a visa to China?" class="forminput">
+            <button type="submit" style="width: 120px;height: 40px;background: #FFA53A;border:none;display:block;margin: auto;margin-top: 20px;color: #fff;" id="">PAY NOW</button>
         </form>
-
     </div>
+
     <div id="foot">
         <div class="f-center">
             <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
@@ -83,7 +86,25 @@
 </div>
 <script src="js/loadjs.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    $(function () {
+        $.ajax({
+            url: '/book/query',
+            type: 'POST',
+            dataType: 'json',
+            success: function (rs) {
+                setDom(rs.data);
+            }
+        })
+    });
 
+    $("form").submit(function(e){
+        console.log(e);
+    });
+
+    function setDom(data) {
+        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat center center");
+        $('#bannerTitle').html(data.one.title);
+    }
 </script>
 </body>
 </html>
