@@ -366,10 +366,10 @@
 
             <!-- 模块五 -->
             <div class="tab-pane fade" id="model5">
-                <div id="myCarousel" class="carousel slide" align="center" style="width: 50%;height: 30%;margin-left: 21%;">
+                <div id="myCarousel" class="carousel slide" align="center" style="width: 600px;height: 450px;margin-left: 21%;">
 
                 </div>
-                <input type="file"  class="fileimg"  style="margin: 0px auto ">
+                <input type="file"  class="fileimg"  style="margin: 0px auto "  id="model5FileUp">
             </div>
 
 
@@ -393,7 +393,7 @@
             }else{
                 cla="class='item'";
             }
-            str+="<div "+cla+">"+"<img src='"+model5[i].image+"' width='400px' >" +
+            str+="<div "+cla+">"+"<img src='"+model5[i].image+"' style='height: 350px;width: 350px' >" +
                 "<button type='button' class='btn btn-default changebtn'   onclick='model5Update("+model5[i].id+")'>Update</button>"+
                 "<button type='button' class='btn btn-default'   onclick='model5Delete("+model5[i].id+")'>Delete</button>"+
                 "<button type='button' class='btn btn-default'   onclick='model5Add()' >Add Image</button>"+
@@ -411,20 +411,41 @@
             "<span class='sr-only'>Next</span>"+"</a>";
 
         $("#myCarousel").append(caroucel);
-        console.log(caroucel);
-        //$(dom).parent().parent().append(soncommentappend);
+
     }
 </script>
 
 <script type="text/javascript">
     function model5Update(id) {
-        alert("update"+id);
+        var val = $("#model5FileUp").val();
+        if(val==null || val==''){
+            alert("Image Not Selected");
+            return false;
+        }
+        var file = new FormData();
+        file.append("file", document.getElementById('model5FileUp').files[0]);
+        file.append("id",id);
+        file.append("falg",1);
+        upImage("/backgroundHome/model5", file);
     }
     function model5Delete(id) {
-        alert("Delete"+id);
+        var file = new FormData();
+        file.append("file", document.getElementById('model5FileUp').files[0]);
+        file.append("id",id);
+        file.append("falg",2);
+        upImage("/backgroundHome/model5", file);
     }
     function model5Add() {
-        alert("添加");
+        var val = $("#model5FileUp").val();
+        if(val==null || val==''){
+            alert("Image Not Selected");
+            return false;
+        }
+        var file = new FormData();
+        file.append("file", document.getElementById('model5FileUp').files[0]);
+        file.append("id",0);
+        file.append("falg",3);
+        upImage("/backgroundHome/model5", file);
     }
 
 </script>
@@ -463,21 +484,6 @@
                     var Model5 = date.data.homeModel5;
                     addimg(Model5);
 
-                    /*
-                        $("#titleone").html(homeModel1.title);
-                         $("#subtitleone").html(homeModel1.subtitle);
-                         $("#introduceone").html(homeModel1.introduce);
-                         var homeModel2 = date.data.homeModel2;
-                         $("#titletwo").html(homeModel2.title);
-                         $("#introducetwo").html(homeModel2.introduce);
-                        var homeModel3 = date.data.homeModel3;
-                         for(var i=0;i<homeModel3.length;i++){
-
-                             $("#titlethreeone").html(homeModel3[0].title);
-                             $("#titlethreetwo").html(homeModel3[1].title);
-                             $("#titlethreethree").html(homeModel3[2].title);
-                             $("#titlethreefour").html(homeModel3[3].title);
-                         }*/
                 } else if (date.success == false) {
                     var err = date.errCode;
                     if (err == 0000001) {
@@ -546,7 +552,7 @@
                 return false;
             }
 
-            //    update("/backgroundHome/mode1Update", msg, 1);
+            update("/backgroundHome/mode1Update", msg, 1);
             return false;
         });
 
@@ -614,7 +620,6 @@
             file.append("file", document.getElementById('getModel3Image2').files[0]);
             file.append("falg",2);
             upImage("/backgroundHome/model3ImageUpdate", file);
-
             return false;
 
         });
@@ -732,14 +737,7 @@
 
 
 
-
-
-
     });
-
-
-
-
 
 
 

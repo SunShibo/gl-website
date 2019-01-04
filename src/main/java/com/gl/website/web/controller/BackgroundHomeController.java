@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -236,4 +237,75 @@ public class BackgroundHomeController   extends BaseCotroller {
         safeTextPrint(response, json);
         return;
     }
+
+
+
+    //模块五  修改
+    @RequestMapping("/model5")
+    public void model5(HttpServletResponse  response,HttpServletRequest request,Integer falg,Integer id, MultipartFile file) {
+
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
+        boolean verification = ParamVerifyUtil.verification(id,falg);
+        if(!verification){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        try {
+            //修改
+            if (falg == 1) {
+
+                HomepageFiveBO  fiveBO=new HomepageFiveBO();
+                fiveBO.setId(id);
+                String s = uploadingUtil.uploaDing(file);
+                if(s==null){
+                    String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000018"));
+                    safeTextPrint(response, json);
+                    return;
+                }
+                fiveBO.setImage(s);
+                fiveBO.setUpdateTime(new Date());
+                homepageService.updateHomepageFive(fiveBO);
+
+                //删除
+            } else if (falg == 2) {
+                HomepageFiveBO  fiveBO=new HomepageFiveBO();
+                fiveBO.setId(id);
+                homepageService.deleteHomepageFive(fiveBO);
+
+                //添加
+            } else if (falg == 3) {
+
+                HomepageFiveBO  fiveBO=new HomepageFiveBO();
+                String s = uploadingUtil.uploaDing(file);
+                if(s==null){
+                    String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000018"));
+                    safeTextPrint(response, json);
+                    return;
+                }
+                fiveBO.setImage(s);
+                fiveBO.setCreateTime(new Date());
+                homepageService.addHomepageFive(fiveBO);
+
+            }
+        }catch (Exception  e){
+            e.printStackTrace();
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
+
+
+
 }
