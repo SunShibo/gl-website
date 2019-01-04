@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>BookNow</title>
+    <title>Community</title>
 
     <!-- <script src="static/menu/jquery.min.js"></script>-->
     <link rel="stylesheet" href="static/menu/menu.css" type="text/css"/>
@@ -69,7 +69,7 @@
     <ul>
         <li><a href="homePageli.html" style="color:#9DC6D1;text-decoration:none;">HomePage</a></li>
         <li>Susy</li>
-        <li>Jack</li>
+        <li><a href="BGCommunity.html" style="color:#9DC6D1;text-decoration:none;">Community</a></li>
         <li><a href="BGDay.html" style="color:#9DC6D1;text-decoration:none;">Day</a></li>
         <li><a href="BGSilkRoad.html" style="color:#9DC6D1;text-decoration:none;">SilkRoad</a></li>
         <li><a href="BGInternation.html" style="color:#9DC6D1;text-decoration:none;">Internation</a></li>
@@ -99,7 +99,8 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
                     <li><a href="#twotitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
                     <li><a href="#twointroduce" tabindex="-1" data-toggle="tab">Modify Content</a></li>
-                    <li><a href="#twopicture" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#twopicture1" tabindex="-1" data-toggle="tab">Modify First Picture </a></li>
+                    <li><a href="#twopicture2" tabindex="-1" data-toggle="tab">Modify Two Picture</a></li>
                 </ul>
             </li>
 
@@ -161,8 +162,8 @@
             </div>
 
 
-            <!--模块二图片  -->
-            <div class="tab-pane fade" id="twopicture">
+            <!--模块二图片一 -->
+            <div class="tab-pane fade" id="twopicture1">
                 <form     style="display: flex; justify-content: space-around; align-content: center">
                     <div style="margin: 25px 0;">
                         <img height="180px" width="200px" id="showmodel2Image1" />
@@ -174,11 +175,21 @@
                         </div>
                     </div>
                 </form>
-
-
             </div>
-
-
+            <!--模块二图片二 -->
+            <div class="tab-pane fade" id="twopicture2">
+                <form     style="display: flex; justify-content: space-around; align-content: center">
+                    <div style="margin: 25px 0;">
+                        <img height="180px" width="200px" id="showmodel2Image2" />
+                        <div style="text-align: center">
+                            <input type="file" class="fileimg" name="file"
+                                   placeholder="please choose The picture to be replaced"
+                                   title="please choose The picture to be replaced" id="getModel2Image2" >
+                            <a href="javascript:void(0)"  id="updatemodel2Image2" >Modification</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
 
 
@@ -197,7 +208,7 @@
 
         $.ajax({
             type: "POST",
-            url: '/backbook/query',
+            url: '/backcommunity/query',
             dataType: 'json',
             cache: false,
             success: function (date) {
@@ -209,6 +220,7 @@
                     $("#twoshuchutitle").html(two[0].title);
                     $("#twoshuchuintroduce").html(two[0].introduce);
                     $("#showmodel2Image1").attr("src", two[0].image);
+                    $("#showmodel2Image2").attr("src", two[1].image);
 
 
 
@@ -266,7 +278,7 @@
             }
             var file = new FormData();
             file.append("file", document.getElementById('getModel1Image1').files[0]);
-            upImage("/backbook/updateonemodelpicture", file);
+            upImage("/backcommunity/updateonemodelpicture", file);
         });
 
 
@@ -278,7 +290,7 @@
                 alert("Please enter the content");
                 return;
             }
-            update("/backbook/updateonemodelandsoon", msg, 1);
+            update("/backcommunity/updateonemodelandsoon", msg, 1);
             return;
         });
 
@@ -291,22 +303,22 @@
                 alert("Please enter the content");
                 return;
             }
-            update("/backbook/updatetwomodelandsoon", msg, 1);
+            update("/backcommunity/updatetwomodelandsoon", msg, 1);
             return;
         });
 
         //模块二内容
         $("#twointroduceup").click(function () {
             var msg = $("#twomodelgetintroduce").val();
-            alert(msg);
+            /*alert(msg);*/
             if (msg == '' || msg == null) {
                 alert("Please enter the content");
                 return;
             }
-            update("/backbook/updatetwomodelandsoon", msg, 2);
+            update("/backcommunity/updatetwomodelandsoon", msg, 2);
             return;
         });
-        //模块二图片修改
+        //模块二图片一修改
         $("#updatemodel2Image1").on('click', function () {
 
             var img = $("#getModel2Image1").val();
@@ -316,7 +328,22 @@
             }
             var file = new FormData();
             file.append("file", document.getElementById('getModel2Image1').files[0]);
-            upImage("/backbook/updatetwomodelpicture", file);
+            file.append("id",1);
+            upImage("/backcommunity/updatetwomodelpicture", file);
+        });
+
+        //模块二图片二修改
+        $("#updatemodel2Image2").on('click', function () {
+
+            var img = $("#getModel2Image2").val();
+            if (img == '' || img == null) {
+                alert("Please select file");
+                return false;
+            }
+            var file = new FormData();
+            file.append("file", document.getElementById('getModel2Image2').files[0]);
+            file.append("id",2);
+            upImage("/backcommunity/updatetwomodelpicture", file);
         });
 
     });
