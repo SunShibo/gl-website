@@ -101,7 +101,7 @@
     function setDom(data) {
         $('<img/>').attr('src', data.homeModel1.image).on('load', function () {
             $(this).remove(); // prevent memory leaks as @benweet suggested
-            $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat bottom center");
+            $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat center center").css('backgroundSize','cover');
             $('#title').html(data.homeModel1.title);
             $(".banner-title").fadeIn(3000);
             $('#subtitle').html(data.homeModel1.subtitle);

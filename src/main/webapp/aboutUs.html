@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ABOUT US</title>
+    <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes,target-densitydpi=medium-dpi"/>
     <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' href='css/slick.css'>
     <link rel='stylesheet' href='css/slick-theme.css'>
@@ -32,7 +33,7 @@
             <div class="hcover"></div>
         </div>
     </div>
-    <div id="banner" style="height: 300px;">
+    <div id="banner" style="height: 20rem;">
         <div class="banner-title">
             <div><h2 id="title"></h2></div>
         </div>
@@ -46,7 +47,7 @@
     </div>
     <div class="about-person">
         <div class="team-box" style="padding: 0.8rem 0">
-            <div class="member-list" style="width: 70%; margin: 0 auto;"></div>
+            <div class="member-list" style="width: 100%; margin: 0 auto;overflow: hidden"></div>
 
             <div class="member-detail" style="width: 70%; margin: 0 auto;"></div>
         </div>
@@ -104,7 +105,7 @@
 
     function setDom(data) {
         $('#banner').css({'background': "url(" + data.one.image + ") no-repeat center center"});
-        $('#bannerTitle').html(data.one.title);
+        $('#title').html(data.one.title);
         $('#infoContent').html(data.two.title);
         $('#infoIntroduce').html(data.two.introduce);
         $('#introduceLeftTitle').html(data.four.title);
@@ -115,7 +116,7 @@
             arrImage.push([
                 '<div class="list-item">',
                 '<div class="list-item-inner">',
-                '<p><img style="width: 100%;height: 100%;" src="' + data.three[i].image + '"></p>',
+                '<p style="width: 9rem;"><img width="100%" src="' + data.three[i].image + '"></p>',
                 '</div>',
                 '</div>'
             ].join(' '));

@@ -61,7 +61,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 18% 0;
+    padding: 17% 0;
 }
 
 #banner .banner-title {
@@ -279,8 +279,8 @@ html, body {
 }
 
 #main .page4-center {
-    width: 50%;
-    padding: 2rem 0;
+    width: 40rem;
+    padding: 2rem;
 }
 
 .page4-center h2 {
@@ -377,9 +377,9 @@ html, body {
 }
 
 .cu-content {
-    width: 55%;
+    width: 65%;
     margin: 0 auto;
-    padding: 1rem 0;
+    padding: 0 0 1rem;
     position: relative;
 }
 
@@ -391,15 +391,14 @@ html, body {
 }
 
 .cu-content .cu-title .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #303030;
-    letter-spacing: 4.22px;
-    line-height: 4rem;
+    line-height: 3rem;
 }
 
 .cu-center .cu-img {
-    width: 55%;
-    margin: 4rem auto 2rem;
+    width: 65%;
+    margin: 2rem auto;
 }
 
 .cu-content .cu-info .cu-item {
@@ -454,7 +453,6 @@ html, body {
 #main .about-person {
     background: url("/image/banner33.png") no-repeat center center;
     background-size: cover;
-    height: 30rem;
     padding: 1rem 0;
 }
 
@@ -478,7 +476,7 @@ html, body {
 }
 
 #main .about-i-center .introduce-reight {
-    width: 45%;
+    width: 50%;
 }
 
 #main .about-i-center .introduce-left .title {
