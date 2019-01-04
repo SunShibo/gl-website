@@ -7,29 +7,29 @@
 </head>
 <body>
 <div id="main">
-    <div id="banner">
-        <div id="head">
-            <div class="b-logo">
-                <img id="logo" src="image/logo-dark.png" alt="">
-            </div>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" href="home.html">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="itinerary.html">ITINERARY</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gopay.html">BOOK NOW</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.html">ABOUT US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contactUs.html">CONTACT US</a>
-                </li>
-            </ul>
+    <div id="head">
+        <div class="b-logo">
+            <img id="logo" src="image/logo-dark.png" alt="">
         </div>
+        <div style="position: absolute;right: 10px; top: 5px">
+            <div class="menu_open">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="nav">
+                <ul class="nav_ul clearfix">
+                    <li class="nav_item"><a href="contactUs.html">CONTACT US</a></li>
+                    <li class="nav_item"><a href="aboutUs.html">ABOUT US</a></li>
+                    <li class="nav_item"><a href="gopay.html">BOOK NOW</a></li>
+                    <li class="nav_item"><a href="itinerary.html">ITINERARY</a></li>
+                    <li class="nav_item"><a href="home.html">HOME</a></li>
+                </ul>
+            </div>
+            <div class="hcover"></div>
+        </div>
+    </div>
+    <div id="banner" style="height: 300px;">
         <div class="banner-title">
             <div><h2 id="title"></h2></div>
         </div>
@@ -38,7 +38,7 @@
     <div id="foot" style="margin: 0;">
         <div class="f-center">
             <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
-            <div class="f-content">© 2018 Rediscover Culture</div>
+            <div class="f-content">© 2019 Rediscover Culture</div>
         </div>
     </div>
 </div>
@@ -46,7 +46,24 @@
 <script src="js/gridify-min.js" type="text/javascript" charset="utf-8"></script>
 <script>
     $(function () {
-
+        $(".menu_open").click(function () {
+            $(".nav").animate({ 'right': '0' }, 400);
+            $(".hcover").animate({ 'left': '0' }, 400);
+        });
+        $(".hcover").click(function () {
+            $(this).animate({ 'left': '-50%' }, 400);
+            $(".nav").animate({ 'right': '-50%' }, 400);
+            $(".nav_ul").animate({ 'right': '0' }, 400);
+            $('.nav_item_open').css('right', '-50%');
+        });
+        $(".nav_item i").click(function () {
+            $(".nav_ul").animate({ 'left': '-100%' }, 400);
+            $(this).next('.nav_item_open').css('left', '0');
+        });
+        $(".subopen").click(function () {
+            $(this).parent('.nav_item_open').css('left', '-50%');
+            $(".nav_ul").animate({ 'left': '0' }, 400);
+        });
         $.ajax({
             url: '/internation/query',
             type: 'POST',

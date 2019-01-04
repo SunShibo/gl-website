@@ -21,46 +21,46 @@
 </head>
 <body>
 <div id="main">
-    <div id="banner" class="gopay" style="height: 300px">
-        <div id="head">
-            <div class="b-logo">
-                <img id="logo" src="image/logo-dark.png" alt="">
-            </div>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" href="home.html">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="itinerary.html">ITINERARY</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gopay.html">BOOK NOW</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.html">ABOUT US</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contactUs.html">CONTACT US</a>
-                </li>
-            </ul>
+    <div id="head">
+        <div class="b-logo">
+            <img id="logo" src="image/logo-dark.png" alt="">
         </div>
+        <div style="position: absolute;right: 10px; top: 5px">
+            <div class="menu_open">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="nav">
+                <ul class="nav_ul clearfix">
+                    <li class="nav_item"><a href="contactUs.html">CONTACT US</a></li>
+                    <li class="nav_item"><a href="aboutUs.html">ABOUT US</a></li>
+                    <li class="nav_item"><a href="gopay.html">BOOK NOW</a></li>
+                    <li class="nav_item"><a href="itinerary.html">ITINERARY</a></li>
+                    <li class="nav_item"><a href="home.html">HOME</a></li>
+                </ul>
+            </div>
+            <div class="hcover"></div>
+        </div>
+    </div>
+    <div class="gopay" id="banner" style="height: 300px;">
         <div class="banner-title">
-            <div><h1 id="bannerTitle"></h1></div>
+            <div><h2 id="title"></h2></div>
         </div>
     </div>
     <div class="page4">
         <div class="page4-center">
-            <div class="font-Poppins-Bold" style="text-align: left">Please fill out the following form to register. Your registration is not complete and will not be processed until you have completed all of the necessary steps and submitted your $1,000 deposit. This fee is payable by credit card during the registration process. Your deposit will be applied toward the cost of the trip and is fully refundable before January 31, 2019.
+            <div class="font-Poppins-Bold" style="text-align: left;font-size: 0.8rem;">Please fill out the following form to register. Your registration is not complete and will not be processed until you have completed all of the necessary steps and submitted your $1,000 deposit. This fee is payable by credit card during the registration process. Your deposit will be applied toward the cost of the trip and is fully refundable before January 31, 2019.
             </div>
             <div style="width: 50%;height: 6px;background: #FFA53A;margin: 10px 0;"></div>
-            <div class="font-Poppins-Bold" style="text-align: left;color: #c6c8ca;">
+            <div class="font-Poppins-Bold" style="text-align: left;color: #c6c8ca;font-size: 0.6rem">
                 If you need help booking a program or have any specific questions as part of the
-                registration process, call us anytime at &nbsp;<span style="color: #080808;">443-654-5063.</span>
+                registration process, call us anytime at &nbsp;<span style="color: #080808;">443-653-5063.</span>
             </div>
         </div>
     </div>
     <div class="page4" style="">
-        <form style="width: 500px;margin: auto" id="bookNow">
+        <form style="width: 20rem;margin: 0 auto" id="bookNow">
             <input name="applicantName" id="applicantName"  placeholder="Applicant's First and Last Name" class="forminput">
             <input name="guardianName" id="guardianName" placeholder="Guardian’s First and Last Name" class="forminput">
             <input name="birthday" id="birthday" placeholder="Applicant’s birthday" class="forminput">
@@ -70,10 +70,10 @@
             <input name="address" id="address" placeholder="Address" class="forminput">
             <input name="person" id="person" placeholder="Emergency Contact Person" class="forminput">
             <input name="personNumber" id="personNumber" placeholder="Emergency Contact Person’s number" class="forminput">
-            <input name="food" id="food" placeholder="Do you allergic to any food?" class="forminput">
-            <input name="concerns" id="concerns" placeholder="Do you have any medical issues or concerns ?" class="forminput">
-            <input name="china" id="china" placeholder="Do you have a visa to China?" class="forminput">
-            <button type="button" style="width: 120px;height: 40px;background: #FFA53A;border:none;display:block;margin: auto;margin-top: 20px;color: #fff;" id="" data-toggle="modal" data-target="#exampleModal">PAY NOW</button>
+            <input name="food" id="food" placeholder="Are you allergic to any food?" class="forminput">
+            <input name="concerns" id="concerns" placeholder="Do you have any medical issues or concerns?" class="forminput">
+            <input name="china" id="china" placeholder="Do you have a valid passport?" class="forminput">
+            <button type="button" style="width: 4rem;height: 1.5rem;background: #FFA53A;border:none;display:block;margin: 2rem auto;color: #fff;" id="" data-toggle="modal" data-target="#exampleModal">PAY NOW</button>
         </form>
     </div>
 
@@ -115,13 +115,31 @@
     <div id="foot">
         <div class="f-center">
             <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
-            <div class="f-content">© 2018 Rediscover Culture</div>
+            <div class="f-content">© 2019 Rediscover Culture</div>
         </div>
     </div>
 </div>
 <script src="js/loadjs.js" type="text/javascript" charset="utf-8"></script>
 <script>
     $(function () {
+        $(".menu_open").click(function () {
+            $(".nav").animate({ 'right': '0' }, 400);
+            $(".hcover").animate({ 'left': '0' }, 400);
+        });
+        $(".hcover").click(function () {
+            $(this).animate({ 'left': '-50%' }, 400);
+            $(".nav").animate({ 'right': '-50%' }, 400);
+            $(".nav_ul").animate({ 'right': '0' }, 400);
+            $('.nav_item_open').css('right', '-50%');
+        });
+        $(".nav_item i").click(function () {
+            $(".nav_ul").animate({ 'left': '-100%' }, 400);
+            $(this).next('.nav_item_open').css('left', '0');
+        });
+        $(".subopen").click(function () {
+            $(this).parent('.nav_item_open').css('left', '-50%');
+            $(".nav_ul").animate({ 'left': '0' }, 400);
+        });
         $.ajax({
             url: '/book/query',
             type: 'POST',
@@ -155,8 +173,8 @@
     });
 
     function setDom(data) {
-        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat center center");
-        $('#bannerTitle').html(data.one.title);
+        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat bottom center");
+        $('#title').html(data.one.title);
     }
 </script>
 </body>
