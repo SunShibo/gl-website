@@ -176,5 +176,64 @@ public class BackgroundHomeController   extends BaseCotroller {
 
 
     }
+    //模块三 文字 修改
+    @RequestMapping("/model3Update")
+    public void model3Update(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg,Integer id) {
 
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
+        boolean verification = ParamVerifyUtil.verification(msg,falg);
+        if(!verification){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        HomepageThreeBO  threeBO=new HomepageThreeBO();
+        threeBO.setId(id);
+        if(falg==1)
+            threeBO.setTitle(msg);
+        if(falg==2)
+            threeBO.setIntroduce(msg);
+
+        homepageService.updateHomepageThree(threeBO);
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
+    //模块四 文字 修改
+    @RequestMapping("/model4Update")
+    public void model4Update(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg,Integer id) {
+
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
+        boolean verification = ParamVerifyUtil.verification(msg,falg);
+        if(!verification){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        HomepageFourBO  FourBO=new HomepageFourBO();
+        FourBO.setId(id);
+        if(falg==1)
+            FourBO.setTitle(msg);
+        if(falg==2)
+            FourBO.setIntroduce(msg);
+
+        homepageService.updateHomepageFour(FourBO);
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
 }
