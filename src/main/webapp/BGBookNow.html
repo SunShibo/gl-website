@@ -111,26 +111,19 @@
 
         <div id="myTabContent" class="tab-content">
 
+            <!--  模块一 图片显示 修改-->
             <div class="tab-pane fade in active" id="onehome">
-                <div id="moduleHead" class="moduleHead" style="width: 100%!important;">
-                    <form action="/backbook/query" method="post" enctype="multipart/form-data">
-                        <!--TODO  模块一图片上传 -->
-                        <div class="row" id="moduleHeadLeft" style="width: 100%!important;">
-                            <div class="col-md-8 column right" style="margin-top: 30px">
-                                <img height="200px"  width="300px"   id="oneshuchupicture"/>
-                            </div>
-                            <div class="col-md-4 column">
-                                <div style="height: 50px;width: 100%"></div>
-                                <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
-                                <input id="getpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
-                            </div>
-                        </div>
-                        <br/><br/><br/><br/>
-                        <div style="height: 40px ;width: 500px;margin: 0 30%;">
-                            <a href="javascript:void(0)" id="onepictureup">Modification</a>
-                        </div>
-                    </form>
+                <form     style="display: flex; justify-content: space-around; align-content: center">
+            <div style="margin: 25px 0;">
+                <img height="180px" width="200px" id="showmodel1Image1" />
+                <div style="text-align: center">
+                    <input type="file" class="fileimg" name="file"
+                           placeholder="please choose The picture to be replaced"
+                           title="please choose The picture to be replaced" id="getModel1Image1" >
+                    <a href="javascript:void(0)"  id="updatemodel1Image1" >Modification</a>
                 </div>
+            </div>
+                </form>
             </div>
             <!--  模块一 代码显示-->
             <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
@@ -145,11 +138,7 @@
 
 
 
-
-
-
-
-            <!--  模块二代码显示-->  <!--TODO 模块二 正文-->
+            <!--  模块二标题显示-->
             <div class="tab-pane fade" id="twotitle"></a>
                 <div style="height: 150px ;width: 590px;margin: 0 28%;">
                     <h4 style="text-align: center" id="twoshuchutitle">李泽新</h4>
@@ -160,8 +149,8 @@
                     <a href="javascript:void(0)" id="twotitleup">Modification</a>
                 </div>
             </div>
-
-            <div class="tab-pane fade" id="twointroduce">  <!--TODO  模块二内容 -->
+            <!--  模块二内容显示-->
+            <div class="tab-pane fade" id="twointroduce">
                 <h4 style="text-align: center;text-decoration:none;" id="twoshuchuintroduce">Modification Main Title</h4>
                 <br/><br/><br/><br/>
                 <div  style="z-index: 25252525;padding-left: 26%;">
@@ -174,23 +163,17 @@
 
             <!--模块二图片  -->
             <div class="tab-pane fade" id="twopicture">
-
-
-
-                        <div class="row" id="" style="width: 100%!important;">
-                            <div class="col-md-8 column right" style="margin-top: 30px">
-                                <img height="200px"  width="300px"   id="twoshuchupicture"/>
-                            </div>
-                            <div class="col-md-4 column">
-                                <div style="height: 50px;width: 100%"></div>
-                                <span id="" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
-                                <input id="twomodelgetpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
-                            </div>
+                <form     style="display: flex; justify-content: space-around; align-content: center">
+                    <div style="margin: 25px 0;">
+                        <img height="180px" width="200px" id="showmodel2Image1" />
+                        <div style="text-align: center">
+                            <input type="file" class="fileimg" name="file"
+                                   placeholder="please choose The picture to be replaced"
+                                   title="please choose The picture to be replaced" id="getModel2Image1" >
+                            <a href="javascript:void(0)"  id="updatemodel2Image1" >Modification</a>
                         </div>
-                        <br/><br/><br/><br/>
-                        <div style="height: 40px ;width: 500px;margin: 0 30%;">
-                            <a href="javascript:void(0)" id="twopictureup">Modification</a>
-                        </div>
+                    </div>
+                </form>
 
 
             </div>
@@ -203,45 +186,7 @@
             </div>
 
 
-          <!--  <div class="tab-pane fade" id="model3Title">
-                <div style="height: 140px ;width: 590px;margin: 0 28%;">
-                    <h4 style="text-align: center" id="showModel3Title1">Modify Content</h4>
-                </div>
-                <div style="display: flex;align-content: center; justify-content: center">
-                    <table>
-                        <tr>
-                            <td><span style="text-align: center" id="shouwModel3Title1">Modify Content</span></td>
-                            <td><textarea name="messageContent" style="width: 80%;" id="f"></textarea></td>
-                            <td><a href="javascript:void(0)" id="a">Modification</a></td>
-                        </tr>
-                    </table>
 
-                    &lt;!&ndash;<div style="text-align: center">
-                        <div style="height: 140px ;width: 590px;margin: 0 28%;">
-                            <h4 style="text-align: center" id="showModel3Title1">Modify Content</h4>
-                        </div>
-                        <textarea name="messageContent" style="width: 80%;" id="f"></textarea>
-                        <a href="javascript:void(0)" id="a">Modification</a>
-                    </div>
-                    <div style="">
-                        <div style="height: 140px ;width: 590px;margin: 0 28%;">
-                            <h4 style="text-align: center" id="showModel3Title1">Modify Content</h4>
-                        </div>
-                        <textarea name="messageContent" style="width: 80%;" id="d"></textarea>
-                        <a href="javascript:void(0)" id="b">Modification</a>
-                    </div>
-                    <div style="">
-                        <div style="height: 140px ;width: 590px;margin: 0 28%;">
-                            <h4 style="text-align: center" id="showModel3Title1">Modify Content</h4>
-                        </div>
-                        <textarea name="messageContent" style="width: 80%;" id="c"></textarea>
-                        <a href="javascript:void(0)" id="e">Modification</a>
-                    </div>
-                </div>&ndash;&gt;
-            </div>
-
-
-        </div>-->
     </div>
 </main>
 
@@ -258,33 +203,15 @@
             success: function (date) {
                 if (date.success == true) {
                     var one = date.data.one;
-                    $("#oneshuchupicture").attr("src", one.image);
+                    $("#showmodel1Image1").attr("src", one.image);
                     $("#oneshuchutitle").html(one.title);
                     var two = date.data.two;
                     $("#twoshuchutitle").html(two[0].title);
                     $("#twoshuchuintroduce").html(two[0].introduce);
-                    $("#twoshuchupicture").attr("src", two[0].image);
-
-
-                    /*
+                    $("#showmodel2Image1").attr("src", two[0].image);
 
 
 
-
-                        $("#titleone").html(homeModel1.title);
-                         $("#subtitleone").html(homeModel1.subtitle);
-                         $("#introduceone").html(homeModel1.introduce);
-                         var homeModel2 = date.data.homeModel2;
-                         $("#titletwo").html(homeModel2.title);
-                         $("#introducetwo").html(homeModel2.introduce);
-                        var homeModel3 = date.data.homeModel3;
-                         for(var i=0;i<homeModel3.length;i++){
-
-                             $("#titlethreeone").html(homeModel3[0].title);
-                             $("#titlethreetwo").html(homeModel3[1].title);
-                             $("#titlethreethree").html(homeModel3[2].title);
-                             $("#titlethreefour").html(homeModel3[3].title);
-                         }*/
                 } else if (date.success == false) {
                     var err = date.errCode;
                     if (err == 0000001) {
@@ -330,12 +257,16 @@
 
     $(document).ready(function () {
         //模块一图片修改
-        $("#onepictureup").click(function () {
-            var img = $("#getpicturename").val();
+        $("#updatemodel1Image1").on('click', function () {
+
+            var img = $("#getModel1Image1").val();
             if (img == '' || img == null) {
                 alert("Please select file");
+                return false;
             }
-            $("#onepictureup").submit();
+            var file = new FormData();
+            file.append("file", document.getElementById('getModel1Image1').files[0]);
+            upImage("/backbook/updateonemodelpicture", file);
         });
 
 
@@ -375,7 +306,18 @@
             update("/backbook/updatetwomodelandsoon", msg, 2);
             return;
         });
+        //模块二图片修改
+        $("#updatemodel2Image1").on('click', function () {
 
+            var img = $("#getModel2Image1").val();
+            if (img == '' || img == null) {
+                alert("Please select file");
+                return false;
+            }
+            var file = new FormData();
+            file.append("file", document.getElementById('getModel2Image1').files[0]);
+            upImage("/backbook/updatetwomodelpicture", file);
+        });
 
     });
 
@@ -400,6 +342,32 @@
             error: function () {
                 alert("network anomaly");
             }
+        });
+
+    }
+
+    //上传图片
+    function upImage(url,data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            async: false,
+            processData: false,
+            contentType: false,
+            success: function (date) {
+                if (date.success == true) {
+                    history.go(0);
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+
         });
 
     }

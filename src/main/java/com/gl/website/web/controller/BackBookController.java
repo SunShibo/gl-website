@@ -54,7 +54,7 @@ public class BackBookController extends BaseCotroller {
 
     //首页模块一图片修改
     @RequestMapping("/updateonemodelpicture")
-    public void model1ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile img) throws Exception {
+    public void model1ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile file) throws Exception {
         AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
@@ -62,7 +62,7 @@ public class BackBookController extends BaseCotroller {
             return;
         }
 
-        String s = uploadingUtil.uploaDing(img);
+        String s = uploadingUtil.uploaDing(file);
         if(s==null){
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000018"));
             safeTextPrint(response, json);
@@ -73,6 +73,34 @@ public class BackBookController extends BaseCotroller {
         firstBO.setId(1);
         firstBO.setImage(s);
         bookService.updateBookFirst(firstBO);
+
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
+
+    //首页模块二图片修改
+    @RequestMapping("/updatetwomodelpicture")
+    public void model2ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile file) throws Exception {
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        String s = uploadingUtil.uploaDing(file);
+        if(s==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000018"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        BookTwoBO  twoBO=new BookTwoBO();
+        twoBO.setId(1);
+        twoBO.setImage(s);
+        bookService.updateBookTwo(twoBO);
 
 
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
