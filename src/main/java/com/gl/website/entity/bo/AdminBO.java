@@ -8,7 +8,7 @@ import java.util.Date;
 public class AdminBO {
     private Integer id;
     private  String phoneNumber; //电话
-    private  String password;//密码
+    private  String password="******";//密码
     private String name;//名字
     private Date createTime;
     private String uuid ; // 用户登录的UUID

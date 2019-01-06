@@ -188,7 +188,7 @@
                     window.location="/homePageli.html";
                 }else if(date.success==false){
                     var err=date.errCode;
-                    if(err==0000004){
+                    if(err=='0000004'){
                         $("#loginname").tips({
                             side: 2,
                             msg: 'The user does not exist',
@@ -197,7 +197,7 @@
                         });
                         $("#loginname").focus();
                         return false;
-                    }else if(err==0000001){
+                    }else if(err=='0000001'){
                         $("#password").tips({
                             side: 2,
                             msg: 'wrong password',

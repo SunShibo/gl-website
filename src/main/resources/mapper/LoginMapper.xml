@@ -14,10 +14,40 @@
         status=#{status} ,gender=#{gender}
     </insert>
 -->
+    <sql id="limit">
+        limit #{pageOffset},#{pageSize}
+    </sql>
+
     <!--查询用户-->
     <select id="login"     resultType="com.gl.website.entity.bo.AdminBO"    >
-       SELECT  *  FROM  gl_admin   WHERE  name=#{userName}
+       SELECT  *   FROM  gl_admin   WHERE  name=#{userName}  AND  status=0
     </select>
 
+    <!--查询用户总数-->
+    <select id="queryUserCount"  resultType="int"  parameterType="map"   >
+        SELECT count(*)  FROM  gl_admin  WHERE status=0
+    </select>
+    <!--查询所有用户-->
+    <select id="queryAll"   resultType="com.gl.website.entity.bo.AdminBO"   parameterType="map" >
+        SELECT  id,`name`  FROM   gl_admin  WHERE status=0  <include refid="limit" />
+    </select>
 
+    <!--查询一个用户-->
+    <select id="queryUser"   resultType="com.gl.website.entity.bo.AdminBO"   parameterType="int" >
+        SELECT  id,`name`  FROM   gl_admin  WHERE   id=#{id}  AND  status=0
+    </select>
+
+    <update id="updateUser"  parameterType="com.gl.website.entity.bo.AdminBO" >
+        UPDATE   gl_admin  SET  `name`=#{name}  ,password=#{password}      WHERE   id=#{id}
+    </update>
+
+
+    <insert id="addUser"  parameterType="com.gl.website.entity.bo.AdminBO" >
+        INSERT INTO `gl_admin` (`password`, `name`, `create_time`, `uuid`, `status`)
+			VALUES(#{password},#{name},now(),#{uuid},#{status})
+    </insert>
+
+    <update id="delUser"  parameterType="int" >
+           UPDATE   gl_admin  SET  `status`=1    WHERE   id=#{id}
+    </update>
 </mapper>
