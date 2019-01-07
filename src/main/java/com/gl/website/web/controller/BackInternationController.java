@@ -73,9 +73,12 @@ public class BackInternationController extends BaseCotroller {
         InternationFirstBO  firstBO=new InternationFirstBO();
         firstBO.setId(1);
         firstBO.setImage(s);
-        internationService.updateInternationFirst(firstBO);
-
-
+        Integer count= internationService.updateInternationFirst(firstBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
         return;
@@ -108,8 +111,12 @@ public class BackInternationController extends BaseCotroller {
         if(falg==3)
             firstBO.setIntroduce(msg);
 
-        internationService.updateInternationFirst(firstBO);
-
+        Integer count=internationService.updateInternationFirst(firstBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
         return;
@@ -140,8 +147,12 @@ public class BackInternationController extends BaseCotroller {
         if(falg==2)
             twoBO.setIntroduce(msg);
 
-        internationService.updateInternationTwo(twoBO);
-
+        Integer count=internationService.updateInternationTwo(twoBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
         return;
@@ -181,8 +192,12 @@ public class BackInternationController extends BaseCotroller {
        if(pictureaddress!=null) {
            twoBO.setImage(pictureaddress);
        }
-       internationService.updateInternationTwo(twoBO);
-
+      Integer count= internationService.updateInternationTwo(twoBO);
+       if( count==0 ){
+           String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+           safeTextPrint(response,json);
+           return;
+       }
        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
        safeTextPrint(response, json);
        return;
@@ -212,8 +227,12 @@ public class BackInternationController extends BaseCotroller {
         if(pictureaddress!=null) {
             twoBO.setImage(pictureaddress);
         }
-        internationService.addInternationTwo(twoBO);
-
+       Integer count= internationService.addInternationTwo(twoBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
         return;
@@ -238,8 +257,12 @@ public class BackInternationController extends BaseCotroller {
         if(id!=null) {
             twoBO.setId(id);
         }
-        internationService.deleteInternationTwo(twoBO);
-
+        Integer count=internationService.deleteInternationTwo(twoBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
         return;

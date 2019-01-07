@@ -73,8 +73,12 @@ public class BackSilkRoadController extends BaseCotroller {
         SilkroadFirstBO  firstBO=new SilkroadFirstBO();
         firstBO.setId(1);
         firstBO.setImage(s);
-        silkroadService.updateSilkroadFirst(firstBO);
-
+       Integer count= silkroadService.updateSilkroadFirst(firstBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
 
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
@@ -108,8 +112,12 @@ public class BackSilkRoadController extends BaseCotroller {
         if(falg==3)
             firstBO.setIntroduce(msg);
 
-        silkroadService.updateSilkroadFirst(firstBO);
-
+       Integer count= silkroadService.updateSilkroadFirst(firstBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
         safeTextPrint(response, json);
         return;
@@ -182,8 +190,12 @@ public void model2UpdateAll(HttpServletResponse  response,HttpServletRequest req
     if(pictureaddress!=null) {
         twoBO.setImage(pictureaddress);
     }
-    silkroadService.updateSilkroadTwo(twoBO);
-
+    Integer count=silkroadService.updateSilkroadTwo(twoBO);
+    if( count==0 ){
+        String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response,json);
+        return;
+    }
     String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
     safeTextPrint(response, json);
     return;
@@ -213,8 +225,12 @@ public void model2AddAll(HttpServletResponse  response,HttpServletRequest reques
     if(pictureaddress!=null) {
         twoBO.setImage(pictureaddress);
     }
-    silkroadService.addSilkroadTwo(twoBO);
-
+    Integer count=silkroadService.addSilkroadTwo(twoBO);
+    if( count==0 ){
+        String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response,json);
+        return;
+    }
     String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
     safeTextPrint(response, json);
     return;
@@ -239,8 +255,12 @@ public void model2DeleteAll(HttpServletResponse  response,HttpServletRequest req
     if(id!=null) {
         twoBO.setId(id);
     }
-    silkroadService.deleteSilkroadTwo(twoBO);
-
+    Integer count= silkroadService.deleteSilkroadTwo(twoBO);
+    if( count==0 ){
+        String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response,json);
+        return;
+    }
     String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
     safeTextPrint(response, json);
     return;
