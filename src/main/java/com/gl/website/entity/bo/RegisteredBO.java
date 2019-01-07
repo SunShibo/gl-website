@@ -22,6 +22,16 @@ public class RegisteredBO extends BaseModel {
     private Double paymentAmount;//缴费金额
     private Date paymentTime;//缴费时间
     private Double balanceof;//余额
+    private Date  createTime;//创建时间
+
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public int getId() {
         return id;

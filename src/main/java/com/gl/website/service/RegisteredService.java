@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("registeredService")
 @Transactional
@@ -38,6 +42,15 @@ public class RegisteredService {
         return reDAO.addRegistered(rebo);
     }
 
-
+    public List<RegisteredBO>  queryMsgByDate(Date date)throws Exception{
+        SimpleDateFormat  simpleDateFormatStart = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        SimpleDateFormat  simpleDateFormatEnd = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
+        String startTime = simpleDateFormatStart.format(date);
+        String endTime=simpleDateFormatEnd.format(date);
+        Map<String,Object>  map=new HashMap<String, Object>();
+        map.put("startTime",startTime);
+        map.put("endTime",endTime);
+        return reDAO.queryMsgByDate(map);
+    }
 
 }

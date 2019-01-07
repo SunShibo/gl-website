@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -73,6 +74,37 @@ public class RegisteredController extends BaseCotroller {
             safeTextPrint(response, json);
         }
     }
+
+    @RequestMapping("/queryMsgByDate")
+    public void queryMsgByDate(HttpServletResponse response,HttpServletRequest request,Date date){
+
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000019", "Please login first"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        if(date==null){
+            date=new Date();
+        }
+        try {
+            List<RegisteredBO> registeredBOS = registeredService.queryMsgByDate(date);
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(registeredBOS));
+            safeTextPrint(response, json);
+            return;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+
+    }
+
+
 
 
 

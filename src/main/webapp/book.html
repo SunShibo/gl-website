@@ -46,22 +46,15 @@
 <main>
 
 
-    <div style="height: 60px;"></div>
-    <form class="layui-form" style="padding-top: 10px">
-        <div class="layui-form-item">
-            <label class="layui-form-label">Date</label>
-            <div class="layui-input-inline" style="width: 165px;">
-                <input type="text" name="startTime" lay-verify="required" id="startTime" autocomplete="off"
-                       class="layui-input inline-input"
-                       placeholder="时间">
-            </div>
-            <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit="" lay-filter="formData">select</button>
-            </div>
-        </div>
-    </form>
-    <div class="tab-box">
-        <table id="residentStatement" lay-filter="residentStatement" class="layui-table"></table>
+
+    <br/>
+    <div style="width:85%; margin:8% auto;height: 80%">
+       <div>
+           <input type="text" class="layui-input" id="dateInput"  style="width:180px;float: left" placeholder="Select the date to view">
+           &nbsp;&nbsp;
+           <a class="layui-btn layui-btn-xs" style="width: 50px;height: 37px;line-height:37px;" id="query">Query</a>
+       </div>
+        <table id="showTable" lay-filter="book"   class="layui-table"></table>
     </div>
 
 
@@ -70,43 +63,154 @@
 
 <script src="static/menu/manu.js"></script>
 <script src='js/layui.js' type='text/javascript' charset='utf-8'></script>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
 
-
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#dateInput' //指定元素
+            ,lang: 'en'
+            ,format: 'yyyy/MM/dd'
+        });
+    });
+</script>
 <script type="text/javascript">
 
-    layui.use(['table', 'element', 'form', 'laydate'], function () {
-        var table = layui.table, $ = layui.$, form = layui.form, state = 0, laydate = layui.laydate;
-        //监听提交
-        form.on('submit(formData)', function (data) {
-            resultInfo();
-            return false;
+    $(document).ready(function () {
+        $("#query").click(function () {
+            fun2();
         });
+    });
+
+    function fun2(){
+       var date= $("#dateInput").val();
+
+        fun1(date);
+    }
+
+    fun1(new Date());
 
 
-        //获取
-        function resultInfo() {
-            var obj = {
-                date:$("#startTime").val().replace(/-/g, "/")+" 04:00:00"
-            };
+   function fun1(date ) {
 
-            $.ajax({
-                url: '/statement/getBusiness',
-                type: 'POST',
-                data: obj,
-                dataType: 'json',
-                success: function (data) {
-                    formatData(data.data)
-                }
-            })
-        }
+
+    layui.use('table', function(){
+
+  //  var table = layui.table, $ = layui.$, form = layui.form, state = 0, laydate = layui.laydate;
+
+        $.ajax({
+            url: 'registered/queryMsgByDate',
+            type: 'POST',
+            data: {"date":date},
+            dataType: 'json',
+            success: function (data) {
+                formatData(data.data)
+            }
+        })
 
         function formatData(data) {
 
             tab.reload({data: JSON.parse(JSON.stringify(data))});
         }
 
+    var table = layui.table;
+
+    var tab = table.render({
+        elem: '#showTable' //指定原始表格元素选择器（推荐id选择器）
+        , limit: 10000
+        , response: {
+            statusName: 'code' //规定数据状态的字段名称，默认：code
+            , statusCode: 200 //规定成功的状态码，默认：0
+            , msgName: 'msg' //规定状态信息的字段名称，默认：msg
+            , countName: 'count' //规定数据总数的字段名称，默认：count
+            , dataName: 'data' //规定数据列表的字段名称，默认：data
+
+        }
+        , parseData: function (res) { //res 即为原始返回的数据
+            return {
+                "code": 200, //解析接口状态
+                "msg": res.errMsg, //解析提示文本
+                //   "count": res.data.count, //解析数据长度
+                "data": res.data //解析数据列表
+            };
+        }
+        , even: true
+        , loading: true // 是否显示加载条
+        , toolbar:true
+        ,defaultToolbar:['filter']
+        , cols: [[ //标题栏
+            {field: 'createTime',width:'15%', title: 'Time',sort: true, align: 'center',templet:function (data) {
+                    return layui.util.toDateString(data.createTime.time, 'yyyy-MM-dd HH:mm')
+                }}
+
+            ,{field: 'applicantName', align: 'center', title: 'Proposer'  ,width:'15%',} //申请人
+            ,{field: 'guardianName', title: 'Guardian', width:'15%',}  //监护人
+            , {field: 'applicantBirthday', title: 'Birthday' ,width:'15%',}, //生日
+            {field: 'gender', align: 'center', title: 'Gender' ,width:'15%',} //性别
+            , {field: 'phone', align: 'center', title: 'Phone' ,width:'15%',}  //电话
+            , {field: 'email', align: 'center', title: 'Email' ,width:'15%',} //邮箱
+            , {field: 'address', align: 'center', title: 'Address' ,width:'15%',}  //地址
+            ,{field: 'emergencyContact', align: 'center', title: 'Emergency contact' ,width:'15%',}  //紧急联系人
+            , {field: 'emergencyContactNumber', align: 'center', title: 'The emergency contact number' ,width:'15%',} //他的电话
+            , {field: 'foodAllergy', align: 'center', title: 'Food allergy' ,width:'15%',} //过敏的食物
+            , {field: 'concerns', align: 'center', title: 'health problem' ,width:'15%',} //健康问题
+            , {field: 'chineseVisa', align: 'center', title: 'valid passport' ,width:'15%',} //有效护照
+
+        ]]
+        ,text: {
+            none: 'no data' //默认：无数据。注：该属性为 layui 2.2.5 开始新增
+        }
+    })
+  /*  laydate.render({
+        elem: '#startTime',
+        type: 'date',
+        btns: ['confirm'],
+        done: function (value, date) {
+
+        }
+     });*/
+   });
+
+   }
+
+
+
+
+
+
+
+/*
+
+    layui.use(['table', 'element', 'form', 'laydate'], function () {
+        var table = layui.table, $ = layui.$, form = layui.form, state = 0, laydate = layui.laydate;
+
+        //获取
+
+          /!*  var obj = {
+                date:$("#startTime").val().replace(/-/g, "/")+" 04:00:00"
+            };*!/
+
+
+        $.ajax({
+            url: 'registered/queryMsgByDate',
+            type: 'POST',
+            data: {"date":date},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                formatData(data.data)
+            }
+        })
+
+        function formatData(data) {
+
+            tab.reload({data: JSON.parse(JSON.stringify(data))});
+        }
+
+
         var tab = table.render({
-            elem: '#residentStatement' //指定原始表格元素选择器（推荐id选择器）
+            elem: '#showTable' //指定原始表格元素选择器（推荐id选择器）
             , limit: 10000
             , response: {
                 statusName: 'code' //规定数据状态的字段名称，默认：code
@@ -119,26 +223,27 @@
                 return {
                     "code": 200, //解析接口状态
                     "msg": res.errMsg, //解析提示文本
-                    "count": res.data.count, //解析数据长度
-                    "data": res.data.statement //解析数据列表
+                 //   "count": res.data.count, //解析数据长度
+                    "data": res.data //解析数据列表
                 };
             }
             , even: true
             , loading: true // 是否显示加载条
             , toolbar: true
             , cols: [[ //标题栏
-                {field: 'project', align: 'center', title: 'Proposer'} //申请人
-                ,{field: 'center', title: 'Guardian', }  //监护人
-                , {field: 'center', title: 'Birthday',}, //生日
-                {field: 'thisYearThisPrice', align: 'center', title: 'Gender'} //性别
-                , {field: 'thisYearThisMonth', align: 'center', title: 'Phone'}  //电话
-                , {field: 'thisYearThisLastMonth', align: 'center', title: 'Email'} //邮箱
-                , {field: 'thisYearThisYear', align: 'center', title: 'Address'}  //地址
-                ,{field: 'lastYearThisMonth', align: 'center', title: 'Emergency contact'}  //紧急联系人
-                , {field: 'lastYearMonthDifferences', align: 'center', title: 'The emergency contact number'} //他的电话
-                , {field: 'lastYearThisYear', align: 'center', title: 'Food allergy'} //过敏的食物
-                , {field: 'lastYearDifferencesIn', align: 'center', title: 'health problem'} //健康问题
-                , {field: 'lastYearDifferencesIn', align: 'center', title: 'valid passport'} //有效护照
+                {field: 'createTime', align: 'center', title: 'Time'}
+                ,{field: 'applicantName', align: 'center', title: 'Proposer'} //申请人
+                ,{field: 'guardianName', title: 'Guardian', }  //监护人
+                , {field: 'applicantBirthday', title: 'Birthday',}, //生日
+                {field: 'gender', align: 'center', title: 'Gender'} //性别
+                , {field: 'phone', align: 'center', title: 'Phone'}  //电话
+                , {field: 'email', align: 'center', title: 'Email'} //邮箱
+                , {field: 'address', align: 'center', title: 'Address'}  //地址
+                ,{field: 'emergencyContact', align: 'center', title: 'Emergency contact'}  //紧急联系人
+                , {field: 'emergencyContactNumber', align: 'center', title: 'The emergency contact number'} //他的电话
+                , {field: 'foodAllergy', align: 'center', title: 'Food allergy'} //过敏的食物
+                , {field: 'concerns', align: 'center', title: 'health problem'} //健康问题
+                , {field: 'chineseVisa', align: 'center', title: 'valid passport'} //有效护照
             ]]
         });
 
@@ -151,6 +256,7 @@
             }
         });
     });
+*/
 
 </script>
 </body>

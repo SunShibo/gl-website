@@ -68,11 +68,17 @@
     <insert id="addRegistered" parameterType="com.gl.website.entity.bo.RegisteredBO">
         INSERT INTO gl_registered(
        applicant_name,guardian_name,applicant_birthday,gender,phone,email,address,emergency_contact,emergencyContact_number,food_allergy,
-       concerns,chinese_visa,payment_amount,payment_time,balanceof
+       concerns,chinese_visa,payment_amount,payment_time,balanceof,create_time
         )
         VALUES(
         #{applicantName},#{guardianName},#{applicantBirthday},#{gender},#{phone},#{email},#{address},
         #{emergencyContact},#{emergencyContactNumber},#{foodAllergy},#{concerns},#{chineseVisa},#{paymentAmount},#{paymentTime},#{balanceof}
+        ,NOW()
         )
     </insert>
+
+
+    <select id="queryMsgByDate"  parameterType="map"  resultType="com.gl.website.entity.bo.RegisteredBO">
+      SELECT * FROM gl_registered WHERE create_time  BETWEEN #{startTime} AND  #{endTime}
+    </select>
 </mapper>
