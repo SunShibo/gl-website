@@ -67,7 +67,22 @@
         .changebtn{
             margin-left: 43%;
         }
-
+        .listimg{
+            width: 200px;height: 150px;vertical-align: middle;
+        }
+        .t2{
+            width: 490px;height: 140px;vertical-align: middle;padding: 5px;
+        }
+        .t1{
+            width: 140px;height: 140px;vertical-align: middle;padding: 5px;
+        }
+        .div{
+            height: 150px;margin: 20px;
+        }
+        main {
+            position: static;
+            height: 100%;
+        }
 
     </style>
 </head>
@@ -97,8 +112,8 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#home" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
-                    <li><a href="#onetitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                    <li><a href="#home" class="onehomes" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#onetitle" class="onehomes" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
                 </ul>
             </li>
 
@@ -108,8 +123,8 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#Mode2Title" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
-                    <li><a href="#Mode2Content" tabindex="-1" data-toggle="tab">Modify introduce</a></li>
+                    <li><a href="#Mode2Title"  class="onehomes"  tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                    <li><a href="#Mode2Content"  class="onehomes" tabindex="-1" data-toggle="tab">Modify introduce</a></li>
                 </ul>
             </li>
 
@@ -121,7 +136,7 @@
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
 
-                    <li><a href="#model3all" tabindex="-1" data-toggle="tab">Modify Multiple Text</a></li>
+                    <li><a href="#model3all" tabindex="-1"  class="clicktwo"  data-toggle="tab">Modify Multiple Text</a></li>
                 </ul>
 
 
@@ -209,17 +224,12 @@
             </div>
 
           <!--模块三 部分 -->
-            <div class="tab-pane fade" id="model3all"></a>
-                <div style="height: 150px ;width: 590px;margin: 2% 28%;">
-                    <h4 style="text-align: center" id="showModel3Title1">Modify The Title</h4>
-                </div>
-                <div style="padding-left: 26%;">
-                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
-                              id="getModel3Title1"></textarea>
-                    <a href="javascript:void(0)" id="updateModel3Title1">Modification</a>
-                </div>
-            </div>
+            <div class="tab-pane fade" id="model3all" style="min-height: 800px;"></a>
 
+
+
+            </div>
+            <input type="file" accept="image/*" id="imgupload" style="display: none" onchange="uploadimg();">
 
             <!-- 模块四 修改标题一  -->
             <div class="tab-pane fade" id="model4TitleOne"></a>
@@ -307,7 +317,7 @@
                     $("#showModel2Title").html(two.title);
                     $("#showModel2Content").html(two.introduce);
                     var three = date.data.three;
-
+                    renderData(three);
                     var four = date.data.four;
                     $("#showModel4Title1").html(four.title);
                     $("#showModel4SubTitle1").html(four.subtitle);
@@ -552,6 +562,170 @@
     }
 
 
+
+
+    function renderData(v) {
+        if(!v)return ;
+        if(v.length==0)return;
+        var $d = $("#model3all");
+        $d.empty();
+        var str = '';
+
+
+        for(var i=0;i<v.length;i++){
+
+
+            str +=[ '  <div class="div"  id="dom'+v[i]['id']+'">',
+                '   <img class="listimg" src="'+v[i]['image']+'">',
+                '   <textarea class="t1">'+v[i]['title']+'</textarea>',
+                '   <textarea class="t2">'+v[i]['introduce']+'</textarea>',
+                '   <button class="modify btn" data-id="'+v[i]['id']+'" onclick="modifyData(this)">修改</button>',
+                '   <button class="delete btn" data-id="'+v[i]['id']+'" onclick="deleteData(this)">删除</button>',
+                '   </div>'].join("")
+
+        }
+        var w = '<div class="div" id="adddom"><button class="add btn">新增</button></div>';
+        $d.append(str+w)
+    }
+
+    $(".clicktwo").on("click",function () {
+        $("main").css("height","auto")
+    })
+    $(".onehomes").on("click",function () {
+        $("main").css("height","100%")
+    })
+
+    function modifyData(t) {
+
+        var id = t.dataset.id;
+        var src = $($("#dom"+id).find("img")[0]).attr("src");
+        var text = $("#dom"+id).find("textarea")[0].value;
+        var introduce = $("#dom"+id).find("textarea")[1].value;
+        $.ajax({
+            url: '/backabout/update3modelall',
+            type: 'POST',
+            data: {
+                title:text,
+                pictureaddress:src,
+                id:id,
+                introduce:introduce
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    $("#imgupload").val('');
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+    $(document).on("click",".listimg",function () {
+        self = this;
+        $("#imgupload").trigger("click");
+    })
+    function uploadimg() {
+        var img = $("#imgupload").val();
+        if (img == '' || img == null) {
+            alert("Please select file");
+            return false;
+        }
+        var file = new FormData();
+        file.append("file", document.getElementById('imgupload').files[0]);
+        upImage2("/backupload/uploadpicture", file);
+    };
+    //上传图片
+    function upImage2(url,data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            async: false,
+            processData: false,
+            contentType: false,
+            success: function (date) {
+                if (date.success == true) {
+                    self.src = date.data;
+                    // debugger;
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+
+        });
+
+    }
+
+    $(document).on("click",".add",function () {
+
+        var $d = $("#adddom");
+        var str =[ '  <div class="div">',
+            '   <img class="listimg" src="image/add.jpg">',
+            '   <textarea class="t1" placeholder="name"></textarea>',
+            '   <textarea class="t2" placeholder="introduce"></textarea>',
+            '   <button class="modify btn" onclick="addData(this)">保存</button>',
+            // '   <button class="delete btn" onclick="deleteData(this)">删除</button>',
+            '   </div>'].join("")
+        $d.before(str)
+    })
+    function addData(t) {
+        var src = $(t.previousElementSibling.previousElementSibling.previousElementSibling).attr("src");
+        var text = t.previousElementSibling.previousElementSibling.value;
+        var introduce = t.previousElementSibling.value;
+        if(src=='image/add.jpg')src='';
+        $.ajax({
+            url: '/backabout/add3modelall',
+            type: 'POST',
+            data: {
+                title:text,
+                pictureaddress:src,
+                introduce:introduce
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    $("#imgupload").val('');
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+    function deleteData(t) {
+        $.ajax({
+            url: '/backabout/delete3modelall',
+            type: 'POST',
+            data: {
+                id:t.dataset.id
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    t.parentNode.parentNode.removeChild(t.parentNode);
+
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
 
 </script>
 
