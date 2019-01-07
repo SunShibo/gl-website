@@ -34,21 +34,23 @@
     <h1>Menu</h1>
     <ul>
         <li><a href="homePageli.html" style="color:#9DC6D1;text-decoration:none;">HomePage</a></li>
-        <li>Susy</li>
+        <li><a href="BGAbout.html" style="color:#9DC6D1;text-decoration:none;">About</a></li>
         <li><a href="BGCommunity.html" style="color:#9DC6D1;text-decoration:none;">Community</a></li>
         <li><a href="BGDay.html" style="color:#9DC6D1;text-decoration:none;">Day</a></li>
         <li><a href="BGSilkRoad.html" style="color:#9DC6D1;text-decoration:none;">SilkRoad</a></li>
         <li><a href="BGInternation.html" style="color:#9DC6D1;text-decoration:none;">Internation</a></li>
         <li><a href="BGBookNow.html" style="color:#9DC6D1;text-decoration:none;">BookNow</a></li>
+        <li><a href="user.html" style="color:#9DC6D1;text-decoration:none;">User</a></li>
+        <li><a href="book.html" style="color:#9DC6D1;text-decoration:none;">ShowBookNow</a></li>
     </ul>
 </nav>
 
 <main>
 
 
-    <div style="width:70%; margin:8% auto;height: 70%">
+    <div style="width:70%;height: 80%; margin:8% auto;">
           <a class="layui-btn layui-btn-xs" style="float: right" id="addUsere">Add User</a>
-          <table id="demo" lay-filter="user"   class="layui-table"></table>
+          <table id="demo" lay-filter="user"   class="layui-table"  ></table>
     </div>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">compile</a>
@@ -71,7 +73,7 @@
         //第一个实例
         table.render({
             elem: '#demo'
-            ,height: 312
+            ,height: 450
             ,url: '/user/query' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
@@ -107,7 +109,6 @@
     table.on('tool(user)', function (obj) { //tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
         var data = obj.data; //获得当前行数据
         var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-        console.log(data);
         if (layEvent === 'edit') {//编辑
             layer.open({
                 content: '<input type="text" id="updateName" value="'+data.name+'"> </br></br> <input type="password" id="updatepwd" placeholder="Password" /> </br><br/><input type="password"  placeholder="confirm Password"  id="confirmPwd"/>  '
