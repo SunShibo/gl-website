@@ -30,12 +30,12 @@ public class BackInternationController extends BaseCotroller {
 
     @RequestMapping("/query")//查询
     public void query(HttpServletResponse response, HttpServletRequest request) {
-        AdminBO userBO = super.getLoginUser(request);
+       /* AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }
+        }*/
 
 
         HashMap<String, Object> map = new HashMap<String, Object>();
@@ -55,12 +55,12 @@ public class BackInternationController extends BaseCotroller {
     //首页模块一图片修改
     @RequestMapping("/updateonemodelpicture")
     public void model1ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile img) throws Exception {
-        AdminBO userBO = super.getLoginUser(request);
+      /*  AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }
+        }*/
 
         String s = uploadingUtil.uploaDing(img);
         System.out.println("你好，李泽新"+s);
@@ -86,12 +86,12 @@ public class BackInternationController extends BaseCotroller {
     //首页模块一住标题修改
     @RequestMapping("/updateonemodelandsoon")
     public void model1UpdateTitle(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg) {
-        AdminBO userBO = super.getLoginUser(request);
+       /* AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }
+        }*/
         boolean verification = ParamVerifyUtil.verification(msg,falg);
         if(!verification){
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -116,16 +116,16 @@ public class BackInternationController extends BaseCotroller {
     }
 
 
-    //首页模块2内容修改
+    //首页模块2内容修改以前
     @RequestMapping("/updatetwomodelandsoon")
     public void model2Update(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg) {
 
-        AdminBO userBO = super.getLoginUser(request);
+       /* AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }
+        }*/
         boolean verification = ParamVerifyUtil.verification(msg,falg);
         if(!verification){
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -147,8 +147,101 @@ public class BackInternationController extends BaseCotroller {
         return;
     }
 
-   /* public static void main(String[] args) {
-        BackInternationController b=new BackInternationController();
-        b.model1ImageUp(null,null,file:C:/Users/Administrator/Desktop/李泽新资料/毕业证.jpg);
-    }*/
+
+   //首页模块2修改照片和内容等
+   @RequestMapping("/update2modelall")
+   public void model2UpdateAll(HttpServletResponse  response,HttpServletRequest request,String title,String pictureaddress,Integer id) {
+
+      /* AdminBO userBO = super.getLoginUser(request);
+       if (userBO == null) {
+           String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+           safeTextPrint(response, json);
+           return;
+       }*/
+
+       if(title==null && pictureaddress==null){
+           String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+           safeTextPrint(response, json);
+           return;
+       }
+       if(id==null ){
+           String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+           safeTextPrint(response, json);
+           return;
+       }
+
+       InternationTwoBO  twoBO=new InternationTwoBO();
+       if(id!=null){
+           twoBO.setId(id);
+       }
+
+       if(title!=null) {
+           twoBO.setTitle(title);
+       }
+       if(pictureaddress!=null) {
+           twoBO.setImage(pictureaddress);
+       }
+       internationService.updateInternationTwo(twoBO);
+
+       String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+       safeTextPrint(response, json);
+       return;
+   }
+    //首页模块2增加照片和内容等
+    @RequestMapping("/add2modelall")
+    public void model2AddAll(HttpServletResponse  response,HttpServletRequest request,String title,String pictureaddress) {
+
+        /*AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }*/
+
+        if(title==null && pictureaddress==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        InternationTwoBO  twoBO=new InternationTwoBO();
+
+        if(title!=null) {
+            twoBO.setTitle(title);
+        }
+        if(pictureaddress!=null) {
+            twoBO.setImage(pictureaddress);
+        }
+        internationService.addInternationTwo(twoBO);
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
+    //首页模块2删除照片和内容等
+    @RequestMapping("/delete2modelall")
+    public void model2DeleteAll(HttpServletResponse  response,HttpServletRequest request,Integer id) {
+
+        /*AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }*/
+        if(id==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        InternationTwoBO  twoBO=new InternationTwoBO();
+        if(id!=null) {
+            twoBO.setId(id);
+        }
+        internationService.deleteInternationTwo(twoBO);
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
 }

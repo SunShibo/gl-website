@@ -33,12 +33,12 @@ public class BGUploadController extends BaseCotroller {
     //上传图片
     @RequestMapping("/uploadpicture")
     public void model1ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile file) throws Exception {
-      AdminBO userBO = super.getLoginUser(request);
+      /*AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }
+        }*/
 
         String s = uploadingUtil.uploaDing(file);
         if(s==null){
