@@ -52,16 +52,16 @@ public class BackSilkRoadController extends BaseCotroller {
         safeTextPrint(response, json);
     }
 
-    //首页模块一图片修改
+  /*  //首页模块一图片修改
     @RequestMapping("/updateonemodelpicture")
     public void model1ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile img) throws Exception {
-      /*  AdminBO userBO = super.getLoginUser(request);
+      *//*  AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
         }
-*/
+*//*
         String s = uploadingUtil.uploaDing(img);
         System.out.println("你好，李泽新"+s);
         if(s==null){
@@ -84,7 +84,38 @@ public class BackSilkRoadController extends BaseCotroller {
         safeTextPrint(response, json);
         return;
     }
+*/
+    //首页模块一图片修改
+    @RequestMapping("/updateonemodelpicture")
+    public void model1ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile file) throws Exception {
+        AdminBO userBO = super.getLoginUser(request);
+        if (userBO == null) {
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+            safeTextPrint(response, json);
+            return;
+        }
 
+        String s = uploadingUtil.uploaDing(file);
+        if(s==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000018"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        SilkroadFirstBO  firstBO=new SilkroadFirstBO();
+        firstBO.setId(1);
+        firstBO.setImage(s);
+        Integer count= silkroadService.updateSilkroadFirst(firstBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
+
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
 
 
     //首页模块一住标题修改
