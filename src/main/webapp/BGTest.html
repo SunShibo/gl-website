@@ -1,0 +1,379 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+
+    <!-- <script src="static/menu/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="static/menu/menu.css" type="text/css"/>
+    <script charset="utf-8" src="static/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8" src="static/kindeditor/zh_CN.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headv {
+            line-height: 1em;
+            color: #4e4e4e;
+            min-width: 920px;
+            position: fixed;
+            top: 0;
+            left: 100px;
+            right: 0;
+            height: 140px;
+            z-index: 10;
+        }
+
+        .headv > div {
+            float: left;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .moduleHead {
+            float: left;
+            margin-top: 0%;
+            margin-left: 10%;
+
+        }
+
+        .right {
+            margin-top: 0%;
+            margin-right: -20%;
+            text-align: center;
+        }
+
+        .fileimg {
+            margin: 5px auto;
+            font-size: 0px;
+            width: 100px;
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid black; /*https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545854399678&di=8ba061b9962a9da6bf94c5ab8d582ef1&imgtype=0&src=http%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX%2F228377817%2FHTB1N77INpXXXXXXXpXXq6xXFXXXX.jpg*/
+            z-index: 12333333;
+            background: url("/image/upImag.jpg") no-repeat right center;
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body style="background: black">
+
+<nav class="menu-activea">
+    <h1>Menu</h1>
+    <ul>
+        <li><a href="homePageli.html" style="color:#9DC6D1;text-decoration:none;">HomePage</a></li>
+        <li><a href="BGAbout.html" style="color:#9DC6D1;text-decoration:none;">About</a></li>
+        <li>Jack</li>
+        <li><a href="BGDay.html" style="color:#9DC6D1;text-decoration:none;">Day</a></li>
+        <li><a href="BGSilkRoad.html" style="color:#9DC6D1;text-decoration:none;">SilkRoad</a></li>
+        <li><a href="BGInternation.html" style="color:#9DC6D1;text-decoration:none;">Internation</a></li>
+        <li><a href="BGBookNow.html" style="color:#9DC6D1;text-decoration:none;">BookNow</a></li>
+    </ul>
+</nav>
+<main>
+    <div>
+        <ul id="myTab" class="nav nav-tabs" style="padding-left: 10%;">
+
+            <li class="dropdown active">
+                <a href="#" id="myTabDrop1" class="dropdown-toggle"
+                   data-toggle="dropdown">Molde One
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                    <li><a href="#onehome" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#onetitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" id="myTabDrop2" class="dropdown-toggle"
+                   data-toggle="dropdown">Molde Two
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                    <li><a href="#twotitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                    <li><a href="#twointroduce" tabindex="-1" data-toggle="tab">Modify Content</a></li>
+                    <li><a href="#twopicture" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                </ul>
+            </li>
+
+
+
+
+        </ul>
+
+
+        <div id="myTabContent" class="tab-content">
+
+            <!--  模块一 图片显示 修改-->
+            <div class="tab-pane fade in active" id="onehome">
+                <form     style="display: flex; justify-content: space-around; align-content: center">
+            <div style="margin: 25px 0;">
+                <img height="180px" width="200px" id="showmodel1Image1" />
+
+                <div style="text-align: center">
+                    <input type="file" class="fileimg" name="file"
+                           placeholder="please choose The picture to be replaced"
+                           title="please choose The picture to be replaced" id="getModel1Image1" >
+                    <a href="javascript:void(0)"  id="updatemodel1Image1" >Modification</a>
+                </div>
+            </div>
+                </form>
+            </div>
+            <!--  模块一 代码显示-->
+            <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
+                <h1 style="text-align: center;text-decoration:none;" id="oneshuchutitle">Modification Main Title</h1>
+                <br/><br/><br/><br/>
+                <div id="moduleHeadRight" style="z-index: 25252525;padding-left: 26%;">
+                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;" id="gettitle"
+                              placeholder="Please enter the content"></textarea>
+                    <a href="javascript:void(0)" id="onetitleup">Modification</a>
+                </div>
+            </div>
+
+
+
+            <!--  模块二标题显示-->
+            <div class="tab-pane fade" id="twotitle"></a>
+                <div style="height: 150px ;width: 590px;margin: 0 28%;">
+                    <h4 style="text-align: center" id="twoshuchutitle">李泽新</h4>
+                </div>
+                <div style="padding-left: 26%;">
+                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
+                              id="twomodelgettitle"></textarea>
+                    <a href="javascript:void(0)" id="twotitleup">Modification</a>
+                </div>
+            </div>
+            <!--  模块二内容显示-->
+            <div class="tab-pane fade" id="twointroduce">
+                <h4 style="text-align: center;text-decoration:none;" id="twoshuchuintroduce">Modification Main Title</h4>
+                <br/><br/><br/><br/>
+                <div  style="z-index: 25252525;padding-left: 26%;">
+                    <textarea name="messageContent" style="margin: 0px; height: 120px; width: 400px;"
+                              id="twomodelgetintroduce"></textarea>
+                    <a href="javascript:void(0)" id="twointroduceup">Modification</a>
+                </div>
+            </div>
+
+
+            <!--模块二图片  -->
+            <div class="tab-pane fade" id="twopicture">
+                <form     style="display: flex; justify-content: space-around; align-content: center">
+                    <div style="margin: 25px 0;">
+                        <img height="180px" width="200px" id="showmodel2Image1" />
+                        <div style="text-align: center">
+                            <input type="file" class="fileimg" name="file"
+                                   placeholder="please choose The picture to be replaced"
+                                   title="please choose The picture to be replaced" id="getModel2Image1" >
+                            <a href="javascript:void(0)"  id="updatemodel2Image1" >Modification</a>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+
+
+
+
+            </div>
+
+
+
+    </div>
+</main>
+
+
+<script src="static/menu/manu.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $.ajax({
+            type: "POST",
+            url: '/backbook/query',
+            dataType: 'json',
+            cache: false,
+            success: function (date) {
+                if (date.success == true) {
+                    var one = date.data.one;
+                    $("#showmodel1Image1").attr("src", one.image);
+                    $("#oneshuchutitle").html(one.title);
+                    var two = date.data.two;
+                    $("#twoshuchutitle").html(two[0].title);
+                    $("#twoshuchuintroduce").html(two[0].introduce);
+                    $("#showmodel2Image1").attr("src", two[0].image);
+
+
+
+                } else if (date.success == false) {
+                    var err = date.errCode;
+                    if (err == 0000001) {
+                        alert("Please login first");
+                    }
+                }
+
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+
+
+        //简单模式初始化
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('textarea[name="messageContent"]', {
+//            resizeType : 1,
+//            allowPreviewEmoticons : false,
+                allowFileManager: true,
+                items: [
+                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'lineheight', 'emoticons', 'media', 'link', 'code', 'source',
+                    'fullscreen'],
+                uploadJson: '/static/js/kindeditor/kd_upload_image.jsp',
+//      allowFileManager : true,
+//      fileManagerJson : '/static/js/kindeditor/kd_upload_file.jsp'
+                afterCreate: function () {
+                    this.sync();
+                },
+                afterBlur: function () {
+                    this.sync();
+                }
+
+            });
+
+
+        });
+    });
+
+
+    $(document).ready(function () {
+        //模块一图片修改
+        $("#updatemodel1Image1").on('click', function () {
+
+            var img = $("#getModel1Image1").val();
+            if (img == '' || img == null) {
+                alert("Please select file");
+                return false;
+            }
+            var file = new FormData();
+            file.append("file", document.getElementById('getModel1Image1').files[0]);
+            upImage("/backupload/uploadpicture", file);
+        });
+
+
+        //模块一主标题修改
+        $("#onetitleup").click(function () {
+
+            var msg = $("#gettitle").val();
+            if (msg == '' || msg == null) {
+                alert("Please enter the content");
+                return;
+            }
+            update("/backbook/updateonemodelandsoon", msg, 1);
+            return;
+        });
+
+
+
+        //模块二标题
+        $("#twotitleup").click(function () {
+            var msg = $("#twomodelgettitle").val();
+            if (msg == '' || msg == null) {
+                alert("Please enter the content");
+                return;
+            }
+            update("/backbook/updatetwomodelandsoon", msg, 1);
+            return;
+        });
+
+        //模块二内容
+        $("#twointroduceup").click(function () {
+            var msg = $("#twomodelgetintroduce").val();
+            alert(msg);
+            if (msg == '' || msg == null) {
+                alert("Please enter the content");
+                return;
+            }
+            update("/backbook/updatetwomodelandsoon", msg, 2);
+            return;
+        });
+        //模块二图片修改
+        $("#updatemodel2Image1").on('click', function () {
+
+            var img = $("#getModel2Image1").val();
+            if (img == '' || img == null) {
+                alert("Please select file");
+                return false;
+            }
+            var file = new FormData();
+            file.append("file", document.getElementById('getModel2Image1').files[0]);
+            upImage("/backbook/updatetwomodelpicture", file);
+        });
+
+    });
+
+
+    function update(url, msg, falg) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'json',
+            data: {"msg": msg, falg: falg},
+            cache: false,
+            success: function (date) {
+                if (date.success == true) {
+                    history.go(0);
+                } else if (date.success == false) {
+                    var err = date.errCode;
+                    if (err == 0000001) {
+                        alert("Please login first");
+                    }
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+
+    }
+
+    //上传图片
+    function upImage(url,data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            async: false,
+            processData: false,
+            contentType: false,
+            success: function (date) {
+                if (date.success == true) {
+                    history.go(0);
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+
+        });
+
+    }
+
+
+</script>
+</body>
+</html>

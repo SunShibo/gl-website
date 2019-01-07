@@ -116,7 +116,7 @@ public class BackSilkRoadController extends BaseCotroller {
     }
 
 
-    //首页模块2内容修改
+    //首页模块2内容修改以前
     @RequestMapping("/updatetwomodelandsoon")
     public void model2Update(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg) {
 
@@ -151,4 +151,106 @@ public class BackSilkRoadController extends BaseCotroller {
         BackInternationController b=new BackInternationController();
         b.model1ImageUp(null,null,file:C:/Users/Administrator/Desktop/李泽新资料/毕业证.jpg);
     }*/
+
+//首页模块2修改照片和内容等
+@RequestMapping("/update2modelall")
+public void model2UpdateAll(HttpServletResponse  response,HttpServletRequest request,String title,String pictureaddress,Integer id) {
+
+    AdminBO userBO = super.getLoginUser(request);
+    if (userBO == null) {
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+        safeTextPrint(response, json);
+        return;
+    }
+   /* boolean verification = ParamVerifyUtil.verification(title,pictureaddress,id);
+    if(!verification){
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response, json);
+        return;
+    }*/
+    if(title==null && pictureaddress==null){
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response, json);
+        return;
+    }
+    if(id==null ){
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response, json);
+        return;
+    }
+
+    SilkroadTwoBO  twoBO=new SilkroadTwoBO();
+    if(id!=null){
+        twoBO.setId(id);
+    }
+
+    if(title!=null) {
+        twoBO.setTitle(title);
+    }
+    if(pictureaddress!=null) {
+        twoBO.setImage(pictureaddress);
+    }
+    silkroadService.updateSilkroadTwo(twoBO);
+
+    String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+    safeTextPrint(response, json);
+    return;
+}
+//首页模块2增加照片和内容等
+@RequestMapping("/add2modelall")
+public void model2AddAll(HttpServletResponse  response,HttpServletRequest request,String title,String pictureaddress) {
+
+    AdminBO userBO = super.getLoginUser(request);
+    if (userBO == null) {
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+        safeTextPrint(response, json);
+        return;
+    }
+
+    if(title==null && pictureaddress==null){
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response, json);
+        return;
+    }
+
+    SilkroadTwoBO  twoBO=new SilkroadTwoBO();
+
+    if(title!=null) {
+        twoBO.setTitle(title);
+    }
+    if(pictureaddress!=null) {
+        twoBO.setImage(pictureaddress);
+    }
+    silkroadService.addSilkroadTwo(twoBO);
+
+    String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+    safeTextPrint(response, json);
+    return;
+}
+//首页模块2删除照片和内容等
+@RequestMapping("/delete2modelall")
+public void model2DeleteAll(HttpServletResponse  response,HttpServletRequest request,Integer id) {
+
+    AdminBO userBO = super.getLoginUser(request);
+    if (userBO == null) {
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+        safeTextPrint(response, json);
+        return;
+    }
+    if(id==null){
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+        safeTextPrint(response, json);
+        return;
+    }
+
+    SilkroadTwoBO  twoBO=new SilkroadTwoBO();
+    if(id!=null) {
+        twoBO.setId(id);
+    }
+    silkroadService.deleteSilkroadTwo(twoBO);
+
+    String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+    safeTextPrint(response, json);
+    return;
+}
 }
