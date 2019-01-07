@@ -242,7 +242,7 @@ public void model2AddAll(HttpServletResponse  response,HttpServletRequest reques
         return;
     }
 */
-    if(title==null && pictureaddress==null){
+    if((title==null||title=="") && (pictureaddress==null||pictureaddress=="")){
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
         safeTextPrint(response, json);
         return;

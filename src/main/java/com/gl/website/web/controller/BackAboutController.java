@@ -251,7 +251,7 @@ public class BackAboutController extends BaseCotroller {
         return;
     }
 */
-        if(title==null && pictureaddress==null && introduce==null){
+        if((title==null||title=="") && (pictureaddress==null||pictureaddress=="") && (introduce==null||introduce=="")){
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
             safeTextPrint(response, json);
             return;
