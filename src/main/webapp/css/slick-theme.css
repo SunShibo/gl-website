@@ -1,255 +1,207 @@
 /*@charset 'UTF-8';*/
-/**/
-html, body {
-    font-size: 10px;
-    user-select: none;
-}
-
-@media screen and (min-width: 321px) and (max-width: 375px) {
-    html {
-        font-size: 11px
-    }
-}
-
-@media screen and (min-width: 376px) and (max-width: 414px) {
-    html {
-        font-size: 12px
-    }
-}
-
-@media screen and (min-width: 415px) and (max-width: 639px) {
-    html {
-        font-size: 15px
-    }
-}
-
-@media screen and (min-width: 640px) and (max-width: 719px) {
-    html {
-        font-size: 20px
-    }
-}
-
-@media screen and (min-width: 720px) and (max-width: 749px) {
-    html {
-        font-size: 22.5px
-    }
-}
-
-@media screen and (min-width: 750px) and (max-width: 799px) {
-    html {
-        font-size: 23.5px
-    }
-}
-
-@media screen and (min-width: 800px) {
-    html {
-        font-size: 25px
-    }
-}
-
 /*!* Slider *!*/
-.slick-loading .slick-list
-{
-    background: #fff url('../image/ajax-loader.gif') center center no-repeat;
-}
+/*.slick-loading .slick-list*/
+/*{*/
+    /*background: #fff url('../js/ajax-loader.gif') center center no-repeat;*/
+/*}*/
 
-/* Icons */
-@font-face
-{
-    font-family: 'slick';
-    font-weight: normal;
-    font-style: normal;
+/*!* Icons *!*/
+/*@font-face*/
+/*{*/
+    /*font-family: 'slick';*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
 
-    src: url('../fonts/slick.eot');
-    src: url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url('./slick.woff') format('woff'), url('../fonts/slick.ttf') format('truetype'), url('../fonts/slick.svg#slick') format('svg');
-}
-/* Arrows */
-.slick-prev,
-.slick-next
-{
-    font-size: 0;
-    line-height: 0;
+    /*src: url('./fonts/slick.eot');*/
+    /*src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');*/
+/*}*/
+/*!* Arrows *!*/
+/*.slick-prev,*/
+/*.slick-next*/
+/*{*/
+    /*font-size: 0;*/
+    /*line-height: 0;*/
 
-    position: absolute;
-    top: 50%;
+    /*position: absolute;*/
+    /*top: 50%;*/
 
-    display: block;
+    /*display: block;*/
 
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*padding: 0;*/
+    /*-webkit-transform: translate(0, -50%);*/
+    /*-ms-transform: translate(0, -50%);*/
+    /*transform: translate(0, -50%);*/
 
-    cursor: pointer;
+    /*cursor: pointer;*/
 
-    color: transparent;
-    border: none;
-    outline: none;
-    background: transparent;
-}
-.slick-prev:hover,
-.slick-prev:focus,
-.slick-next:hover,
-.slick-next:focus
-{
-    color: transparent;
-    outline: none;
-    background: transparent;
-}
-.slick-prev:hover:before,
-.slick-prev:focus:before,
-.slick-next:hover:before,
-.slick-next:focus:before
-{
-    opacity: 1;
-}
-.slick-prev.slick-disabled:before,
-.slick-next.slick-disabled:before
-{
-    opacity: .25;
-}
+    /*color: transparent;*/
+    /*border: none;*/
+    /*outline: none;*/
+    /*background: transparent;*/
+/*}*/
+/*.slick-prev:hover,*/
+/*.slick-prev:focus,*/
+/*.slick-next:hover,*/
+/*.slick-next:focus*/
+/*{*/
+    /*color: transparent;*/
+    /*outline: none;*/
+    /*background: transparent;*/
+/*}*/
+/*.slick-prev:hover:before,*/
+/*.slick-prev:focus:before,*/
+/*.slick-next:hover:before,*/
+/*.slick-next:focus:before*/
+/*{*/
+    /*opacity: 1;*/
+/*}*/
+/*.slick-prev.slick-disabled:before,*/
+/*.slick-next.slick-disabled:before*/
+/*{*/
+    /*opacity: .25;*/
+/*}*/
 
-.slick-prev:before,
-.slick-next:before
-{
-    font-family: 'slick';
-    font-size: 20px;
-    line-height: 1;
+/*.slick-prev:before,*/
+/*.slick-next:before*/
+/*{*/
+    /*font-family: 'slick';*/
+    /*font-size: 20px;*/
+    /*line-height: 1;*/
 
-    opacity: .75;
-    color: #D58814;
+    /*opacity: .75;*/
+    /*color: #D58814;*/
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+/*}*/
 
-.slick-prev
-{
-    left: -25px;
-}
-[dir='rtl'] .slick-prev
-{
-    right: -25px;
-    left: auto;
-}
-.slick-prev:before
-{
-    content: '←';
-}
-[dir='rtl'] .slick-prev:before
-{
-    content: '→';
-}
+/*.slick-prev*/
+/*{*/
+    /*left: -25px;*/
+/*}*/
+/*[dir='rtl'] .slick-prev*/
+/*{*/
+    /*right: -25px;*/
+    /*left: auto;*/
+/*}*/
+/*.slick-prev:before*/
+/*{*/
+    /*content: '←';*/
+/*}*/
+/*[dir='rtl'] .slick-prev:before*/
+/*{*/
+    /*content: '→';*/
+/*}*/
 
-.slick-next
-{
-    right: -25px;
-}
-[dir='rtl'] .slick-next
-{
-    right: auto;
-    left: -25px;
-}
-.slick-next:before
-{
-    content: '→';
-}
-[dir='rtl'] .slick-next:before
-{
-    content: '←';
-}
+/*.slick-next*/
+/*{*/
+    /*right: -25px;*/
+/*}*/
+/*[dir='rtl'] .slick-next*/
+/*{*/
+    /*right: auto;*/
+    /*left: -25px;*/
+/*}*/
+/*.slick-next:before*/
+/*{*/
+    /*content: '→';*/
+/*}*/
+/*[dir='rtl'] .slick-next:before*/
+/*{*/
+    /*content: '←';*/
+/*}*/
 
-/* Dots */
-.slick-dotted.slick-slider
-{
-    margin-bottom: 30px;
-}
+/*!* Dots *!*/
+/*.slick-dotted.slick-slider*/
+/*{*/
+    /*margin-bottom: 30px;*/
+/*}*/
 
-.slick-dots
-{
-    position: absolute;
-    bottom: -25px;
+/*.slick-dots*/
+/*{*/
+    /*position: absolute;*/
+    /*bottom: -25px;*/
 
-    display: block;
+    /*display: block;*/
 
-    width: 100%;
-    padding: 0;
-    margin: 0;
+    /*width: 100%;*/
+    /*padding: 0;*/
+    /*margin: 0;*/
 
-    list-style: none;
+    /*list-style: none;*/
 
-    text-align: center;
-}
-.slick-dots li
-{
-    position: relative;
+    /*text-align: center;*/
+/*}*/
+/*.slick-dots li*/
+/*{*/
+    /*position: relative;*/
 
-    display: inline-block;
+    /*display: inline-block;*/
 
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    padding: 0;
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*margin: 0 5px;*/
+    /*padding: 0;*/
 
-    cursor: pointer;
-}
-.slick-dots li button
-{
-    font-size: 0;
-    line-height: 0;
+    /*cursor: pointer;*/
+/*}*/
+/*.slick-dots li button*/
+/*{*/
+    /*font-size: 0;*/
+    /*line-height: 0;*/
 
-    display: block;
+    /*display: block;*/
 
-    width: 20px;
-    height: 20px;
-    padding: 5px;
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*padding: 5px;*/
 
-    cursor: pointer;
+    /*cursor: pointer;*/
 
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-}
-.slick-dots li button:hover,
-.slick-dots li button:focus
-{
-    outline: none;
-}
-.slick-dots li button:hover:before,
-.slick-dots li button:focus:before
-{
-    opacity: 1;
-}
-.slick-dots li button:before
-{
-    font-family: 'slick';
-    font-size: 6px;
-    line-height: 20px;
+    /*color: transparent;*/
+    /*border: 0;*/
+    /*outline: none;*/
+    /*background: transparent;*/
+/*}*/
+/*.slick-dots li button:hover,*/
+/*.slick-dots li button:focus*/
+/*{*/
+    /*outline: none;*/
+/*}*/
+/*.slick-dots li button:hover:before,*/
+/*.slick-dots li button:focus:before*/
+/*{*/
+    /*opacity: 1;*/
+/*}*/
+/*.slick-dots li button:before*/
+/*{*/
+    /*font-family: 'slick';*/
+    /*font-size: 6px;*/
+    /*line-height: 20px;*/
 
-    position: absolute;
-    top: 0;
-    left: 0;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
 
-    width: 20px;
-    height: 20px;
+    /*width: 20px;*/
+    /*height: 20px;*/
 
-    content: '•';
-    text-align: center;
+    /*content: '•';*/
+    /*text-align: center;*/
 
-    opacity: .25;
-    color: black;
+    /*opacity: .25;*/
+    /*color: black;*/
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.slick-dots li.slick-active button:before
-{
-    opacity: .75;
-    color: black;
-}
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.slick-dots li.slick-active button:before*/
+/*{*/
+    /*opacity: .75;*/
+    /*color: black;*/
+/*}*/
 
 /* Arrows */
 .slick-prev,
@@ -315,29 +267,32 @@ html, body {
 
 .slick-prev
 {
-    left: -50px;
+    left: -60px;
 }
 .slick-prev:before
 {
     content:"";
     display:block;
+    width:45px;
     height:45px;
-    background-image:url(../image/arrow_left.png);
+    background-image:url(../img/arrow_left.png);
     background-repeat: no-repeat;
-    background-size:100%;
+    background-size:45px;
     overflow:hidden;
 }
 .slick-next
 {
-    right: -50px;
+    right: -35px;
 }
 
 .slick-next:before
 {
     content:"";
     display:block;
+    width:45px;
     height:45px;
-    background:url(../image/arrow_right.png) no-repeat center center;
-    background-size:100%;
+    background-image:url(../img/arrow_right.png);
+    background-repeat: no-repeat;
+    background-size:45px;
     overflow:hidden;
 }

@@ -1,5 +1,5 @@
 
-.team .member-list .list-item-inner {
+.team .member-list .list-item-inner{
     position: relative;
 }
 
@@ -13,14 +13,12 @@
     top: 60px;
 }
 
-.member-list .slick-center .list-item-inner p {
+.member-list .slick-center .list-item-inner p{
     opacity: 1;
 }
-
 .member-list .slick-center .list-item-inner img {
     /*outline: 2px solid #D58814;*/
 }
-
 .member-list .list-item-inner p {
     opacity: 0.8;
 }
@@ -32,14 +30,14 @@
     outline: none;
 }
 
-.member-list .list-item {
+.member-list .list-item{
     outline: none;
-    padding: 0px 0px 20px 0px;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    padding: 0px 0px 100px 0px ;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-.member-list .slick-slide {
+.member-list .slick-slide{
     /*width: 260px;*/
 }
 
@@ -50,15 +48,16 @@
     font-size: 36px;
 }
 
+
+
 .team .member-detail .role div {
-    width: 60px;
+    width:60px;
     height: 24px;
     margin: 0 auto;
     background-color: #133364;
     font-size: 14px;
     color: #ffffff;
 }
-
 .team .member-detail .role div h5 {
     text-align: center;
     line-height: 24px;
@@ -75,30 +74,29 @@
     text-indent: 20px;
 }
 
-.team .container {
-    /*background: url(../img/bg_team.png) no-repeat center center;*/
-}
 
+
+
+.team .container {
+    /*background: url(../image/bg_team.png) no-repeat center center;*/
+}
 .inner {
     position: relative;
     height: 100%;
     width: 60%;
     margin: 0 auto;
 }
-
 .container .inner .title-top-box {
     height: 200px;
     width: 600px;
     display: table-cell;
     vertical-align: middle;
 }
-
 .title-top-box .content-box {
     width: 96px;
     height: 96px;
     position: relative;
 }
-
 .title-top-box .title-text {
     font-size: 48px;
     color: #133364;
@@ -112,20 +110,17 @@
     /*border-top: 1px solid #D88F23;
     padding-top: 10px;*/
 }
-
 .page-bottom-space {
     width: 100%;
     height: 100px;
 }
 
-.boss_name {
-    font-size: 36px !important;
-    /*color: #111111 !important;*/
-    margin: 5px 0 10px 0 !important;
+.boss_name{
+	font-size: 36px!important;color: #111111!important; margin: 5px 0 36px 0!important;
 }
-
-.boss_line {
-    background: #D3A359;
-    height: 1px;
-    width: 100%;
+.boss_line{
+	background:#D3A359;height: 1px; width: 100%;
+}
+.identity{
+	font-size: 24px!important;color: #666666!important; margin: 24px 0!important;
 }

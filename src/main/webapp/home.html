@@ -92,7 +92,6 @@
         });
         $.ajax({
             url: '/homepage/query', dataType: 'json', type: 'POST', success: function (rs) {
-                console.log(rs);
                 setDom(rs.data);
             }
         });
