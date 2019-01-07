@@ -70,7 +70,9 @@
             height: 150px;margin: 20px;
         }
         main {
-            position: static;}
+            position: static;
+            height: 100%;
+        }
     </style>
 </head>
 <body style="background: black">
@@ -79,14 +81,12 @@
     <h1>Menu</h1>
     <ul>
         <li><a href="homePageli.html" style="color:#9DC6D1;text-decoration:none;">HomePage</a></li>
-        <li><a href="BGAbout.html" style="color:#9DC6D1;text-decoration:none;">About</a></li>
-        <li><a href="BGCommunity.html" style="color:#9DC6D1;text-decoration:none;">Community</a></li>
-        <li><a href="BGDay.html" style="color:#9DC6D1;text-decoration:none;">Day</a></li>
+        <li>Susy</li>
+        <li>Jack</li>
+        <li>Nancy</li>
         <li><a href="BGSilkRoad.html" style="color:#9DC6D1;text-decoration:none;">SilkRoad</a></li>
         <li><a href="BGInternation.html" style="color:#9DC6D1;text-decoration:none;">Internation</a></li>
         <li><a href="BGBookNow.html" style="color:#9DC6D1;text-decoration:none;">BookNow</a></li>
-        <li><a href="user.html" style="color:#9DC6D1;text-decoration:none;">User</a></li>
-        <li><a href="book.html" style="color:#9DC6D1;text-decoration:none;">ShowBookNow</a></li>
     </ul>
 </nav>
 <main>
@@ -99,8 +99,8 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#onehome" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
-                    <li><a href="#onetitle" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
+                    <li><a href="#onehome" id="onehomes" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#onetitle"id="onetitles" tabindex="-1" data-toggle="tab">Modify The Title</a></li>
                 </ul>
             </li>
 
@@ -110,7 +110,7 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                    <li><a href="#twopicture" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
+                    <li><a href="#twopicture" id="clicktwo" tabindex="-1" data-toggle="tab">Modify A Picture</a></li>
                 </ul>
             </li>
 
@@ -121,19 +121,30 @@
 
 
         <div id="myTabContent" class="tab-content">
-            <!--  模块一 图片 修改-->
+
             <div class="tab-pane fade in active" id="onehome">
-                <form     style="display: flex; justify-content: space-around; align-content: center">
-                    <div style="margin: 25px 0;">
-                        <img height="180px" width="200px" id="oneshuchupicture" />
-                        <div style="text-align: center">
-                            <input type="file" class="fileimg" name="file"
-                                   placeholder="please choose The picture to be replaced"
-                                   title="please choose The picture to be replaced" id="getModel1Image1" >
-                            <a href="javascript:void(0)"  id="updatemodel1Image1" >Modification</a>
+                <div id="moduleHead" class="moduleHead" style="width: 100%!important;">
+                    <!-- <form action="/backinternation/query" method="post" enctype="multipart/form-data">-->
+                    <form action="/backsilkroad/query" method="post" enctype="multipart/form-data">
+                        <!--TODO  模块一图片上传 -->
+                        <div class="row" id="moduleHeadLeft" style="width: 100%!important;">
+                            <div class="col-md-8 column right" style="margin-top: 30px">
+                                <img height="200px"  width="300px"   id="oneshuchupicture"/>
+                            </div>
+                            <div class="col-md-4 column">
+                                <div style="height: 50px;width: 100%"></div>
+                                <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
+                                <input id="getpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <br/><br/><br/><br/>
+                        <div style="height: 40px ;width: 500px;margin: 0 30%;">
+                            <!--<a href="javascript:void(0)" id="onepictureup">Modification</a>-->
+
+                        </div>
+                    </form>
+                    <!--</form>-->
+                </div>
             </div>
             <!--  模块一 代码显示-->
             <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
@@ -158,27 +169,11 @@
             <!--模块二图片  -->
             <div class="tab-pane fade"  id="twopicture"  style="border: 2px solid black; align-content: center">
 
-
-                <div class="div">
-                    <img class="listimg" src="https://upload-images.jianshu.io/upload_images/593513-82fb29106df7df03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/522/format/webp">
-                    <textarea></textarea>
-                    <button class="modify btn">修改</button>
-                    <button class="delete btn">删除</button>
-                </div>
-                <div class="div">
-                    <img class="listimg" src="http://h.hiphotos.baidu.com/image/pic/item/2f738bd4b31c87018e9450642a7f9e2f0708ff16.jpg">
-                    <textarea></textarea>
-                </div>
-                <div class="div"><button class="add btn">新增</button></div>
-
-
-
-
             </div>
 
+            <input type="file" accept="image/*" id="imgupload" style="display: none" onchange="uploadimg();">
 
-
-            </div>
+        </div>
 
 
 
@@ -189,7 +184,7 @@
 <script src="static/menu/manu.js"></script>
 <script type="text/javascript">
 
-
+    var self;
     $(document).ready(function () {
 
         $.ajax({
@@ -255,15 +250,20 @@
 
     $(document).ready(function () {
         //模块一图片修改
-        $("#updatemodel1Image1").click(function () {
-            var img = $("#getModel1Image1").val();
+        $("#onepictureup").click(function () {
+            var img = $("#getpicturename").val();
             if (img == '' || img == null) {
                 alert("Please select file");
-                return false;
+                return;
             }
-            var file = new FormData();
-            file.append("file", document.getElementById('getModel1Image1').files[0]);
-            upImage("/backsilkroad/updateonemodelpicture", file);
+            $("#onepictureup").submit(
+                function(e){
+                    alert("李泽新");
+                }
+
+            )
+
+            return;
         });
 
 
@@ -283,31 +283,6 @@
 
 
     });
-    //上传图片
-    function upImage(url,data) {
-
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: data,
-            dataType: 'JSON',
-            async: false,
-            processData: false,
-            contentType: false,
-            success: function (date) {
-                if (date.success == true) {
-                    history.go(0);
-                } else if (date.success == false) {
-                    alert("Failed to upload picture! Please select the picture correctly!");
-                }
-            },
-            error: function () {
-                alert("network anomaly");
-            }
-
-        });
-
-    }
 
 
     function update(url, msg, falg) {
@@ -355,16 +330,153 @@
         for(var i=0;i<v.length;i++){
 
 
-           str +=[ '  <div class="div">',
-            '<img class="listimg" src="https://upload-images.jianshu.io/upload_images/593513-82fb29106df7df03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/522/format/webp">',
-            '   <textarea></textarea>',
-            '   <button class="modify btn">修改</button>',
-            '   <button class="delete btn">删除</button>',
-            '   </div>'].join("")
+            str +=[ '  <div class="div"  id="dom'+v[i]['id']+'">',
+                '   <img class="listimg" src="'+v[i]['image']+'">',
+                '   <textarea>'+v[i]['title']+'</textarea>',
+                '   <button class="modify btn" data-id="'+v[i]['id']+'" onclick="modifyData(this)">修改</button>',
+                '   <button class="delete btn" data-id="'+v[i]['id']+'" onclick="deleteData(this)">删除</button>',
+                '   </div>'].join("")
 
         }
-        var w = '<div class="div"><button class="add btn">新增</button></div>';
+        var w = '<div class="div" id="adddom"><button class="add btn">新增</button></div>';
         $d.append(str+w)
+    }
+
+    $("#clicktwo").on("click",function () {
+        $("main").css("height","auto")
+    })
+    $("#onehomes,#onetitles").on("click",function () {
+        $("main").css("height","100%")
+    })
+
+    function deleteData(t) {
+        console.log(t)
+    }
+    function modifyData(t) {
+
+        var id = t.dataset.id;
+        var src = $($("#dom"+id).find("img")[0]).attr("src");
+        var text = $("#dom"+id).find("textarea")[0].value;
+        $.ajax({
+            url: '/backsilkroad/update2modelall',
+            type: 'POST',
+            data: {
+                title:text,
+                pictureaddress:src,
+                id:id
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    $("#imgupload").val('');
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+    $(document).on("click",".listimg",function () {
+        self = this;
+        $("#imgupload").trigger("click");
+    })
+    function uploadimg() {
+        var img = $("#imgupload").val();
+        if (img == '' || img == null) {
+            alert("Please select file");
+            return false;
+        }
+        var file = new FormData();
+        file.append("file", document.getElementById('imgupload').files[0]);
+        upImage("/backupload/uploadpicture", file);
+    };
+    //上传图片
+    function upImage(url,data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            async: false,
+            processData: false,
+            contentType: false,
+            success: function (date) {
+                if (date.success == true) {
+                    self.src = date.data;
+                    // debugger;
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+
+        });
+
+    }
+
+    $(document).on("click",".add",function () {
+
+        var $d = $("#adddom");
+        var str =[ '  <div class="div">',
+            '   <img class="listimg" src="image/add.jpg">',
+            '   <textarea></textarea>',
+            '   <button class="modify btn" onclick="addData(this)">保存</button>',
+            // '   <button class="delete btn" onclick="deleteData(this)">删除</button>',
+            '   </div>'].join("")
+        $d.before(str)
+    })
+    function addData(t) {
+        var src = $(t.previousElementSibling.previousElementSibling).attr("src");
+        var text = t.previousElementSibling.value;
+        if(src=='image/add.jpg')src='';
+        $.ajax({
+            url: '/backsilkroad/add2modelall',
+            type: 'POST',
+            data: {
+                title:text,
+                pictureaddress:src
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    $("#imgupload").val('');
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+    function deleteData(t) {
+        $.ajax({
+            url: '/backsilkroad/delete2modelall',
+            type: 'POST',
+            data: {
+                id:t.dataset.id
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    t.parentNode.parentNode.removeChild(t.parentNode);
+
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
     }
 </script>
 </body>
