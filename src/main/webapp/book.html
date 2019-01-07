@@ -42,6 +42,7 @@
         <li><a href="BGBookNow.html" style="color:#9DC6D1;text-decoration:none;">BookNow</a></li>
         <li><a href="user.html" style="color:#9DC6D1;text-decoration:none;">User</a></li>
         <li><a href="book.html" style="color:#9DC6D1;text-decoration:none;">ShowBookNow</a></li>
+
     </ul>
 </nav>
 
@@ -87,7 +88,9 @@
 
     function fun2(){
        var date= $("#dateInput").val();
-
+        if(date==''||date==null){
+            return;
+        }
         fun1(date);
     }
 
@@ -107,7 +110,19 @@
             data: {"date":date},
             dataType: 'json',
             success: function (data) {
-                formatData(data.data)
+                if(data.success==true) {
+                    formatData(data.data)
+                }else if(data.success==false){
+
+                    if(data.errCode=='0000019') {
+                        alert("Please login first");
+                    }else if(data.errCode=='0000001'){
+                        alert("server error");
+                    }
+                }
+            }
+            ,error:function () {
+                alert("network error");
             }
         })
 
@@ -148,8 +163,8 @@
                 }}
 
             ,{field: 'applicantName', align: 'center', title: 'Proposer'  ,width:'15%',} //申请人
-            ,{field: 'guardianName', title: 'Guardian', width:'15%',}  //监护人
-            , {field: 'applicantBirthday', title: 'Birthday' ,width:'15%',}, //生日
+            ,{field: 'guardianName', title: 'Guardian', width:'15%',align: 'center'}  //监护人
+            , {field: 'applicantBirthday', title: 'Birthday' ,width:'15%',align: 'center'}, //生日
             {field: 'gender', align: 'center', title: 'Gender' ,width:'15%',} //性别
             , {field: 'phone', align: 'center', title: 'Phone' ,width:'15%',}  //电话
             , {field: 'email', align: 'center', title: 'Email' ,width:'15%',} //邮箱

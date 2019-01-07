@@ -77,10 +77,10 @@
             ,url: '/user/query' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
-                {field: 'id', title: 'ID', width:'15%', sort: true, fixed: 'left'}
-                ,{field: 'name', title: 'UserName',}
-                ,{field: 'password', title: 'Password', }
-                ,{field: 'right', title: 'Operation', width: '15%',  toolbar: '#barDemo'}
+                {field: 'id', title: 'ID', width:'15%', sort: true, fixed: 'left',align: 'center'}
+                ,{field: 'name', title: 'UserName',align: 'center'}
+                ,{field: 'password', title: 'Password',align: 'center' }
+                ,{field: 'right', title: 'Operation', width: '15%',  toolbar: '#barDemo',align: 'center'}
             ]]
             , request: {
                 pageName: 'pageNo'
@@ -124,15 +124,17 @@
                         alert("The username or password cannot be empty");
                         return;
                     }
-                    if(confirmPwd!=pwd){
-                        alert("The passwords do not match");
-                        return;
-                    }
 
                     if( pwd.length<6){
                         alert("Password cannot be less than 6 nos");
                         return;
                     }
+
+                    if(confirmPwd!=pwd){
+                        alert("The passwords do not match");
+                        return;
+                    }
+
 
                     var b = confirm("confirm modification?");
                     if(b){
@@ -252,7 +254,6 @@
                                 } else if (date.success == false) {
 
                                     var err = date.errCode;
-                                    alert(err);
                                     if(err == '0000019' || err=='0000001'){
                                         alert("Parameters of the abnormal")
                                     }
