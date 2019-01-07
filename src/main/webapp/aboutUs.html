@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ABOUT US</title>
-    <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes,target-densitydpi=medium-dpi"/>
+    <meta name="viewport"
+          content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=yes,target-densitydpi=medium-dpi"/>
     <script src="js/loadcss.js" type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' href='css/slick.css'>
     <link rel='stylesheet' href='css/slick-theme.css'>
@@ -46,10 +47,22 @@
         </div>
     </div>
     <div class="about-person">
-        <div class="team-box" style="padding: 0.8rem 0">
+        <div id="pc" class="team-box" style="padding: 0.8rem 0;display: none">
             <div class="member-list" style="width: 70%; margin: 0 auto;overflow: hidden"></div>
-
             <div class="member-detail" style="width: 70%; margin: 0 auto;"></div>
+        </div>
+        <div id="wap" class="team-box">
+            <div class="swiper-container" id="swiper-container1" style="width: 80%;margin: 0 auto;">
+                <div class="swiper-wrapper">
+
+                </div>
+            </div>
+            <div class="swiper-container" id="swiper-container2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"></div>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="about-introduce">
@@ -75,22 +88,22 @@
 <script>
     $(function () {
         $(".menu_open").click(function () {
-            $(".nav").animate({ 'right': '0' }, 400);
-            $(".hcover").animate({ 'left': '0' }, 400);
+            $(".nav").animate({'right': '0'}, 400);
+            $(".hcover").animate({'left': '0'}, 400);
         });
         $(".hcover").click(function () {
-            $(this).animate({ 'left': '-50%' }, 400);
-            $(".nav").animate({ 'right': '-50%' }, 400);
-            $(".nav_ul").animate({ 'right': '0' }, 400);
+            $(this).animate({'left': '-50%'}, 400);
+            $(".nav").animate({'right': '-50%'}, 400);
+            $(".nav_ul").animate({'right': '0'}, 400);
             $('.nav_item_open').css('right', '-50%');
         });
         $(".nav_item i").click(function () {
-            $(".nav_ul").animate({ 'left': '-100%' }, 400);
+            $(".nav_ul").animate({'left': '-100%'}, 400);
             $(this).next('.nav_item_open').css('left', '0');
         });
         $(".subopen").click(function () {
             $(this).parent('.nav_item_open').css('left', '-50%');
-            $(".nav_ul").animate({ 'left': '0' }, 400);
+            $(".nav_ul").animate({'left': '0'}, 400);
         });
         $.ajax({
             url: '/about/query',
@@ -112,46 +125,54 @@
         $('#introduceLeftContent').html(data.four.subtitle);
         $('#introduceReightContent').html(data.four.introduce);
         var arrImage = [], arrContent = [];
-        for (var i = 0, len = data.three.length; i < len; i++) {
-            arrImage.push([
-                '<div class="list-item">',
-                '<div class="list-item-inner">',
-                '<p><img width="100%" src="' + data.three[i].image + '"></p>',
-                '</div>',
-                '</div>'
-            ].join(' '));
+        if ($(document).width() < 678) {
+            $('#wap').css('display', 'block');
+            for (var i = 0, len = data.three.length; i < len; i++) {
+                arrImage.push(['<div class="swiper-slide" style="padding: 30px;"><img width="100%" src="' + data.three[i].image + '" alt=""><p align="center" class="boss_name">' + data.three[i].title + '</p><p style="width: 80%; margin: 0 auto;" class="list-content ">' + data.three[i].introduce + '</p></div>'].join(' '));
+            }
+            $('#swiper-container1 .swiper-wrapper').append(arrImage.join(' '));
+            var Swiper1 = new Swiper('#swiper-container1', {
+                loop:true
+            });
 
-            arrContent.push([
-                '<div class="detail-item">',
-                '<p align="center" class="boss_name">' + data.three[i].title + '</p>',
-                '<p style="width: 90% margin: 0 auto;" class="list-content">' + data.three[i].introduce + '</p>',
-                '</div>'
-            ]. join(''));
+        } else {
+            $('#pc').css('display', 'block');
+            for (var i = 0, len = data.three.length; i < len; i++) {
+                arrImage.push([
+                    '<div class="list-item">',
+                    '<div class="list-item-inner">',
+                    '<p><img width="100%" src="' + data.three[i].image + '"></p>',
+                    '</div>',
+                    '</div>'
+                ].join(' '));
+
+                arrContent.push([
+                    '<div class="detail-item">',
+                    '<p align="center" class="boss_name">' + data.three[i].title + '</p>',
+                    '<p style="width: 90%; margin: 0 auto;" class="list-content">' + data.three[i].introduce + '</p>',
+                    '</div>'
+                ].join(''));
+            }
+            $('.member-list').append(arrImage.join(' '));
+            $('.member-detail').append(arrContent.join(' ')).slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                dots: true,
+                asNavFor: '.member-list'
+            });
+            $('.member-list').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                asNavFor: '.member-detail',
+                dots: false,
+                arrows: true,
+                centerMode: true,
+                focusOnSelect: true,
+                centerPadding: '0px'
+            });
         }
-
-        $('.member-list').append(arrImage.join(' '));
-        $('.member-detail').append(arrContent.join(' '));
-
-
-        $('.member-detail').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            fade: true,
-            asNavFor: '.member-list'
-        });
-        $('.member-list').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            asNavFor: '.member-detail',
-            dots: false,
-            arrows: true,
-            centerMode: true,
-            focusOnSelect: true,
-            centerPadding: '0px'
-        });
-
-
     }
 </script>
 </body>
