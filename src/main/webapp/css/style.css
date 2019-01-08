@@ -60,13 +60,35 @@ html, body {
 #banner {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 5% 0;
+}
+#banner1 {
+    display: flex;
+    justify-content: center;
     align-content: center;
-    padding: 17% 0;
+    padding: 15% 0;
+    background-size: cover;
 }
 
 #banner .banner-title {
     text-align: center;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: Poppins-Bold;
+}
+
+#banner1 .banner-title1 {
+    text-align: center;
+    font-family: Poppins-Bold;
+}
+
+#banner1 .banner-title1 h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    user-select: none;
 }
 
 #banner .banner-title h1 {
@@ -87,31 +109,23 @@ html, body {
     margin-bottom: 2.2rem;
 }
 
-#banner .banner-title .line {
+#banner1 .banner-title1 .title {
+    margin-bottom: 2.2rem;
+}
+
+#banner1 .banner-title1 .line {
     background: #EE4035;
     height: 6px;
     width: 50%;
     margin: 0 auto;
 }
 
-#banner .banner-title h4 {
+#banner1 .banner-title1 h4 {
     margin: 1rem 0.5rem 0;
     font-family: Poppins-Medium;
     font-size: 0.9rem;
     color: #FFFFFF;
     user-select: none;
-}
-
-#banner .banner-title a {
-    margin-top: 1.5rem;
-    border: 1px solid #FFFFFF;
-    display: inline-block;
-    text-decoration: none;
-    font-family: Poppins-Bold;
-    font-size: 16px;
-    color: #FFFFFF;
-    padding: 0.3rem 1.2rem;
-    background-color: transparent;
 }
 
 #main #introduce {

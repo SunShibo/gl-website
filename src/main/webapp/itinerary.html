@@ -37,7 +37,7 @@
     </div>
     <div class="itinerary-body">
         <div class="itinerary-center" style="padding: 60px 0;">
-            <img src="image/Itinerary page-53.png" alt="" width="100%" height="100%">
+            <img id="it-image" alt="" width="100%" height="100%">
         </div>
     </div>
     <div id="foot" style="margin: 0;">
@@ -82,6 +82,7 @@
     function setDom(data) {
         $('#banner').css('background', "url(" + data.one.image + ") bottom center no-repeat");
         $('#title').html(data.one.title);
+        $('#it-image').prop('src', data.two[0].image);
     }
 </script>
 </body>

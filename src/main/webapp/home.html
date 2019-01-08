@@ -30,8 +30,8 @@
             <div class="hcover"></div>
         </div>
     </div>
-    <div id="banner">
-        <div class="banner-title" style="display: none">
+    <div id="banner1">
+        <div class="banner-title1">
             <div><h1 id="title"></h1></div>
             <div class="title"><h1 id="subtitle"></h1></div>
             <div class="line"></div>
@@ -100,7 +100,7 @@
     function setDom(data) {
         $('<img/>').attr('src', data.homeModel1.image).on('load', function () {
             $(this).remove(); // prevent memory leaks as @benweet suggested
-            $('#banner').css('background', "url(" + data.homeModel1.image + ") no-repeat center center").css('backgroundSize','cover');
+            $('#banner1').css('background', "url(" + data.homeModel1.image + ") no-repeat").css('backgroundSize','cover');
             $('#title').html(data.homeModel1.title);
             $(".banner-title").fadeIn(3000);
             $('#subtitle').html(data.homeModel1.subtitle);
