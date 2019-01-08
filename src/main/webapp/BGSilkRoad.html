@@ -124,29 +124,19 @@
 
         <div id="myTabContent" class="tab-content">
 
+            <!--  模块一 图片显示 修改-->
             <div class="tab-pane fade in active" id="onehome">
-                <div id="moduleHead" class="moduleHead" style="width: 100%!important;">
-                    <!-- <form action="/backinternation/query" method="post" enctype="multipart/form-data">-->
-                    <form action="/backsilkroad/query" method="post" enctype="multipart/form-data">
-                        <!--TODO  模块一图片上传 -->
-                        <div class="row" id="moduleHeadLeft" style="width: 100%!important;">
-                            <div class="col-md-8 column right" style="margin-top: 30px">
-                                <img height="200px"  width="300px"   id="oneshuchupicture"/>
-                            </div>
-                            <div class="col-md-4 column">
-                                <div style="height: 50px;width: 100%"></div>
-                                <span id="choosetitle" style="color:#4e4e4e;text-decoration:none;">please choose Alternate picture:  </span>
-                                <input id="getpicturename" type="file" class="fileimg" name="file"  style="margin: 0px 0px;" placeholder="please choose The picture to be replaced"   title="please choose The picture to be replaced">
-                            </div>
+                <form     style="display: flex; justify-content: space-around; align-content: center">
+                    <div style="margin: 25px 0;">
+                        <img height="180px" width="200px" id="showmodel1Image1" />
+                        <div style="text-align: center">
+                            <input type="file" class="fileimg" name="file"
+                                   placeholder="please choose The picture to be replaced"
+                                   title="please choose The picture to be replaced" id="getModel1Image1" >
+                            <a href="javascript:void(0)"  id="updatemodel1Image1" >Modification</a>
                         </div>
-                        <br/><br/><br/><br/>
-                        <div style="height: 40px ;width: 500px;margin: 0 30%;">
-                            <!--<a href="javascript:void(0)" id="onepictureup">Modification</a>-->
-
-                        </div>
-                    </form>
-                    <!--</form>-->
-                </div>
+                    </div>
+                </form>
             </div>
             <!--  模块一 代码显示-->
             <div class="tab-pane fade" id="onetitle">  <!--TODO  模块一主标题 -->
@@ -197,7 +187,7 @@
             success: function (date) {
                 if (date.success == true) {
                     var one = date.data.one;
-                    $("#oneshuchupicture").attr("src", one.image);
+                    $("#showmodel1Image1").attr("src", one.image);
                     $("#oneshuchutitle").html(one.title);
                     var two = date.data.two;
                     $("#twoshuchupicture1").attr("src", two[0].image);
@@ -252,20 +242,15 @@
 
     $(document).ready(function () {
         //模块一图片修改
-        $("#onepictureup").click(function () {
-            var img = $("#getpicturename").val();
+        $("#updatemodel1Image1").click(function () {
+            var img = $("#getModel1Image1").val();
             if (img == '' || img == null) {
                 alert("Please select file");
-                return;
+                return false;
             }
-            $("#onepictureup").submit(
-                function(e){
-                    alert("李泽新");
-                }
-
-            )
-
-            return;
+            var file = new FormData();
+            file.append("file", document.getElementById('getModel1Image1').files[0]);
+            upImage("/backsilkroad/updateonemodelpicture", file);
         });
 
 
@@ -277,14 +262,38 @@
                 alert("Please enter the content");
                 return;
             }
-            update("/backinternation/updateonemodelandsoon", msg, 1);
+            update("/backsilkroad/updateonemodelandsoon", msg, 1);
             return;
         });
 
 
-
-
     });
+
+    //上传图片
+    function upImage(url,data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            async: false,
+            processData: false,
+            contentType: false,
+            success: function (date) {
+                if (date.success == true) {
+                    history.go(0);
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+
+        });
+
+    }
 
 
     function update(url, msg, falg) {
