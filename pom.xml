@@ -478,7 +478,7 @@
     <profile>
       <id>test</id>
       <properties>
-        <jdbc.url.ip>192.168.1.120:3306/EE_server</jdbc.url.ip>
+        <jdbc.url.ip>localhost/EE_server</jdbc.url.ip>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>root</jdbc.password>
 
