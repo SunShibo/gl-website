@@ -95,7 +95,7 @@
     }
 
     function setDom(data){
-        $('#banner').css('background', "url(" + data.one.image + ") no-repeat").css('backgroundSize','cover');
+        $('#banner').css('background', "url(" + data.one.image + ") no-repeat 100% 100%").css('backgroundSize','cover');
         $('#title').html(data.one.title);
         $('#ceImage1').prop('src', data.two[0].image);
         $('#ceImage2').prop('src', data.two[1].image);

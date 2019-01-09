@@ -35,11 +35,7 @@
             <div><h2 id="title"></h2></div>
         </div>
     </div>
-    <div class="itinerary-body">
-        <div class="itinerary-center" style="padding: 60px 0;">
-            <img id="it-image" alt="" width="100%" height="100%">
-        </div>
-    </div>
+    <div class="itinerary-body"></div>
     <div id="foot" style="margin: 0;">
         <div class="f-center">
             <div class="f-logo"><img src="image/logo-dark.png" alt="" width="100%" height="100%"></div>
@@ -80,9 +76,17 @@
     });
     
     function setDom(data) {
-        $('#banner').css('background', "url(" + data.one.image + ") bottom center no-repeat");
+        $('#banner').css('background', "url(" + data.one.image + ") no-repeat 100% 100%").css('backgroundSize','cover');
         $('#title').html(data.one.title);
-        $('#it-image').prop('src', data.two[0].image);
+        var arr = [];
+        for(var i = 0, len = data.two.length; i< len; i++){
+            arr.push([
+                '<div class="itinerary-center" style="padding: 60px 0;">',
+                '<img src="'+data.two[i].image+'" alt="" width="100%" height="100%">',
+                '</div>'
+            ].join(' '));
+        }
+        $('.itinerary-body').append(arr.join(' '));
     }
 </script>
 </body>

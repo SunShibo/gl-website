@@ -60,6 +60,12 @@
             background: url("/image/upImag.jpg") no-repeat right center;
             background-size: 40px 40px;
         }
+        .listimg{
+            width: 200px;height: 150px;vertical-align: middle;
+        }
+        .div{
+            height: 150px;margin: 20px;
+        }
     </style>
 </head>
 <body style="background: black">
@@ -104,8 +110,6 @@
             </li>
 
 
-
-
         </ul>
 
 
@@ -113,16 +117,16 @@
 
             <!--  模块一 图片显示 修改-->
             <div class="tab-pane fade in active" id="onehome">
-                <form     style="display: flex; justify-content: space-around; align-content: center">
-            <div style="margin: 25px 0;">
-                <img height="180px" width="200px" id="showmodel1Image1" />
-                <div style="text-align: center">
-                    <input type="file" class="fileimg" name="file"
-                           placeholder="please choose The picture to be replaced"
-                           title="please choose The picture to be replaced" id="getModel1Image1" >
-                    <a href="javascript:void(0)"  id="updatemodel1Image1" >Modification</a>
-                </div>
-            </div>
+                <form style="display: flex; justify-content: space-around; align-content: center">
+                    <div style="margin: 25px 0;">
+                        <img height="180px" width="200px" id="showmodel1Image1"/>
+                        <div style="text-align: center">
+                            <input type="file" class="fileimg" name="file"
+                                   placeholder="please choose The picture to be replaced"
+                                   title="please choose The picture to be replaced" id="getModel1Image1">
+                            <a href="javascript:void(0)" id="updatemodel1Image1">Modification</a>
+                        </div>
+                    </div>
                 </form>
             </div>
             <!--  模块一 代码显示-->
@@ -137,29 +141,13 @@
             </div>
 
 
-
             <!--模块二图片  -->
-            <div class="tab-pane fade" id="twopicture">
-                <form     style="display: flex; justify-content: space-around; align-content: center">
-                    <div style="margin: 25px 0;">
-                        <img height="180px" width="200px" id="showmodel2Image1" />
-                        <div style="text-align: center">
-                            <input type="file" class="fileimg" name="file"
-                                   placeholder="please choose The picture to be replaced"
-                                   title="please choose The picture to be replaced" id="getModel2Image1" >
-                            <a href="javascript:void(0)"  id="updatemodel2Image1" >Modification</a>
-                        </div>
-                    </div>
-                </form>
+            <div class="tab-pane fade"  id="twopicture"  style="align-content: center"></div>
+
+            <input type="file" accept="image/*" id="imgupload" style="display: none" onchange="uploadimg();">
 
 
-            </div>
-
-
-
-
-            </div>
-
+        </div>
 
 
     </div>
@@ -181,10 +169,7 @@
                     $("#showmodel1Image1").attr("src", one.image);
                     $("#oneshuchutitle").html(one.title);
                     var two = date.data.two;
-                    $("#twoshuchutitle").html(two[0].title);
-                    $("#twoshuchuintroduce").html(two[0].introduce);
-                    $("#showmodel2Image1").attr("src", two[0].image);
-
+                    renderData(two);
 
 
                 } else if (date.success == false) {
@@ -229,6 +214,71 @@
         });
     });
 
+    function renderData(v) {
+        if(!v)return ;
+        if(v.length==0)return;
+        var $d = $("#twopicture");
+        $d.empty();
+        var str = '';
+
+
+        for(var i=0;i<v.length;i++){
+
+
+            str +=[ '  <div class="div"  id="dom'+v[i]['id']+'">',
+                '   <img class="listimg" src="'+v[i]['image']+'">',
+                '   <button class="modify btn" data-id="'+v[i]['id']+'" onclick="modifyData(this)">修改</button>',
+                '   <button class="delete btn" data-id="'+v[i]['id']+'" onclick="deleteData(this)">删除</button>',
+                '   </div>'].join("")
+
+        }
+        var w = '<div class="div" id="adddom"><button class="add btn">新增</button></div>';
+        $d.append(str+w)
+    }
+
+    $(document).on("click",".listimg",function () {
+        self = this;
+        $("#imgupload").trigger("click");
+    })
+
+
+    function modifyData(t) {
+
+        var id = t.dataset.id;
+        var src = $($("#dom"+id).find("img")[0]).attr("src");
+        $.ajax({
+            url: '/backday/update2modelall',
+            type: 'POST',
+            data: {
+                pictureaddress:src,
+                id:id
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    $("#imgupload").val('');
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+
+    function uploadimg() {
+        var img = $("#imgupload").val();
+        if (img == '' || img == null) {
+            alert("Please select file");
+            return false;
+        }
+        var file = new FormData();
+        file.append("file", document.getElementById('imgupload').files[0]);
+        upImage("/backupload/uploadpicture", file);
+    };
+
 
     $(document).ready(function () {
         //模块一图片修改
@@ -241,7 +291,7 @@
             }
             var file = new FormData();
             file.append("file", document.getElementById('getModel1Image1').files[0]);
-            upImage("/backday/updateonemodelpicture", file);
+            upImage("/backday/updatetwomodelpicture", file);
         });
 
 
@@ -258,21 +308,18 @@
         });
 
 
-
-
-        //模块二图片修改
-        $("#updatemodel2Image1").on('click', function () {
-
-            var img = $("#getModel2Image1").val();
-            if (img == '' || img == null) {
-                alert("Please select file");
-                return false;
-            }
-            var file = new FormData();
-            file.append("file", document.getElementById('getModel2Image1').files[0]);
-            upImage("/backday/updatetwomodelpicture", file);
-        });
-
+        // //模块二图片修改
+        // $("#updatemodel2Image1").on('click', function () {
+        //
+        //     var img = $("#getModel2Image1").val();
+        //     if (img == '' || img == null) {
+        //         alert("Please select file");
+        //         return false;
+        //     }
+        //     var file = new FormData();
+        //     file.append("file", document.getElementById('getModel2Image1').files[0]);
+        //     upImage("/backday/updatetwomodelpicture", file);
+        // });
     });
 
 
@@ -313,7 +360,8 @@
             contentType: false,
             success: function (date) {
                 if (date.success == true) {
-                    history.go(0);
+                    self.src = date.data;
+                    // debugger;
                 } else if (date.success == false) {
                     alert("Failed to upload picture! Please select the picture correctly!");
                 }
@@ -325,6 +373,62 @@
         });
 
     }
+
+    $(document).on("click",".add",function () {
+
+        var $d = $("#adddom");
+        var str =[ '  <div class="div">',
+            '   <img class="listimg" src="image/add.jpg">',
+            '   <button class="modify btn" onclick="addData(this)">保存</button>',
+            '   </div>'].join("")
+        $d.before(str)
+    })
+    function addData(t) {
+        var src = $(t.previousElementSibling).attr("src");
+        if(src=='image/add.jpg')src='';
+        $.ajax({
+            url: '/backday/add2modelall',
+            type: 'POST',
+            data: {
+                pictureaddress:src
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    $("#imgupload").val('');
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+    function deleteData(t) {
+        $.ajax({
+            url: '/backday/delete2modelall',
+            type: 'POST',
+            data: {
+                id:t.dataset.id
+            },
+            dataType: 'JSON',
+            success: function (date) {
+                if (date.success == true) {
+                    alert(" success ");
+                    t.parentNode.parentNode.removeChild(t.parentNode);
+
+                } else if (date.success == false) {
+                    alert("Failed to upload picture! Please select the picture correctly!");
+                }
+            },
+            error: function () {
+                alert("network anomaly");
+            }
+        });
+    }
+
 
 
 </script>

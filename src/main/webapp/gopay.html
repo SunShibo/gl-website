@@ -193,7 +193,7 @@
     })
 
     function setDom(data) {
-        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat no-repeat").css('backgroundSize','cover');
+        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat 100% 100%").css('backgroundSize','cover');
         $('#title').html(data.one.title);
         $('#payTitle').html(data.two[0].title);
         $('#payContent').html(data.two[0].introduce);

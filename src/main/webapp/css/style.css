@@ -540,6 +540,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-content: center;
+    flex-direction: column;
 }
 
 .itinerary-body .itinerary-center {
