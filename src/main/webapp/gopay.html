@@ -56,13 +56,9 @@
     </div>
     <div class="page4">
         <div class="page4-center">
-            <div class="font-Poppins-Bold" style="text-align: left;font-size: 0.8rem;">Please fill out the following form to register. Your registration is not complete and will not be processed until you have completed all of the necessary steps and submitted your $1,000 deposit. This fee is payable by credit card during the registration process. Your deposit will be applied toward the cost of the trip and is fully refundable before January 31, 2019.
-            </div>
+            <div class="font-Poppins-Bold" style="text-align: left;font-size: 0.8rem;" id="payTitle"></div>
             <div style="width: 50%;height: 6px;background: #FFA53A;margin: 10px 0;"></div>
-            <div class="font-Poppins-Bold" style="text-align: left;color: #c6c8ca;font-size: 0.6rem">
-                If you need help booking a program or have any specific questions as part of the
-                registration process, call us anytime at &nbsp;<span style="color: #080808;">443-653-5063.</span>
-            </div>
+            <div class="font-Poppins-Bold" id="payContent" style="text-align: left;color: #c6c8ca;font-size: 0.6rem"></div>
         </div>
     </div>
     <div class="page4" style="">
@@ -81,6 +77,9 @@
             <input name="china" id="china" placeholder="Do you have a valid passport?" class="forminput">
             <button type="button" style="padding: 0.5rem 1.5rem;background: #FFA53A;border:none;display:block;margin: 2rem auto;color: #fff;" id="" data-toggle="modal" data-target="#exampleModal">PAY NOW</button>
         </form>
+    </div>
+    <div>
+        <img id="payMap" alt="" width="100%">
     </div>
 
     <!-- Modal -->
@@ -151,6 +150,7 @@
             type: 'POST',
             dataType: 'json',
             success: function (rs) {
+                console.log(rs.data);
                 setDom(rs.data);
             }
         })
@@ -181,6 +181,9 @@
     function setDom(data) {
         $('.gopay').css('background', "url(" + data.one.image + ") no-repeat bottom center");
         $('#title').html(data.one.title);
+        $('#payTitle').html(data.two[0].title);
+        $('#payContent').html(data.two[0].introduce);
+        $('#payMap').prop('src', data.two[0].image);
     }
 </script>
 </body>

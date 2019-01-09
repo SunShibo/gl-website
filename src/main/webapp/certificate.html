@@ -96,11 +96,11 @@
 
     function setDom(data){
         $('#banner').css('background', "url(" + data.one.image + ") bottom center no-repeat");
-        $('#title').text(data.one.title);
+        $('#title').html(data.one.title);
         $('#ceImage1').prop('src', data.two[0].image);
         $('#ceImage2').prop('src', data.two[1].image);
-        $('#ceTitle').text(data.two[0].title);
-        $('#ceContent').text(data.two[0].introduce);
+        $('#ceTitle').html(data.two[0].title);
+        $('#ceContent').html(data.two[0].introduce);
     }
 </script>
 </body>
