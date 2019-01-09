@@ -565,8 +565,8 @@ html, body {
 
 .grid .i-rows .i-cols .content {
     width: 60%;
-    letter-spacing: 0.6px;
-    font-size: 1.3rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
 }
 
 .info-boder {
