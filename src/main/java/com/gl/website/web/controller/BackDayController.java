@@ -81,7 +81,7 @@ public class BackDayController extends BaseCotroller {
         return;
     }
 
-    //首页模块二图片修改
+   /* //首页模块二图片修改
     @RequestMapping("/updatetwomodelpicture")
     public void model2ImageUp(HttpServletResponse  response,HttpServletRequest request, MultipartFile file) throws Exception {
         AdminBO userBO = super.getLoginUser(request);
@@ -108,7 +108,7 @@ public class BackDayController extends BaseCotroller {
         safeTextPrint(response, json);
         return;
     }
-
+*/
 
 
     //首页模块一住标题修改
@@ -144,7 +144,107 @@ public class BackDayController extends BaseCotroller {
         return;
     }
 
+    //首页模块2修改照片和内容等
+    @RequestMapping("/update2modelall")
+    public void model2UpdateAll(HttpServletResponse  response,HttpServletRequest request,String pictureaddress,Integer id) {
 
+       AdminBO userBO = super.getLoginUser(request);
+    if (userBO == null) {
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+        safeTextPrint(response, json);
+        return;
+    }
+
+        if( pictureaddress==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+        if(id==null ){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        DayTwoBO  twoBO=new DayTwoBO();
+        if(id!=null){
+            twoBO.setId(id);
+        }
+
+        if(pictureaddress!=null) {
+            twoBO.setImage(pictureaddress);
+        }
+        Integer count=dayService.updateDayTwo(twoBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
+    //首页模块2增加照片和内容等
+    @RequestMapping("/add2modelall")
+    public void model2AddAll(HttpServletResponse  response,HttpServletRequest request,String pictureaddress) {
+
+    AdminBO userBO = super.getLoginUser(request);
+    if (userBO == null) {
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+        safeTextPrint(response, json);
+        return;
+    }
+        if(pictureaddress==null||pictureaddress==""){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        DayTwoBO  twoBO=new DayTwoBO();
+
+        if(pictureaddress!=null) {
+            twoBO.setImage(pictureaddress);
+        }
+        Integer count=dayService.addDayTwo(twoBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
+    //首页模块2删除照片和内容等
+    @RequestMapping("/delete2modelall")
+    public void model2DeleteAll(HttpServletResponse  response,HttpServletRequest request,Integer id) {
+
+    AdminBO userBO = super.getLoginUser(request);
+    if (userBO == null) {
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
+        safeTextPrint(response, json);
+        return;
+    }
+        if(id==null){
+            String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response, json);
+            return;
+        }
+
+        DayTwoBO  twoBO=new DayTwoBO();
+        if(id!=null) {
+            twoBO.setId(id);
+        }
+        Integer count= dayService.deleteDayTwo(twoBO);
+        if( count==0 ){
+            String json=JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+            safeTextPrint(response,json);
+            return;
+        }
+        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(""));
+        safeTextPrint(response, json);
+        return;
+    }
 
 
 }

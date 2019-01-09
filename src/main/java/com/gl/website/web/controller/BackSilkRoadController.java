@@ -30,12 +30,12 @@ public class BackSilkRoadController extends BaseCotroller {
 
     @RequestMapping("/query")//查询
     public void query(HttpServletResponse response, HttpServletRequest request) {
-        /*AdminBO userBO = super.getLoginUser(request);
+        AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }*/
+        }
 
 
         HashMap<String, Object> map = new HashMap<String, Object>();
@@ -121,12 +121,12 @@ public class BackSilkRoadController extends BaseCotroller {
     //首页模块一住标题修改
     @RequestMapping("/updateonemodelandsoon")
     public void model1UpdateTitle(HttpServletResponse  response,HttpServletRequest request,String msg,Integer falg) {
-       /* AdminBO userBO = super.getLoginUser(request);
+        AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
             safeTextPrint(response, json);
             return;
-        }*/
+        }
         boolean verification = ParamVerifyUtil.verification(msg,falg);
         if(!verification){
             String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -192,12 +192,12 @@ public class BackSilkRoadController extends BaseCotroller {
 @RequestMapping("/update2modelall")
 public void model2UpdateAll(HttpServletResponse  response,HttpServletRequest request,String title,String pictureaddress,Integer id) {
 
-   /* AdminBO userBO = super.getLoginUser(request);
+    AdminBO userBO = super.getLoginUser(request);
     if (userBO == null) {
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
         safeTextPrint(response, json);
         return;
-    }*/
+    }
 
     if(title==null && pictureaddress==null){
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
@@ -235,13 +235,12 @@ public void model2UpdateAll(HttpServletResponse  response,HttpServletRequest req
 @RequestMapping("/add2modelall")
 public void model2AddAll(HttpServletResponse  response,HttpServletRequest request,String title,String pictureaddress) {
 
-   /* AdminBO userBO = super.getLoginUser(request);
+    AdminBO userBO = super.getLoginUser(request);
     if (userBO == null) {
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
         safeTextPrint(response, json);
         return;
     }
-*/
     if((title==null||title=="") && (pictureaddress==null||pictureaddress=="")){
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
         safeTextPrint(response, json);
@@ -270,12 +269,12 @@ public void model2AddAll(HttpServletResponse  response,HttpServletRequest reques
 @RequestMapping("/delete2modelall")
 public void model2DeleteAll(HttpServletResponse  response,HttpServletRequest request,Integer id) {
 
-  /*  AdminBO userBO = super.getLoginUser(request);
+    AdminBO userBO = super.getLoginUser(request);
     if (userBO == null) {
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001", "请登录"));
         safeTextPrint(response, json);
         return;
-    }*/
+    }
     if(id==null){
         String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
         safeTextPrint(response, json);
