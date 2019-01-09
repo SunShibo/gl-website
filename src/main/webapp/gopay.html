@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="page4" style="">
-        <form style="width: 40rem;margin: 0 auto;padding: 0 2rem;" id="bookNow">
+        <form style="width: 35rem;margin: 0 auto;padding: 0 2rem;" id="bookNow">
             <input name="applicantName" id="applicantName"  placeholder="Applicant's First and Last Name" class="forminput">
             <input name="guardianName" id="guardianName" placeholder="Guardian’s First and Last Name" class="forminput">
             <input name="birthday" id="birthday" placeholder="Applicant’s birthday" class="forminput">
@@ -179,7 +179,7 @@
     });
 
     function setDom(data) {
-        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat bottom center");
+        $('.gopay').css('background', "url(" + data.one.image + ") no-repeat no-repeat").css('backgroundSize','cover');
         $('#title').html(data.one.title);
         $('#payTitle').html(data.two[0].title);
         $('#payContent').html(data.two[0].introduce);

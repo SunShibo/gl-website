@@ -78,7 +78,7 @@
     function setDom(data) {
         console.log(data);
         $('#title').html(data.one.title);
-        $('#banner').css('background', "url(" + data.one.image + ") no-repeat center center");
+        $('#banner').css('background', "url(" + data.one.image + ") no-repeat no-repeat").css('backgroundSize','cover');
         var arr = []
         for (var i = 0, len = data.two.length; i < len; i++) {
             if (i % 2 == 0) {

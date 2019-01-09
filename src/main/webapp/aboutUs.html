@@ -117,7 +117,7 @@
     });
 
     function setDom(data) {
-        $('#banner').css({'background': "url(" + data.one.image + ") no-repeat center center"});
+        $('#banner').css({'background': "url(" + data.one.image + ") no-repeat",'backgroundSize':'cover'});
         $('#title').html(data.one.title);
         $('#infoContent').html(data.two.title);
         $('#infoIntroduce').html(data.two.introduce);
