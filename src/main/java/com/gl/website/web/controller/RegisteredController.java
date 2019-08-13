@@ -78,7 +78,7 @@ public class RegisteredController extends BaseCotroller {
     }
 
     @RequestMapping("/queryMsgByDate")
-    public void queryMsgByDate(HttpServletResponse response,HttpServletRequest request,Date date,String name,String phone,Integer pageNo,Integer pageSize){
+    public void queryMsgByDate(HttpServletResponse response,HttpServletRequest request,String startTime,String name,String phone,Integer pageNo,Integer pageSize){
 
         AdminBO userBO = super.getLoginUser(request);
         if (userBO == null) {
@@ -96,11 +96,12 @@ public class RegisteredController extends BaseCotroller {
             condition.put("pageNo", queryInfo.getPageOffset());
             condition.put("pageSize", queryInfo.getPageSize());
         }
-        condition.put("name",name);
+
+        condition.put("applicantName",name);
         condition.put("phone",phone);
         try {
-            List<RegisteredBO> registeredBOS = registeredService.queryMsgByDate(date,condition);
-            int count=registeredService.queryMsgByDateCount(date,condition);
+            List<RegisteredBO> registeredBOS = registeredService.queryMsgByDate(startTime,condition);
+            int count=registeredService.queryMsgByDateCount(startTime,condition);
 
             Map<String,Object>  resultMap=new HashMap<String, Object>();
             resultMap.put("data",registeredBOS);

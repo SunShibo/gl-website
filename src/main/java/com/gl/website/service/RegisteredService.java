@@ -42,8 +42,8 @@ public class RegisteredService {
         return reDAO.addRegistered(rebo);
     }
 
-    public List<RegisteredBO>  queryMsgByDate(Date date,Map<String,Object> map)throws Exception{
-        if(date!=null) {
+    public List<RegisteredBO>  queryMsgByDate(String date,Map<String,Object> map)throws Exception{
+        if(date!=null && date.trim().length()>0) {
             SimpleDateFormat simpleDateFormatStart = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
             SimpleDateFormat simpleDateFormatEnd = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
             String startTime = simpleDateFormatStart.format(date);
@@ -54,8 +54,8 @@ public class RegisteredService {
         return reDAO.queryMsgByDate(map);
     }
 
-    public int  queryMsgByDateCount(Date date,Map<String,Object> map)throws Exception{
-        if(date!=null) {
+    public int  queryMsgByDateCount(String date,Map<String,Object> map)throws Exception{
+        if(date!=null && date.trim().length()>0) {
             SimpleDateFormat simpleDateFormatStart = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
             SimpleDateFormat simpleDateFormatEnd = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
             String startTime = simpleDateFormatStart.format(date);
