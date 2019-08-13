@@ -142,12 +142,13 @@
                     "code": 200, //解析接口状态
                     "msg": res.errMsg, //解析提示文本
                     "count": res.data.count, //解析数据长度
-                    "data": res.data //解析数据列表
+                    "data": res.data.data //解析数据列表
                 };
             }
             , even: true
             , loading: true // 是否显示加载条
             , toolbar: true
+            , page: true
             , defaultToolbar: ['filter']
             , cols: [[ //标题栏
                 {
