@@ -91,6 +91,8 @@
             AND  phone LIKE  '%${phone}%'
           </if>
       </where>
+        
+        <include refid="limit" />
       </select>
 
     <select id="queryMsgByDateCount"  parameterType="map"  resultType="com.gl.website.entity.bo.RegisteredBO">
@@ -107,4 +109,9 @@
             </if>
         </where>
     </select>
+
+
+    <sql id="limit">
+        limit #{pageNo},#{pageSize}
+    </sql>
 </mapper>
