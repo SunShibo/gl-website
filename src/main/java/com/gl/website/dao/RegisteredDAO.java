@@ -18,4 +18,5 @@ public interface RegisteredDAO {
     //查询
     List<RegisteredBO>  queryMsgByDate(Map<String,Object>  map);
 
+    int queryMsgByDateCount(Map<String, Object> map);
 }

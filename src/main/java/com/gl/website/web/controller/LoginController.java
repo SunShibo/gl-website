@@ -69,7 +69,7 @@ public class LoginController extends BaseCotroller {
 
 			super.putLoginUser(uuid, userInfo);
 
-			super.setCookie(response, SysConstants.CURRENT_LOGIN_CLIENT_ID, uuid, SysConstants.SEVEN_DAY_TIME);
+			super.setCookie(response, SysConstants.CURRENT_LOGIN_CLIENT_ID, uuid,60*60*4);
 
 			userInfo.setPassword("");
 			String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(userInfo)) ;

@@ -79,6 +79,32 @@
 
 
     <select id="queryMsgByDate"  parameterType="map"  resultType="com.gl.website.entity.bo.RegisteredBO">
-      SELECT * FROM gl_registered WHERE create_time  BETWEEN #{startTime} AND  #{endTime}
+      SELECT * FROM gl_registered
+      <where>
+          <if test="startTime!=null and endTime !=null ">
+             AND create_time  BETWEEN #{startTime} AND  #{endTime}
+          </if>
+          <if test="name!=null and name!=''"  >
+            AND  applicant_name LIKE  '%${name}%'
+          </if>
+          <if test="phone!=null and phone!=''" >
+            AND  phone LIKE  '%${phone}%'
+          </if>
+      </where>
+      </select>
+
+    <select id="queryMsgByDateCount"  parameterType="map"  resultType="com.gl.website.entity.bo.RegisteredBO">
+        SELECT COUNT(id) FROM gl_registered
+        <where>
+            <if test="startTime!=null and endTime !=null ">
+                AND create_time  BETWEEN #{startTime} AND  #{endTime}
+            </if>
+            <if test="name!=null and name!=''"  >
+                AND  applicant_name LIKE  '%${name}%'
+            </if>
+            <if test="phone!=null and phone!=''" >
+                AND  phone LIKE  '%${phone}%'
+            </if>
+        </where>
     </select>
 </mapper>

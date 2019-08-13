@@ -279,7 +279,7 @@ public class BaseCotroller {
      * session赋值
      */
     private void putSession (String key , Object value) {
-        RedissonHandler.getInstance().set(key , value , null);
+        RedissonHandler.getInstance().set(key , value , (long)60*60*4);
 //        RedisUtil.set(value , key) ;
     }
 
